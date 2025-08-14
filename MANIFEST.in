@@ -1,0 +1,12 @@
+include README.md
+include LICENSE
+include pyproject.toml
+include setup.py
+include generate_all.sh
+include example_usage.py
+recursive-include gramps_bench *.py
+global-exclude *.pyc
+global-exclude __pycache__
+global-exclude .git*
+global-exclude .benchmarks
+global-exclude *.pdf 

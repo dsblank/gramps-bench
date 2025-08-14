@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "gramps-bench"
+version = "1.0.0"
+description = "Performance benchmarking tools for Gramps genealogy software"
+readme = "README.md"
+license = {text = "GPL-2.0-or-later"}
+authors = [
+    {name = "Gramps Development Team", email = "gramps-devel@lists.sourceforge.net"}
+]
+maintainers = [
+    {name = "Gramps Development Team", email = "gramps-devel@lists.sourceforge.net"}
+]
+keywords = ["gramps", "genealogy", "benchmark", "performance", "testing"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: GNU General Public License v2 or later (GPLv2+)",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Testing",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "pytest>=6.0",
+    "pytest-benchmark>=3.4",
+    "matplotlib>=3.3",
+    "numpy>=1.19",
+]
+
+[project.scripts]
+gramps-bench = "gramps_bench.cli.gramps_bench:main"
+gramps-bench-all = "gramps_bench.cli.gramps_bench_all:main"
+
+[project.urls]
+Homepage = "https://github.com/gramps-project/gramps-benchmarks"
+Repository = "https://github.com/gramps-project/gramps-benchmarks"
+Issues = "https://github.com/gramps-project/gramps-benchmarks/issues"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["gramps_bench*"]
+
+[tool.setuptools.package-data]
+gramps_bench = ["*.py"] 
