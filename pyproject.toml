@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gramps-bench"
-version = "1.0.0"
+version = "1.0.1"
 description = "Performance benchmarking tools for Gramps genealogy software"
 readme = "README.md"
 license = {text = "GPL-2.0-or-later"}
@@ -42,13 +42,13 @@ gramps-bench = "gramps_bench.cli.gramps_bench:main"
 gramps-bench-all = "gramps_bench.cli.gramps_bench_all:main"
 
 [project.urls]
-Homepage = "https://github.com/gramps-project/gramps-benchmarks"
-Repository = "https://github.com/gramps-project/gramps-benchmarks"
-Issues = "https://github.com/gramps-project/gramps-benchmarks/issues"
+Homepage = "https://github.com/dsblank/gramps-bench"
+Repository = "https://github.com/dsblank/gramps-bench"
+Issues = "https://github.com/dsblank/gramps-bench/issues"
 
 [tool.setuptools.packages.find]
 where = ["."]
 include = ["gramps_bench*"]
 
 [tool.setuptools.package-data]
-gramps_bench = ["*.py"] 
+gramps_bench = ["*.py"]

@@ -3,23 +3,25 @@
 Setup script for gramps-bench package
 """
 
-from setuptools import setup, find_packages
-import os
+
+from setuptools import find_packages, setup
+
 
 # Read the README file for long description
 def read_readme():
     with open("README.md", "r", encoding="utf-8") as fh:
         return fh.read()
 
+
 setup(
     name="gramps-bench",
-    version="1.0.0",
+    version="1.0.1",
     author="Gramps Development Team",
     author_email="gramps-devel@lists.sourceforge.net",
     description="Performance benchmarking tools for Gramps genealogy software",
     long_description=read_readme(),
     long_description_content_type="text/markdown",
-    url="https://github.com/gramps-project/gramps-benchmarks",
+    url="https://github.com/dsblank/gramps-bench",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 4 - Beta",
@@ -50,4 +52,4 @@ setup(
     },
     include_package_data=True,
     zip_safe=False,
-) 
+)
