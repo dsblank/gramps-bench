@@ -39,6 +39,12 @@ def main():
         help="Output directory for benchmark results (default: current directory)",
     )
     parser.add_argument("--version", help="Override Gramps version (e.g., '6.0.4-b1')")
+    parser.add_argument(
+        "--format",
+        choices=["pdf", "html"],
+        default="pdf",
+        help="Output format for charts (pdf or html, default: pdf)",
+    )
     args = parser.parse_args()
 
     output_dir = args.output
@@ -127,7 +133,7 @@ def main():
 
         try:
             # Import and run the chart generation
-            success = gramps_benchmark(output_dir=output_dir)
+            success = gramps_benchmark(output_dir=output_dir, format=args.format)
             if success:
                 print("\n✅ Chart generation completed successfully!")
             else:

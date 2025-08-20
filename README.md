@@ -41,7 +41,7 @@ gramps-bench-all /path/to/gramps_file.gramps /path/to/gramps/source
 # 🔄 Run with specific versions
 gramps-bench-all data.gramps /home/user/gramps --versions v5.1.6 v5.2.4 v6.0.4
 
-# 🔄 Run with custom output and auto-open PDFs
+# 🔄 Run with custom output and auto-open results
 gramps-bench-all data.gramps /home/user/gramps --output /tmp/results --open
 ```
 
@@ -53,6 +53,40 @@ gramps-bench
 # 📊 Generate charts from specific directory
 gramps-bench --output /path/to/benchmarks
 ```
+
+### Output Formats
+
+Gramps-bench supports two output formats for charts:
+
+#### PDF Format (Default)
+```bash
+# Generate PDF charts (default)
+gramps-bench --format pdf
+
+# Generate PDF charts with multi-version comparison
+gramps-bench-all data.gramps /home/user/gramps --format pdf --open
+```
+
+#### HTML Format
+```bash
+# Generate HTML webpages with interactive charts
+gramps-bench --format html
+
+# Generate HTML webpages with multi-version comparison
+gramps-bench-all data.gramps /home/user/gramps --format html --open
+```
+
+**HTML Output Features:**
+- **Interactive Webpages**: View results in any web browser
+- **Embedded Charts**: PNG images embedded in the HTML
+- **Detailed Tables**: Comprehensive performance data tables
+- **Responsive Design**: Works on desktop and mobile devices
+- **Easy Sharing**: HTML files can be easily shared and viewed without special software
+
+**PDF Output Features:**
+- **Print-Friendly**: Optimized for printing and documentation
+- **Compact**: Single file contains all charts and data
+- **Professional**: Suitable for reports and presentations
 
 ## Advanced Usage
 
@@ -125,7 +159,7 @@ gramps-bench-all data.gramps /home/user/gramps --output /tmp/benchmark_results
 ### Advanced Options
 
 ```bash
-# Run with auto-opening PDF results
+# Run with auto-opening results
 gramps-bench-all data.gramps /home/user/gramps --open
 
 # Skip chart generation (only run benchmarks)
@@ -143,8 +177,8 @@ gramps-bench-all data.gramps /home/user/gramps \
 1. **Git Checkout**: Automatically checks out each specified version in the Gramps source repository
 2. **Benchmark Execution**: Runs the full benchmark suite for each version
 3. **Result Collection**: Saves benchmark results with version-specific naming
-4. **Chart Generation**: Creates comparative PDF charts showing performance across versions
-5. **PDF Opening**: Optionally opens the generated charts with the default PDF viewer
+4. **Chart Generation**: Creates comparative charts showing performance across versions (PDF or HTML)
+5. **Result Opening**: Optionally opens the generated charts with the default viewer (PDF viewer or web browser)
 
 ### Output Structure
 
@@ -158,8 +192,8 @@ output_directory/
 │       ├── 0002_v5.2.4.json
 │       ├── 0003_v6.0.4.json
 │       └── 0004_current.json
-├── benchmark_charts.pdf
-└── performance_comparison.pdf
+├── benchmark_charts.pdf (or .html)
+└── performance_comparison.pdf (or .html)
 ```
 
 ## What the Tests Measure
@@ -177,7 +211,7 @@ The performance tests benchmark various Gramps operations:
 ## Output
 
 - **Console**: Real-time benchmark results with statistics
-- **Charts**: PDF files with performance visualizations (when generating charts)
+- **Charts**: PDF or HTML files with performance visualizations (when generating charts)
 - **Benchmark Files**: Automatically saved in `.benchmarks/` directory with gramps version as default name
 
 ## Results Naming
@@ -213,4 +247,4 @@ python -m pytest gramps_bench/performance_tests.py
 
 # Run with coverage
 python -m pytest gramps_bench/ --cov=gramps_bench
-``` 
+```
