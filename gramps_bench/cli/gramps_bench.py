@@ -41,9 +41,9 @@ def main():
     parser.add_argument("--version", help="Override Gramps version (e.g., '6.0.4-b1')")
     parser.add_argument(
         "--format",
-        choices=["pdf", "html"],
+        choices=["pdf", "html", "markdown"],
         default="pdf",
-        help="Output format for charts (pdf or html, default: pdf)",
+        help="Output format for charts (pdf, html, or markdown, default: pdf)",
     )
     args = parser.parse_args()
 

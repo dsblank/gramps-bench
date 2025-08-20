@@ -83,6 +83,23 @@ gramps-bench-all data.gramps /home/user/gramps --format html --open
 - **Responsive Design**: Works on desktop and mobile devices
 - **Easy Sharing**: HTML files can be easily shared and viewed without special software
 
+#### Markdown Format (GitHub Compatible)
+```bash
+# Generate Markdown pages (GitHub compatible)
+gramps-bench --format markdown
+
+# Generate Markdown pages with multi-version comparison
+gramps-bench-all data.gramps /home/user/gramps --format markdown --open
+```
+
+**Markdown Output Features:**
+- **GitHub Compatible**: Renders perfectly on GitHub and other Git platforms
+- **No Security Restrictions**: No issues with special characters in filenames
+- **Easy Version Control**: Markdown files work seamlessly with Git
+- **Universal Support**: Viewable on any platform that supports Markdown
+- **Embedded Charts**: PNG images embedded in the Markdown
+- **Detailed Tables**: Comprehensive performance data in Markdown tables
+
 **PDF Output Features:**
 - **Print-Friendly**: Optimized for printing and documentation
 - **Compact**: Single file contains all charts and data

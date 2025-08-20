@@ -61,7 +61,12 @@ def run_benchmarks_for_version(gramps_file, output_dir, version=None):
 
 def generate_final_charts(output_dir, format="pdf"):
     """Generate final comparative charts."""
-    format_name = "HTML pages" if format == "html" else "PDFs"
+    if format == "html":
+        format_name = "HTML pages"
+    elif format == "markdown":
+        format_name = "Markdown pages"
+    else:
+        format_name = "PDFs"
     print(f"\n📊 Generating final comparative {format_name}...")
     print("=" * 60)
 
@@ -91,6 +96,17 @@ def open_output_files(output_dir, format="pdf"):
                 return True
             else:
                 print("No HTML files found to open")
+                return False
+        elif format == "markdown":
+            # Open Markdown files with default text editor
+            md_files = list(Path(output_dir).glob("*.md"))
+            if md_files:
+                print(f"\n📝 Opening {len(md_files)} Markdown file(s)...")
+                for md_file in md_files:
+                    subprocess.Popen(["xdg-open", str(md_file)])
+                return True
+            else:
+                print("No Markdown files found to open")
                 return False
         else:
             # Open PDF files with default PDF viewer
@@ -155,9 +171,9 @@ Examples:
 
     parser.add_argument(
         "--format",
-        choices=["pdf", "html"],
+        choices=["pdf", "html", "markdown"],
         default="pdf",
-        help="Output format for charts (pdf or html, default: pdf)",
+        help="Output format for charts (pdf, html, or markdown, default: pdf)",
     )
 
     args = parser.parse_args()

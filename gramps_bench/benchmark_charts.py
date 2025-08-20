@@ -155,134 +155,26 @@ def generate_html_chart(test_name, run_data, output_file):
     return chart_filename
 
 
-def generate_html_page(folder_name, all_results, benchmark_files, output_file):
-    """Generate an HTML webpage for benchmark results."""
-    html_content = f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gramps Performance Benchmarks - {folder_name}</title>
-    <style>
-        body {{
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }}
-        .container {{
-            max-width: 1200px;
-            margin: 0 auto;
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }}
-        h1 {{
-            color: #2c3e50;
-            text-align: center;
-            margin-bottom: 30px;
-            border-bottom: 3px solid #3498db;
-            padding-bottom: 10px;
-        }}
-        .summary {{
-            background-color: #ecf0f1;
-            padding: 20px;
-            border-radius: 5px;
-            margin-bottom: 30px;
-        }}
-        .summary h2 {{
-            color: #2c3e50;
-            margin-top: 0;
-        }}
-        .file-list {{
-            background-color: #f8f9fa;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 30px;
-        }}
-        .file-list h3 {{
-            color: #2c3e50;
-            margin-top: 0;
-        }}
-        .file-list ul {{
-            list-style-type: none;
-            padding-left: 0;
-        }}
-        .file-list li {{
-            padding: 5px 0;
-            border-bottom: 1px solid #dee2e6;
-        }}
-        .file-list li:last-child {{
-            border-bottom: none;
-        }}
-        .chart-section {{
-            margin-bottom: 40px;
-        }}
-        .chart-section h2 {{
-            color: #2c3e50;
-            border-left: 4px solid #3498db;
-            padding-left: 15px;
-        }}
-        .chart-container {{
-            text-align: center;
-            margin: 20px 0;
-        }}
-        .chart-container img {{
-            max-width: 100%;
-            height: auto;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }}
-        .data-table {{
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }}
-        .data-table th, .data-table td {{
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }}
-        .data-table th {{
-            background-color: #3498db;
-            color: white;
-        }}
-        .data-table tr:nth-child(even) {{
-            background-color: #f2f2f2;
-        }}
-        .footer {{
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
-            color: #7f8c8d;
-        }}
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Gramps Performance Benchmarks (v{GRAMPS_VERSION})</h1>
-        <h2 style="text-align: center; color: #2c3e50;">{folder_name}</h2>
+def generate_markdown_page(folder_name, all_results, benchmark_files, output_file):
+    """Generate a Markdown page for benchmark results."""
+    markdown_content = f"""# Gramps Performance Benchmarks (v{GRAMPS_VERSION})
 
-        <div class="summary">
-            <h2>Summary</h2>
-            <p><strong>Generated:</strong> {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</p>
-            <p><strong>Number of benchmark runs:</strong> {len(all_results)}</p>
-            <p><strong>Total benchmark files:</strong> {len(benchmark_files)}</p>
-        </div>
+## {folder_name}
 
-        <div class="file-list">
-            <h3>Benchmark Files</h3>
-            <ul>
+### Summary
+
+- **Generated:** {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}
+- **Number of benchmark runs:** {len(all_results)}
+- **Total benchmark files:** {len(benchmark_files)}
+
+### Benchmark Files
+
 """
 
     for file in benchmark_files:
-        html_content += f"                <li>{os.path.basename(file)}</li>\n"
+        markdown_content += f"- {os.path.basename(file)}\n"
 
-    html_content += """            </ul>
-        </div>
-"""
+    markdown_content += "\n"
 
     # Get all unique test names across all files in this folder
     all_test_names = set()
@@ -307,24 +199,13 @@ def generate_html_page(folder_name, all_results, benchmark_files, output_file):
         chart_filename = generate_html_chart(test_name, run_data, output_file)
 
         if chart_filename:
-            html_content += f"""
-        <div class="chart-section">
-            <h2>Benchmark: {test_name}</h2>
-            <div class="chart-container">
-                <img src="{chart_filename}" alt="Chart for {test_name}">
-            </div>
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th>Run</th>
-                        <th>Mean Time (seconds)</th>
-                        <th>Min Time (seconds)</th>
-                        <th>Max Time (seconds)</th>
-                        <th>Standard Deviation</th>
-                        <th>Rounds</th>
-                    </tr>
-                </thead>
-                <tbody>
+            markdown_content += f"""
+## Benchmark: {test_name}
+
+![Chart for {test_name}]({chart_filename})
+
+| Run | Mean Time (seconds) | Min Time (seconds) | Max Time (seconds) | Standard Deviation | Rounds |
+|-----|-------------------|-------------------|-------------------|-------------------|--------|
 """
 
             # Sort run data for consistent display
@@ -332,34 +213,19 @@ def generate_html_page(folder_name, all_results, benchmark_files, output_file):
 
             for run_name, mean_time in run_data:
                 result = all_results[run_name][test_name]
-                html_content += f"""
-                    <tr>
-                        <td>{run_name}</td>
-                        <td>{result['mean']:.6f}</td>
-                        <td>{result['min']:.6f}</td>
-                        <td>{result['max']:.6f}</td>
-                        <td>{result['stddev']:.6f}</td>
-                        <td>{result['rounds']}</td>
-                    </tr>
+                markdown_content += f"| {run_name} | {result['mean']:.6f} | {result['min']:.6f} | {result['max']:.6f} | {result['stddev']:.6f} | {result['rounds']} |\n"
+
+            markdown_content += "\n"
+
+    markdown_content += f"""
+---
+
+*Generated by Gramps Benchmark Tool on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}*
 """
 
-            html_content += """
-                </tbody>
-            </table>
-        </div>
-"""
-
-    html_content += f"""
-        <div class="footer">
-            <p>Generated by Gramps Benchmark Tool on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</p>
-        </div>
-    </div>
-</body>
-</html>"""
-
-    # Write the HTML file
+    # Write the Markdown file
     with open(output_file, "w", encoding="utf-8") as f:
-        f.write(html_content)
+        f.write(markdown_content)
 
 
 def generate_performance_charts(benchmark_results, output_file=None):
@@ -684,12 +550,14 @@ def generate_folder_charts(benchmark_files_by_folder, output_dir=None, format="p
             print(f"No valid benchmark results found for folder {folder_name}")
             continue
 
-        if format.lower() == "html":
-            # Generate HTML webpage
-            output_file = os.path.join(output_dir, f"{clean_folder_name}.html")
-            print(f"Generating HTML for folder: {folder_name}")
-            generate_html_page(folder_name, all_results, benchmark_files, output_file)
-            print(f"HTML saved to: {output_file}")
+        if format.lower() in ["html", "markdown"]:
+            # Generate Markdown webpage (GitHub compatible)
+            output_file = os.path.join(output_dir, f"{clean_folder_name}.md")
+            print(f"Generating Markdown for folder: {folder_name}")
+            generate_markdown_page(
+                folder_name, all_results, benchmark_files, output_file
+            )
+            print(f"Markdown saved to: {output_file}")
         else:
             # Generate PDF (original functionality)
             output_file = os.path.join(output_dir, f"{clean_folder_name}.pdf")
@@ -810,7 +678,10 @@ def generate_folder_charts(benchmark_files_by_folder, output_dir=None, format="p
 
         success_count += 1
 
-    format_name = "HTML files" if format.lower() == "html" else "PDF files"
+    if format.lower() in ["html", "markdown"]:
+        format_name = "Markdown files" if format.lower() == "markdown" else "HTML files"
+    else:
+        format_name = "PDF files"
     print(f"\nGenerated {success_count} {format_name}")
     return success_count > 0
 
@@ -856,9 +727,9 @@ def main():
     parser.add_argument(
         "--format",
         type=str,
-        choices=["pdf", "html"],
+        choices=["pdf", "html", "markdown"],
         default="pdf",
-        help="Output format for per-folder generation (pdf or html)",
+        help="Output format for per-folder generation (pdf, html, or markdown)",
     )
 
     args = parser.parse_args()
