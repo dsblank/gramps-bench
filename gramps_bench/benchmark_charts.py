@@ -140,7 +140,14 @@ def generate_html_chart(test_name, run_data, output_file):
     plt.tight_layout(pad=1.5, h_pad=1.0, w_pad=1.0)
 
     # Save the chart as PNG
-    chart_filename = f"{test_name.replace(' ', '_').replace('/', '_')}.png"
+    # Replace problematic characters for GitHub compatibility
+    safe_test_name = (
+        test_name.replace(" ", "_")
+        .replace("/", "_")
+        .replace("[", "%5B")
+        .replace("]", "%5D")
+    )
+    chart_filename = f"{safe_test_name}.png"
     chart_path = os.path.join(os.path.dirname(output_file), chart_filename)
     plt.savefig(chart_path, dpi=150)
     plt.close()
