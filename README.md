@@ -2,6 +2,11 @@
 
 This directory contains performance tests for Gramps using pytest-benchmark.
 
+## Results
+
+* [Markdown](https://github.com/dsblank/gramps-bench/blob/main/benchmarks/Linux-CPython-3.12-64bit.md)
+* [PDF](https://github.com/dsblank/gramps-bench/blob/main/benchmarks/Linux-CPython-3.12-64bit.pdf)
+
 ## Installation
 
 ### Install from PyPI
