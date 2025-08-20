@@ -4,7 +4,7 @@
 
 ### Summary
 
-- **Generated:** 2025-08-20 16:17:23
+- **Generated:** 2025-08-20 16:26:00
 - **Number of benchmark runs:** 4
 - **Total benchmark files:** 4
 
@@ -18,7 +18,7 @@
 
 ## Benchmark: test_add_person_transaction[sqlite]
 
-![Chart for test_add_person_transaction[sqlite]](test_add_person_transaction%5Bsqlite%5D.png)
+![Chart for test_add_person_transaction[sqlite]](test_add_person_transaction[sqlite].png)
 
 | Run | Mean Time (seconds) | Min Time (seconds) | Max Time (seconds) | Standard Deviation | Rounds |
 |-----|-------------------|-------------------|-------------------|-------------------|--------|
@@ -30,7 +30,7 @@
 
 ## Benchmark: test_database_loading[sqlite]
 
-![Chart for test_database_loading[sqlite]](test_database_loading%5Bsqlite%5D.png)
+![Chart for test_database_loading[sqlite]](test_database_loading[sqlite].png)
 
 | Run | Mean Time (seconds) | Min Time (seconds) | Max Time (seconds) | Standard Deviation | Rounds |
 |-----|-------------------|-------------------|-------------------|-------------------|--------|
@@ -42,7 +42,7 @@
 
 ## Benchmark: test_descendant_filter[sqlite]
 
-![Chart for test_descendant_filter[sqlite]](test_descendant_filter%5Bsqlite%5D.png)
+![Chart for test_descendant_filter[sqlite]](test_descendant_filter[sqlite].png)
 
 | Run | Mean Time (seconds) | Min Time (seconds) | Max Time (seconds) | Standard Deviation | Rounds |
 |-----|-------------------|-------------------|-------------------|-------------------|--------|
@@ -54,7 +54,7 @@
 
 ## Benchmark: test_family_queries[sqlite]
 
-![Chart for test_family_queries[sqlite]](test_family_queries%5Bsqlite%5D.png)
+![Chart for test_family_queries[sqlite]](test_family_queries[sqlite].png)
 
 | Run | Mean Time (seconds) | Min Time (seconds) | Max Time (seconds) | Standard Deviation | Rounds |
 |-----|-------------------|-------------------|-------------------|-------------------|--------|
@@ -66,7 +66,7 @@
 
 ## Benchmark: test_person_has_id_filter[sqlite]
 
-![Chart for test_person_has_id_filter[sqlite]](test_person_has_id_filter%5Bsqlite%5D.png)
+![Chart for test_person_has_id_filter[sqlite]](test_person_has_id_filter[sqlite].png)
 
 | Run | Mean Time (seconds) | Min Time (seconds) | Max Time (seconds) | Standard Deviation | Rounds |
 |-----|-------------------|-------------------|-------------------|-------------------|--------|
@@ -78,7 +78,7 @@
 
 ## Benchmark: test_person_queries[sqlite]
 
-![Chart for test_person_queries[sqlite]](test_person_queries%5Bsqlite%5D.png)
+![Chart for test_person_queries[sqlite]](test_person_queries[sqlite].png)
 
 | Run | Mean Time (seconds) | Min Time (seconds) | Max Time (seconds) | Standard Deviation | Rounds |
 |-----|-------------------|-------------------|-------------------|-------------------|--------|
@@ -90,7 +90,7 @@
 
 ## Benchmark: test_raw_person_queries[sqlite]
 
-![Chart for test_raw_person_queries[sqlite]](test_raw_person_queries%5Bsqlite%5D.png)
+![Chart for test_raw_person_queries[sqlite]](test_raw_person_queries[sqlite].png)
 
 | Run | Mean Time (seconds) | Min Time (seconds) | Max Time (seconds) | Standard Deviation | Rounds |
 |-----|-------------------|-------------------|-------------------|-------------------|--------|
@@ -102,7 +102,7 @@
 
 ## Benchmark: test_scalable_person_queries[10-sqlite]
 
-![Chart for test_scalable_person_queries[10-sqlite]](test_scalable_person_queries%5B10-sqlite%5D.png)
+![Chart for test_scalable_person_queries[10-sqlite]](test_scalable_person_queries[10-sqlite].png)
 
 | Run | Mean Time (seconds) | Min Time (seconds) | Max Time (seconds) | Standard Deviation | Rounds |
 |-----|-------------------|-------------------|-------------------|-------------------|--------|
@@ -114,7 +114,7 @@
 
 ## Benchmark: test_scalable_person_queries[100-sqlite]
 
-![Chart for test_scalable_person_queries[100-sqlite]](test_scalable_person_queries%5B100-sqlite%5D.png)
+![Chart for test_scalable_person_queries[100-sqlite]](test_scalable_person_queries[100-sqlite].png)
 
 | Run | Mean Time (seconds) | Min Time (seconds) | Max Time (seconds) | Standard Deviation | Rounds |
 |-----|-------------------|-------------------|-------------------|-------------------|--------|
@@ -126,7 +126,7 @@
 
 ## Benchmark: test_scalable_person_queries[50-sqlite]
 
-![Chart for test_scalable_person_queries[50-sqlite]](test_scalable_person_queries%5B50-sqlite%5D.png)
+![Chart for test_scalable_person_queries[50-sqlite]](test_scalable_person_queries[50-sqlite].png)
 
 | Run | Mean Time (seconds) | Min Time (seconds) | Max Time (seconds) | Standard Deviation | Rounds |
 |-----|-------------------|-------------------|-------------------|-------------------|--------|
@@ -138,7 +138,7 @@
 
 ## Benchmark: test_source_queries[sqlite]
 
-![Chart for test_source_queries[sqlite]](test_source_queries%5Bsqlite%5D.png)
+![Chart for test_source_queries[sqlite]](test_source_queries[sqlite].png)
 
 | Run | Mean Time (seconds) | Min Time (seconds) | Max Time (seconds) | Standard Deviation | Rounds |
 |-----|-------------------|-------------------|-------------------|-------------------|--------|
@@ -150,4 +150,4 @@
 
 ---
 
-*Generated by Gramps Benchmark Tool on 2025-08-20 16:17:24*
+*Generated by Gramps Benchmark Tool on 2025-08-20 16:26:01*
