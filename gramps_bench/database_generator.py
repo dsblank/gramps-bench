@@ -1,4 +1,4 @@
-                                    #
+#
 # Gramps - a GTK+/GNOME based genealogy program
 #
 # Copyright (C) 2024  Gramps contributors
@@ -34,8 +34,10 @@ GENERATOR_VERSION = 1
 gramps_resources = os.environ.get("GRAMPS_RESOURCES")
 
 if gramps_resources is None:
-    raise Exception("Warning: Could not find Gramps resource files. "
-                    "Set GRAMPS_RESOURCES environment variable.")
+    raise Exception(
+        "Warning: Could not find Gramps resource files. "
+        "Set GRAMPS_RESOURCES environment variable."
+    )
 
 from gramps.gen.lib import (
     Person,
@@ -80,291 +82,1628 @@ from gramps.gen.dbstate import DbState
 
 # Sample data for variety - Western names (expanded significantly)
 FIRST_NAMES_MALE = [
-    "James", "John", "Robert", "Michael", "William", "David", "Richard",
-    "Joseph", "Thomas", "Charles", "Daniel", "Matthew", "Anthony", "Mark",
-    "Donald", "Steven", "Paul", "Andrew", "Joshua", "Kenneth", "Kevin",
-    "Brian", "George", "Edward", "Ronald", "Timothy", "Jason", "Jeffrey",
-    "Ryan", "Jacob", "Gary", "Nicholas", "Eric", "Jonathan", "Stephen",
-    "Larry", "Justin", "Scott", "Brandon", "Benjamin", "Samuel", "Frank",
-    "Gregory", "Raymond", "Alexander", "Patrick", "Jack", "Dennis", "Jerry",
-    "Tyler", "Aaron", "Jose", "Henry", "Adam", "Douglas", "Nathan", "Zachary",
-    "Kyle", "Noah", "Ethan", "Jeremy", "Walter", "Christian", "Hunter",
-    "Austin", "Sean", "Connor", "Mason", "Lucas", "Logan", "Owen", "Caleb",
-    "Isaac", "Luke", "Wyatt", "Gavin", "Carter", "Julian", "Miles", "Eli",
-    "Levi", "Nolan", "Colin", "Bennett", "Felix", "Jasper", "Theo", "Oscar"
+    "James",
+    "John",
+    "Robert",
+    "Michael",
+    "William",
+    "David",
+    "Richard",
+    "Joseph",
+    "Thomas",
+    "Charles",
+    "Daniel",
+    "Matthew",
+    "Anthony",
+    "Mark",
+    "Donald",
+    "Steven",
+    "Paul",
+    "Andrew",
+    "Joshua",
+    "Kenneth",
+    "Kevin",
+    "Brian",
+    "George",
+    "Edward",
+    "Ronald",
+    "Timothy",
+    "Jason",
+    "Jeffrey",
+    "Ryan",
+    "Jacob",
+    "Gary",
+    "Nicholas",
+    "Eric",
+    "Jonathan",
+    "Stephen",
+    "Larry",
+    "Justin",
+    "Scott",
+    "Brandon",
+    "Benjamin",
+    "Samuel",
+    "Frank",
+    "Gregory",
+    "Raymond",
+    "Alexander",
+    "Patrick",
+    "Jack",
+    "Dennis",
+    "Jerry",
+    "Tyler",
+    "Aaron",
+    "Jose",
+    "Henry",
+    "Adam",
+    "Douglas",
+    "Nathan",
+    "Zachary",
+    "Kyle",
+    "Noah",
+    "Ethan",
+    "Jeremy",
+    "Walter",
+    "Christian",
+    "Hunter",
+    "Austin",
+    "Sean",
+    "Connor",
+    "Mason",
+    "Lucas",
+    "Logan",
+    "Owen",
+    "Caleb",
+    "Isaac",
+    "Luke",
+    "Wyatt",
+    "Gavin",
+    "Carter",
+    "Julian",
+    "Miles",
+    "Eli",
+    "Levi",
+    "Nolan",
+    "Colin",
+    "Bennett",
+    "Felix",
+    "Jasper",
+    "Theo",
+    "Oscar",
 ]
 
 FIRST_NAMES_FEMALE = [
-    "Mary", "Patricia", "Jennifer", "Linda", "Elizabeth", "Barbara", "Susan",
-    "Jessica", "Sarah", "Karen", "Nancy", "Lisa", "Betty", "Margaret",
-    "Sandra", "Ashley", "Kimberly", "Emily", "Donna", "Michelle", "Carol",
-    "Amanda", "Dorothy", "Melissa", "Deborah", "Stephanie", "Rebecca", "Sharon",
-    "Laura", "Cynthia", "Kathleen", "Amy", "Angela", "Shirley", "Anna",
-    "Brenda", "Pamela", "Emma", "Nicole", "Helen", "Samantha", "Katherine",
-    "Christine", "Debra", "Rachel", "Carolyn", "Janet", "Virginia", "Maria",
-    "Heather", "Diane", "Julie", "Joyce", "Victoria", "Kelly", "Christina",
-    "Joan", "Evelyn", "Judith", "Megan", "Cheryl", "Andrea", "Hannah", "Jacqueline",
-    "Martha", "Gloria", "Teresa", "Sara", "Janice", "Marie", "Julia", "Grace",
-    "Judy", "Theresa", "Madison", "Beverly", "Denise", "Marilyn", "Amber",
-    "Danielle", "Brittany", "Diana", "Abigail", "Jane", "Lori", "Olivia", "Lily",
-    "Sophia", "Ava", "Isabella", "Mia", "Charlotte", "Amelia", "Harper", "Evelyn",
-    "Aria", "Chloe", "Luna", "Zoe", "Stella", "Hazel", "Ellie", "Paisley"
+    "Mary",
+    "Patricia",
+    "Jennifer",
+    "Linda",
+    "Elizabeth",
+    "Barbara",
+    "Susan",
+    "Jessica",
+    "Sarah",
+    "Karen",
+    "Nancy",
+    "Lisa",
+    "Betty",
+    "Margaret",
+    "Sandra",
+    "Ashley",
+    "Kimberly",
+    "Emily",
+    "Donna",
+    "Michelle",
+    "Carol",
+    "Amanda",
+    "Dorothy",
+    "Melissa",
+    "Deborah",
+    "Stephanie",
+    "Rebecca",
+    "Sharon",
+    "Laura",
+    "Cynthia",
+    "Kathleen",
+    "Amy",
+    "Angela",
+    "Shirley",
+    "Anna",
+    "Brenda",
+    "Pamela",
+    "Emma",
+    "Nicole",
+    "Helen",
+    "Samantha",
+    "Katherine",
+    "Christine",
+    "Debra",
+    "Rachel",
+    "Carolyn",
+    "Janet",
+    "Virginia",
+    "Maria",
+    "Heather",
+    "Diane",
+    "Julie",
+    "Joyce",
+    "Victoria",
+    "Kelly",
+    "Christina",
+    "Joan",
+    "Evelyn",
+    "Judith",
+    "Megan",
+    "Cheryl",
+    "Andrea",
+    "Hannah",
+    "Jacqueline",
+    "Martha",
+    "Gloria",
+    "Teresa",
+    "Sara",
+    "Janice",
+    "Marie",
+    "Julia",
+    "Grace",
+    "Judy",
+    "Theresa",
+    "Madison",
+    "Beverly",
+    "Denise",
+    "Marilyn",
+    "Amber",
+    "Danielle",
+    "Brittany",
+    "Diana",
+    "Abigail",
+    "Jane",
+    "Lori",
+    "Olivia",
+    "Lily",
+    "Sophia",
+    "Ava",
+    "Isabella",
+    "Mia",
+    "Charlotte",
+    "Amelia",
+    "Harper",
+    "Evelyn",
+    "Aria",
+    "Chloe",
+    "Luna",
+    "Zoe",
+    "Stella",
+    "Hazel",
+    "Ellie",
+    "Paisley",
 ]
 
 SURNAMES = [
-    "Smith", "Johnson", "Williams", "Brown", "Jones", "Garcia", "Miller",
-    "Davis", "Rodriguez", "Martinez", "Hernandez", "Lopez", "Wilson",
-    "Anderson", "Thomas", "Taylor", "Moore", "Jackson", "Martin", "Lee",
-    "Thompson", "White", "Harris", "Sanchez", "Clark", "Lewis", "Robinson",
-    "Walker", "Young", "Allen", "King", "Wright", "Scott", "Torres", "Nguyen",
-    "Hill", "Flores", "Green", "Adams", "Nelson", "Baker", "Hall", "Rivera",
-    "Campbell", "Mitchell", "Carter", "Roberts", "Gomez", "Phillips", "Evans",
-    "Turner", "Diaz", "Parker", "Cruz", "Edwards", "Collins", "Reyes", "Stewart",
-    "Morris", "Rogers", "Reed", "Cook", "Morgan", "Bell", "Murphy", "Bailey",
-    "Rivera", "Cooper", "Richardson", "Cox", "Howard", "Ward", "Torres", "Peterson",
-    "Gray", "Ramirez", "James", "Watson", "Brooks", "Kelly", "Sanders", "Price",
-    "Bennett", "Wood", "Barnes", "Ross", "Henderson", "Coleman", "Jenkins", "Perry",
-    "Powell", "Long", "Patterson", "Hughes", "Flores", "Washington", "Butler",
-    "Simmons", "Foster", "Gonzales", "Bryant", "Alexander", "Russell", "Griffin"
+    "Smith",
+    "Johnson",
+    "Williams",
+    "Brown",
+    "Jones",
+    "Garcia",
+    "Miller",
+    "Davis",
+    "Rodriguez",
+    "Martinez",
+    "Hernandez",
+    "Lopez",
+    "Wilson",
+    "Anderson",
+    "Thomas",
+    "Taylor",
+    "Moore",
+    "Jackson",
+    "Martin",
+    "Lee",
+    "Thompson",
+    "White",
+    "Harris",
+    "Sanchez",
+    "Clark",
+    "Lewis",
+    "Robinson",
+    "Walker",
+    "Young",
+    "Allen",
+    "King",
+    "Wright",
+    "Scott",
+    "Torres",
+    "Nguyen",
+    "Hill",
+    "Flores",
+    "Green",
+    "Adams",
+    "Nelson",
+    "Baker",
+    "Hall",
+    "Rivera",
+    "Campbell",
+    "Mitchell",
+    "Carter",
+    "Roberts",
+    "Gomez",
+    "Phillips",
+    "Evans",
+    "Turner",
+    "Diaz",
+    "Parker",
+    "Cruz",
+    "Edwards",
+    "Collins",
+    "Reyes",
+    "Stewart",
+    "Morris",
+    "Rogers",
+    "Reed",
+    "Cook",
+    "Morgan",
+    "Bell",
+    "Murphy",
+    "Bailey",
+    "Rivera",
+    "Cooper",
+    "Richardson",
+    "Cox",
+    "Howard",
+    "Ward",
+    "Torres",
+    "Peterson",
+    "Gray",
+    "Ramirez",
+    "James",
+    "Watson",
+    "Brooks",
+    "Kelly",
+    "Sanders",
+    "Price",
+    "Bennett",
+    "Wood",
+    "Barnes",
+    "Ross",
+    "Henderson",
+    "Coleman",
+    "Jenkins",
+    "Perry",
+    "Powell",
+    "Long",
+    "Patterson",
+    "Hughes",
+    "Flores",
+    "Washington",
+    "Butler",
+    "Simmons",
+    "Foster",
+    "Gonzales",
+    "Bryant",
+    "Alexander",
+    "Russell",
+    "Griffin",
 ]
 
 # Names from other cultures - Chinese (expanded)
 CHINESE_FIRST_NAMES_MALE = [
-    "Wei", "Ming", "Jian", "Hao", "Lei", "Jun", "Feng", "Tao", "Yong", "Bin",
-    "Qiang", "Peng", "Xin", "Kai", "Yuan", "Bo", "Dong", "Hui", "Jie", "Long",
-    "Xiang", "Yan", "Zhi", "Jie", "Kang", "Liang", "Ning", "Qing", "Rui", "Sheng",
-    "Tian", "Wei", "Xing", "Yan", "Zhen", "An", "Bao", "Cheng", "De", "En",
-    "Fu", "Gang", "Hong", "Jin", "Kun", "Ling", "Ming", "Ning", "Ping", "Qi"
+    "Wei",
+    "Ming",
+    "Jian",
+    "Hao",
+    "Lei",
+    "Jun",
+    "Feng",
+    "Tao",
+    "Yong",
+    "Bin",
+    "Qiang",
+    "Peng",
+    "Xin",
+    "Kai",
+    "Yuan",
+    "Bo",
+    "Dong",
+    "Hui",
+    "Jie",
+    "Long",
+    "Xiang",
+    "Yan",
+    "Zhi",
+    "Jie",
+    "Kang",
+    "Liang",
+    "Ning",
+    "Qing",
+    "Rui",
+    "Sheng",
+    "Tian",
+    "Wei",
+    "Xing",
+    "Yan",
+    "Zhen",
+    "An",
+    "Bao",
+    "Cheng",
+    "De",
+    "En",
+    "Fu",
+    "Gang",
+    "Hong",
+    "Jin",
+    "Kun",
+    "Ling",
+    "Ming",
+    "Ning",
+    "Ping",
+    "Qi",
 ]
 
 CHINESE_FIRST_NAMES_FEMALE = [
-    "Mei", "Li", "Xia", "Yan", "Fang", "Hui", "Jing", "Lan", "Min", "Ping",
-    "Qing", "Rong", "Shan", "Ting", "Wen", "Xin", "Ying", "Zhen", "Ai", "Bing",
-    "Chun", "Dan", "Fen", "Hong", "Jia", "Ling", "Na", "Qi", "Rui", "Shu",
-    "Tao", "Wei", "Xia", "Yan", "Zhen", "An", "Bao", "Chun", "Dan", "Fang",
-    "Hua", "Jing", "Lan", "Mei", "Na", "Ping", "Qing", "Rong", "Shan", "Ting"
+    "Mei",
+    "Li",
+    "Xia",
+    "Yan",
+    "Fang",
+    "Hui",
+    "Jing",
+    "Lan",
+    "Min",
+    "Ping",
+    "Qing",
+    "Rong",
+    "Shan",
+    "Ting",
+    "Wen",
+    "Xin",
+    "Ying",
+    "Zhen",
+    "Ai",
+    "Bing",
+    "Chun",
+    "Dan",
+    "Fen",
+    "Hong",
+    "Jia",
+    "Ling",
+    "Na",
+    "Qi",
+    "Rui",
+    "Shu",
+    "Tao",
+    "Wei",
+    "Xia",
+    "Yan",
+    "Zhen",
+    "An",
+    "Bao",
+    "Chun",
+    "Dan",
+    "Fang",
+    "Hua",
+    "Jing",
+    "Lan",
+    "Mei",
+    "Na",
+    "Ping",
+    "Qing",
+    "Rong",
+    "Shan",
+    "Ting",
 ]
 
 CHINESE_SURNAMES = [
-    "Wang", "Li", "Zhang", "Liu", "Chen", "Yang", "Huang", "Zhao", "Wu", "Zhou",
-    "Xu", "Sun", "Ma", "Zhu", "Hu", "Guo", "He", "Gao", "Lin", "Luo",
-    "Zhou", "Zheng", "Xie", "Han", "Tang", "Feng", "Yu", "Dong", "Xiao", "Cheng",
-    "Cao", "Yuan", "Deng", "Xu", "Gu", "Lu", "Jiang", "Qian", "Pan", "Du",
-    "Peng", "Jiang", "Jiang", "Wei", "Tao", "Jiang", "Jiang", "Jiang", "Jiang", "Jiang"
+    "Wang",
+    "Li",
+    "Zhang",
+    "Liu",
+    "Chen",
+    "Yang",
+    "Huang",
+    "Zhao",
+    "Wu",
+    "Zhou",
+    "Xu",
+    "Sun",
+    "Ma",
+    "Zhu",
+    "Hu",
+    "Guo",
+    "He",
+    "Gao",
+    "Lin",
+    "Luo",
+    "Zhou",
+    "Zheng",
+    "Xie",
+    "Han",
+    "Tang",
+    "Feng",
+    "Yu",
+    "Dong",
+    "Xiao",
+    "Cheng",
+    "Cao",
+    "Yuan",
+    "Deng",
+    "Xu",
+    "Gu",
+    "Lu",
+    "Jiang",
+    "Qian",
+    "Pan",
+    "Du",
+    "Peng",
+    "Jiang",
+    "Jiang",
+    "Wei",
+    "Tao",
+    "Jiang",
+    "Jiang",
+    "Jiang",
+    "Jiang",
+    "Jiang",
 ]
 
 JAPANESE_FIRST_NAMES_MALE = [
-    "Hiroshi", "Takeshi", "Kenji", "Yuki", "Satoshi", "Makoto", "Akira", "Daisuke",
-    "Kenta", "Ryota", "Shota", "Yuto", "Riku", "Haruto", "Sota", "Ren", "Yuma", "Kaito",
-    "Daiki", "Sho", "Kazuki", "Ryo", "Taro", "Jiro", "Ichiro", "Masato", "Tatsuya", "Naoki",
-    "Koji", "Toshi", "Hiro", "Masa", "Taka", "Nobu", "Yoshi", "Kazu", "Shin", "Tomo"
+    "Hiroshi",
+    "Takeshi",
+    "Kenji",
+    "Yuki",
+    "Satoshi",
+    "Makoto",
+    "Akira",
+    "Daisuke",
+    "Kenta",
+    "Ryota",
+    "Shota",
+    "Yuto",
+    "Riku",
+    "Haruto",
+    "Sota",
+    "Ren",
+    "Yuma",
+    "Kaito",
+    "Daiki",
+    "Sho",
+    "Kazuki",
+    "Ryo",
+    "Taro",
+    "Jiro",
+    "Ichiro",
+    "Masato",
+    "Tatsuya",
+    "Naoki",
+    "Koji",
+    "Toshi",
+    "Hiro",
+    "Masa",
+    "Taka",
+    "Nobu",
+    "Yoshi",
+    "Kazu",
+    "Shin",
+    "Tomo",
 ]
 
 JAPANESE_FIRST_NAMES_FEMALE = [
-    "Yuki", "Sakura", "Aoi", "Hana", "Mei", "Akari", "Rin", "Yui", "Mio", "Emi",
-    "Kana", "Mika", "Nana", "Rika", "Saya", "Maya", "Nozomi", "Ayaka", "Akiko",
-    "Chie", "Eri", "Fumi", "Haru", "Kaori", "Keiko", "Michiko", "Naomi", "Rei", "Sachiko"
+    "Yuki",
+    "Sakura",
+    "Aoi",
+    "Hana",
+    "Mei",
+    "Akari",
+    "Rin",
+    "Yui",
+    "Mio",
+    "Emi",
+    "Kana",
+    "Mika",
+    "Nana",
+    "Rika",
+    "Saya",
+    "Maya",
+    "Nozomi",
+    "Ayaka",
+    "Akiko",
+    "Chie",
+    "Eri",
+    "Fumi",
+    "Haru",
+    "Kaori",
+    "Keiko",
+    "Michiko",
+    "Naomi",
+    "Rei",
+    "Sachiko",
 ]
 
 JAPANESE_SURNAMES = [
-    "Tanaka", "Sato", "Suzuki", "Takahashi", "Watanabe", "Ito", "Yamamoto", "Nakamura",
-    "Kobayashi", "Kato", "Yoshida", "Yamada", "Sasaki", "Yamaguchi", "Matsumoto", "Inoue",
-    "Kimura", "Hayashi", "Shimizu", "Yamazaki", "Mori", "Abe", "Ikeda", "Hashimoto",
-    "Yamashita", "Ishikawa", "Nakajima", "Maeda", "Fujita", "Ogawa", "Goto", "Okada"
+    "Tanaka",
+    "Sato",
+    "Suzuki",
+    "Takahashi",
+    "Watanabe",
+    "Ito",
+    "Yamamoto",
+    "Nakamura",
+    "Kobayashi",
+    "Kato",
+    "Yoshida",
+    "Yamada",
+    "Sasaki",
+    "Yamaguchi",
+    "Matsumoto",
+    "Inoue",
+    "Kimura",
+    "Hayashi",
+    "Shimizu",
+    "Yamazaki",
+    "Mori",
+    "Abe",
+    "Ikeda",
+    "Hashimoto",
+    "Yamashita",
+    "Ishikawa",
+    "Nakajima",
+    "Maeda",
+    "Fujita",
+    "Ogawa",
+    "Goto",
+    "Okada",
 ]
 
 ARABIC_FIRST_NAMES_MALE = [
-    "Mohammed", "Ahmed", "Ali", "Hassan", "Omar", "Ibrahim", "Yusuf", "Khalid",
-    "Abdullah", "Hamza", "Zain", "Tariq", "Rashid", "Malik", "Amir", "Samir",
-    "Mahmoud", "Mustafa", "Hussein", "Karim", "Youssef", "Said", "Nasser", "Fadi",
-    "Bilal", "Jamal", "Rami", "Tariq", "Waleed", "Zaid", "Adnan", "Farid"
+    "Mohammed",
+    "Ahmed",
+    "Ali",
+    "Hassan",
+    "Omar",
+    "Ibrahim",
+    "Yusuf",
+    "Khalid",
+    "Abdullah",
+    "Hamza",
+    "Zain",
+    "Tariq",
+    "Rashid",
+    "Malik",
+    "Amir",
+    "Samir",
+    "Mahmoud",
+    "Mustafa",
+    "Hussein",
+    "Karim",
+    "Youssef",
+    "Said",
+    "Nasser",
+    "Fadi",
+    "Bilal",
+    "Jamal",
+    "Rami",
+    "Tariq",
+    "Waleed",
+    "Zaid",
+    "Adnan",
+    "Farid",
 ]
 
 ARABIC_FIRST_NAMES_FEMALE = [
-    "Fatima", "Aisha", "Mariam", "Zainab", "Khadija", "Amina", "Layla", "Noor",
-    "Sara", "Yasmin", "Hana", "Leila", "Salma", "Nadia", "Rania", "Dina",
-    "Amira", "Nour", "Lina", "Maya", "Rana", "Sana", "Yara", "Zeinab",
-    "Hala", "Lamia", "Mona", "Nada", "Rana", "Samira", "Tara", "Wafa"
+    "Fatima",
+    "Aisha",
+    "Mariam",
+    "Zainab",
+    "Khadija",
+    "Amina",
+    "Layla",
+    "Noor",
+    "Sara",
+    "Yasmin",
+    "Hana",
+    "Leila",
+    "Salma",
+    "Nadia",
+    "Rania",
+    "Dina",
+    "Amira",
+    "Nour",
+    "Lina",
+    "Maya",
+    "Rana",
+    "Sana",
+    "Yara",
+    "Zeinab",
+    "Hala",
+    "Lamia",
+    "Mona",
+    "Nada",
+    "Rana",
+    "Samira",
+    "Tara",
+    "Wafa",
 ]
 
 ARABIC_SURNAMES = [
-    "Al-Ahmad", "Al-Hassan", "Al-Mahmoud", "Al-Rashid", "Al-Zahra", "Ibrahim", "Khalil",
-    "Malik", "Nasser", "Omar", "Qureshi", "Rahman", "Said", "Tariq", "Yusuf",
-    "Abbas", "Al-Ali", "Al-Bakr", "Al-Farouk", "Al-Hakim", "Al-Mansour", "Al-Said",
-    "Al-Zahrani", "Bashir", "Fahd", "Haddad", "Jamil", "Khalaf", "Mahmoud", "Naji"
+    "Al-Ahmad",
+    "Al-Hassan",
+    "Al-Mahmoud",
+    "Al-Rashid",
+    "Al-Zahra",
+    "Ibrahim",
+    "Khalil",
+    "Malik",
+    "Nasser",
+    "Omar",
+    "Qureshi",
+    "Rahman",
+    "Said",
+    "Tariq",
+    "Yusuf",
+    "Abbas",
+    "Al-Ali",
+    "Al-Bakr",
+    "Al-Farouk",
+    "Al-Hakim",
+    "Al-Mansour",
+    "Al-Said",
+    "Al-Zahrani",
+    "Bashir",
+    "Fahd",
+    "Haddad",
+    "Jamil",
+    "Khalaf",
+    "Mahmoud",
+    "Naji",
 ]
 
 # Additional cultures
 INDIAN_FIRST_NAMES_MALE = [
-    "Arjun", "Rohan", "Aryan", "Vikram", "Rahul", "Amit", "Raj", "Karan", "Siddharth",
-    "Aditya", "Ankit", "Ravi", "Vishal", "Nikhil", "Pranav", "Krishna", "Shiva",
-    "Dev", "Gaurav", "Harsh", "Ishaan", "Jay", "Kunal", "Laksh", "Manish", "Neel",
-    "Om", "Parth", "Rishabh", "Sahil", "Tanish", "Utkarsh", "Varun", "Yash"
+    "Arjun",
+    "Rohan",
+    "Aryan",
+    "Vikram",
+    "Rahul",
+    "Amit",
+    "Raj",
+    "Karan",
+    "Siddharth",
+    "Aditya",
+    "Ankit",
+    "Ravi",
+    "Vishal",
+    "Nikhil",
+    "Pranav",
+    "Krishna",
+    "Shiva",
+    "Dev",
+    "Gaurav",
+    "Harsh",
+    "Ishaan",
+    "Jay",
+    "Kunal",
+    "Laksh",
+    "Manish",
+    "Neel",
+    "Om",
+    "Parth",
+    "Rishabh",
+    "Sahil",
+    "Tanish",
+    "Utkarsh",
+    "Varun",
+    "Yash",
 ]
 
 INDIAN_FIRST_NAMES_FEMALE = [
-    "Priya", "Ananya", "Kavya", "Riya", "Sneha", "Aishwarya", "Divya", "Meera",
-    "Pooja", "Radha", "Sita", "Tara", "Uma", "Vidya", "Anjali", "Bhavna",
-    "Chitra", "Deepika", "Esha", "Gayatri", "Hema", "Isha", "Jyoti", "Kiran",
-    "Lakshmi", "Maya", "Neha", "Ojasvi", "Padmini", "Rekha", "Shreya", "Tara"
+    "Priya",
+    "Ananya",
+    "Kavya",
+    "Riya",
+    "Sneha",
+    "Aishwarya",
+    "Divya",
+    "Meera",
+    "Pooja",
+    "Radha",
+    "Sita",
+    "Tara",
+    "Uma",
+    "Vidya",
+    "Anjali",
+    "Bhavna",
+    "Chitra",
+    "Deepika",
+    "Esha",
+    "Gayatri",
+    "Hema",
+    "Isha",
+    "Jyoti",
+    "Kiran",
+    "Lakshmi",
+    "Maya",
+    "Neha",
+    "Ojasvi",
+    "Padmini",
+    "Rekha",
+    "Shreya",
+    "Tara",
 ]
 
 INDIAN_SURNAMES = [
-    "Patel", "Sharma", "Kumar", "Singh", "Gupta", "Reddy", "Rao", "Mehta", "Verma",
-    "Jain", "Agarwal", "Malhotra", "Chopra", "Kapoor", "Shah", "Desai", "Joshi",
-    "Bhatt", "Nair", "Iyer", "Menon", "Pillai", "Krishnan", "Narayanan", "Raman",
-    "Subramanian", "Venkatesh", "Gopal", "Lakshman", "Murthy", "Ramesh", "Suresh"
+    "Patel",
+    "Sharma",
+    "Kumar",
+    "Singh",
+    "Gupta",
+    "Reddy",
+    "Rao",
+    "Mehta",
+    "Verma",
+    "Jain",
+    "Agarwal",
+    "Malhotra",
+    "Chopra",
+    "Kapoor",
+    "Shah",
+    "Desai",
+    "Joshi",
+    "Bhatt",
+    "Nair",
+    "Iyer",
+    "Menon",
+    "Pillai",
+    "Krishnan",
+    "Narayanan",
+    "Raman",
+    "Subramanian",
+    "Venkatesh",
+    "Gopal",
+    "Lakshman",
+    "Murthy",
+    "Ramesh",
+    "Suresh",
 ]
 
 RUSSIAN_FIRST_NAMES_MALE = [
-    "Alexander", "Dmitri", "Ivan", "Sergei", "Andrei", "Mikhail", "Vladimir", "Nikolai",
-    "Alexei", "Pavel", "Yuri", "Maxim", "Anton", "Roman", "Denis", "Viktor",
-    "Igor", "Oleg", "Boris", "Anatoly", "Grigory", "Fyodor", "Konstantin", "Leonid",
-    "Mikhail", "Nikita", "Pavel", "Ruslan", "Stanislav", "Timur", "Vadim", "Yaroslav"
+    "Alexander",
+    "Dmitri",
+    "Ivan",
+    "Sergei",
+    "Andrei",
+    "Mikhail",
+    "Vladimir",
+    "Nikolai",
+    "Alexei",
+    "Pavel",
+    "Yuri",
+    "Maxim",
+    "Anton",
+    "Roman",
+    "Denis",
+    "Viktor",
+    "Igor",
+    "Oleg",
+    "Boris",
+    "Anatoly",
+    "Grigory",
+    "Fyodor",
+    "Konstantin",
+    "Leonid",
+    "Mikhail",
+    "Nikita",
+    "Pavel",
+    "Ruslan",
+    "Stanislav",
+    "Timur",
+    "Vadim",
+    "Yaroslav",
 ]
 
 RUSSIAN_FIRST_NAMES_FEMALE = [
-    "Anna", "Maria", "Elena", "Olga", "Tatiana", "Natalia", "Svetlana", "Irina",
-    "Ekaterina", "Yulia", "Anastasia", "Daria", "Polina", "Sofia", "Vera", "Ludmila",
-    "Galina", "Larisa", "Marina", "Nina", "Raisa", "Tamara", "Valentina", "Yelena",
-    "Zoya", "Alla", "Bella", "Diana", "Inna", "Ksenia", "Lilia", "Margarita"
+    "Anna",
+    "Maria",
+    "Elena",
+    "Olga",
+    "Tatiana",
+    "Natalia",
+    "Svetlana",
+    "Irina",
+    "Ekaterina",
+    "Yulia",
+    "Anastasia",
+    "Daria",
+    "Polina",
+    "Sofia",
+    "Vera",
+    "Ludmila",
+    "Galina",
+    "Larisa",
+    "Marina",
+    "Nina",
+    "Raisa",
+    "Tamara",
+    "Valentina",
+    "Yelena",
+    "Zoya",
+    "Alla",
+    "Bella",
+    "Diana",
+    "Inna",
+    "Ksenia",
+    "Lilia",
+    "Margarita",
 ]
 
 RUSSIAN_SURNAMES = [
-    "Ivanov", "Petrov", "Sidorov", "Smirnov", "Kuznetsov", "Popov", "Sokolov", "Lebedev",
-    "Kozlov", "Novikov", "Morozov", "Petrov", "Volkov", "Alekseev", "Lebedev", "Semenov",
-    "Egorov", "Pavlov", "Kozlov", "Stepanov", "Nikolaev", "Orlov", "Andreev", "Makarov",
-    "Nikitin", "Zakharov", "Zaytsev", "Solovyov", "Borisov", "Korolev", "Gerasimov", "Ponomarev"
+    "Ivanov",
+    "Petrov",
+    "Sidorov",
+    "Smirnov",
+    "Kuznetsov",
+    "Popov",
+    "Sokolov",
+    "Lebedev",
+    "Kozlov",
+    "Novikov",
+    "Morozov",
+    "Petrov",
+    "Volkov",
+    "Alekseev",
+    "Lebedev",
+    "Semenov",
+    "Egorov",
+    "Pavlov",
+    "Kozlov",
+    "Stepanov",
+    "Nikolaev",
+    "Orlov",
+    "Andreev",
+    "Makarov",
+    "Nikitin",
+    "Zakharov",
+    "Zaytsev",
+    "Solovyov",
+    "Borisov",
+    "Korolev",
+    "Gerasimov",
+    "Ponomarev",
 ]
 
 SPANISH_FIRST_NAMES_MALE = [
-    "Carlos", "Jose", "Miguel", "Juan", "Francisco", "Antonio", "Manuel", "Pedro",
-    "Luis", "Rafael", "Javier", "Fernando", "Diego", "Sergio", "Ricardo", "Alberto",
-    "Roberto", "Eduardo", "Daniel", "Alejandro", "Andres", "Gabriel", "Hector", "Jorge",
-    "Mario", "Oscar", "Pablo", "Ramon", "Victor", "Adrian", "Cesar", "Enrique"
+    "Carlos",
+    "Jose",
+    "Miguel",
+    "Juan",
+    "Francisco",
+    "Antonio",
+    "Manuel",
+    "Pedro",
+    "Luis",
+    "Rafael",
+    "Javier",
+    "Fernando",
+    "Diego",
+    "Sergio",
+    "Ricardo",
+    "Alberto",
+    "Roberto",
+    "Eduardo",
+    "Daniel",
+    "Alejandro",
+    "Andres",
+    "Gabriel",
+    "Hector",
+    "Jorge",
+    "Mario",
+    "Oscar",
+    "Pablo",
+    "Ramon",
+    "Victor",
+    "Adrian",
+    "Cesar",
+    "Enrique",
 ]
 
 SPANISH_FIRST_NAMES_FEMALE = [
-    "Maria", "Carmen", "Ana", "Laura", "Isabel", "Patricia", "Monica", "Sandra",
-    "Andrea", "Elena", "Rosa", "Marta", "Cristina", "Lucia", "Paula", "Sofia",
-    "Beatriz", "Dolores", "Esperanza", "Francisca", "Gloria", "Ines", "Juana", "Lourdes",
-    "Margarita", "Natalia", "Olga", "Pilar", "Raquel", "Teresa", "Victoria", "Yolanda"
+    "Maria",
+    "Carmen",
+    "Ana",
+    "Laura",
+    "Isabel",
+    "Patricia",
+    "Monica",
+    "Sandra",
+    "Andrea",
+    "Elena",
+    "Rosa",
+    "Marta",
+    "Cristina",
+    "Lucia",
+    "Paula",
+    "Sofia",
+    "Beatriz",
+    "Dolores",
+    "Esperanza",
+    "Francisca",
+    "Gloria",
+    "Ines",
+    "Juana",
+    "Lourdes",
+    "Margarita",
+    "Natalia",
+    "Olga",
+    "Pilar",
+    "Raquel",
+    "Teresa",
+    "Victoria",
+    "Yolanda",
 ]
 
 SPANISH_SURNAMES = [
-    "Garcia", "Rodriguez", "Gonzalez", "Fernandez", "Lopez", "Martinez", "Sanchez", "Perez",
-    "Gomez", "Martin", "Jimenez", "Ruiz", "Hernandez", "Diaz", "Moreno", "Alvarez",
-    "Munoz", "Romero", "Alonso", "Gutierrez", "Navarro", "Torres", "Dominguez", "Vazquez",
-    "Ramos", "Gil", "Ramirez", "Serrano", "Blanco", "Suarez", "Molina", "Morales"
+    "Garcia",
+    "Rodriguez",
+    "Gonzalez",
+    "Fernandez",
+    "Lopez",
+    "Martinez",
+    "Sanchez",
+    "Perez",
+    "Gomez",
+    "Martin",
+    "Jimenez",
+    "Ruiz",
+    "Hernandez",
+    "Diaz",
+    "Moreno",
+    "Alvarez",
+    "Munoz",
+    "Romero",
+    "Alonso",
+    "Gutierrez",
+    "Navarro",
+    "Torres",
+    "Dominguez",
+    "Vazquez",
+    "Ramos",
+    "Gil",
+    "Ramirez",
+    "Serrano",
+    "Blanco",
+    "Suarez",
+    "Molina",
+    "Morales",
 ]
 
 GERMAN_FIRST_NAMES_MALE = [
-    "Hans", "Peter", "Klaus", "Wolfgang", "Michael", "Thomas", "Andreas", "Stefan",
-    "Markus", "Christian", "Matthias", "Martin", "Frank", "Uwe", "Jens", "Oliver",
-    "Daniel", "Sebastian", "Florian", "Alexander", "Maximilian", "Felix", "Lukas",
-    "Jonas", "Noah", "Ben", "Paul", "Leon", "Finn", "Emil", "Anton", "Theo"
+    "Hans",
+    "Peter",
+    "Klaus",
+    "Wolfgang",
+    "Michael",
+    "Thomas",
+    "Andreas",
+    "Stefan",
+    "Markus",
+    "Christian",
+    "Matthias",
+    "Martin",
+    "Frank",
+    "Uwe",
+    "Jens",
+    "Oliver",
+    "Daniel",
+    "Sebastian",
+    "Florian",
+    "Alexander",
+    "Maximilian",
+    "Felix",
+    "Lukas",
+    "Jonas",
+    "Noah",
+    "Ben",
+    "Paul",
+    "Leon",
+    "Finn",
+    "Emil",
+    "Anton",
+    "Theo",
 ]
 
 GERMAN_FIRST_NAMES_FEMALE = [
-    "Anna", "Maria", "Elisabeth", "Ursula", "Monika", "Petra", "Sabine", "Andrea",
-    "Nicole", "Stephanie", "Julia", "Katharina", "Lisa", "Sarah", "Laura", "Hannah",
-    "Emma", "Mia", "Sophia", "Emilia", "Lina", "Clara", "Lea", "Marie", "Ella",
-    "Mila", "Frieda", "Luise", "Amelie", "Ida", "Leni", "Mathilda", "Charlotte"
+    "Anna",
+    "Maria",
+    "Elisabeth",
+    "Ursula",
+    "Monika",
+    "Petra",
+    "Sabine",
+    "Andrea",
+    "Nicole",
+    "Stephanie",
+    "Julia",
+    "Katharina",
+    "Lisa",
+    "Sarah",
+    "Laura",
+    "Hannah",
+    "Emma",
+    "Mia",
+    "Sophia",
+    "Emilia",
+    "Lina",
+    "Clara",
+    "Lea",
+    "Marie",
+    "Ella",
+    "Mila",
+    "Frieda",
+    "Luise",
+    "Amelie",
+    "Ida",
+    "Leni",
+    "Mathilda",
+    "Charlotte",
 ]
 
 GERMAN_SURNAMES = [
-    "Muller", "Schmidt", "Schneider", "Fischer", "Weber", "Meyer", "Wagner", "Becker",
-    "Schulz", "Hoffmann", "Schafer", "Koch", "Bauer", "Richter", "Klein", "Wolf",
-    "Schroder", "Neumann", "Schwarz", "Zimmermann", "Braun", "Kruger", "Hofmann", "Hartmann",
-    "Lange", "Schmitt", "Werner", "Schmitz", "Krause", "Meier", "Lehmann", "Schmid"
+    "Muller",
+    "Schmidt",
+    "Schneider",
+    "Fischer",
+    "Weber",
+    "Meyer",
+    "Wagner",
+    "Becker",
+    "Schulz",
+    "Hoffmann",
+    "Schafer",
+    "Koch",
+    "Bauer",
+    "Richter",
+    "Klein",
+    "Wolf",
+    "Schroder",
+    "Neumann",
+    "Schwarz",
+    "Zimmermann",
+    "Braun",
+    "Kruger",
+    "Hofmann",
+    "Hartmann",
+    "Lange",
+    "Schmitt",
+    "Werner",
+    "Schmitz",
+    "Krause",
+    "Meier",
+    "Lehmann",
+    "Schmid",
 ]
 
 KOREAN_FIRST_NAMES_MALE = [
-    "Min-jun", "Seo-jun", "Do-yoon", "Ji-ho", "Jun-seo", "Si-woo", "Ha-joon", "Yoon-seo",
-    "Jin-woo", "Eun-woo", "Hyun-woo", "Min-ho", "Seung-ho", "Tae-hyun", "Woo-jin", "Ye-jun",
-    "Jae-hyun", "Sang-min", "Ki-tae", "Dong-hyun", "Young-min", "Hyeon-jun", "Seung-min", "Jun-ho"
+    "Min-jun",
+    "Seo-jun",
+    "Do-yoon",
+    "Ji-ho",
+    "Jun-seo",
+    "Si-woo",
+    "Ha-joon",
+    "Yoon-seo",
+    "Jin-woo",
+    "Eun-woo",
+    "Hyun-woo",
+    "Min-ho",
+    "Seung-ho",
+    "Tae-hyun",
+    "Woo-jin",
+    "Ye-jun",
+    "Jae-hyun",
+    "Sang-min",
+    "Ki-tae",
+    "Dong-hyun",
+    "Young-min",
+    "Hyeon-jun",
+    "Seung-min",
+    "Jun-ho",
 ]
 
 KOREAN_FIRST_NAMES_FEMALE = [
-    "Seo-yeon", "Ji-woo", "Seo-yun", "Chae-won", "Ha-yoon", "Soo-ah", "Min-seo", "Yoo-na",
-    "Eun-ji", "Hae-won", "Ji-min", "So-min", "Ye-rin", "Da-eun", "Na-yoon", "Seo-hyun",
-    "Ji-yu", "Hye-won", "Min-ju", "Yeon-woo", "Seo-jin", "Ha-rin", "So-yeon", "Ji-ah"
+    "Seo-yeon",
+    "Ji-woo",
+    "Seo-yun",
+    "Chae-won",
+    "Ha-yoon",
+    "Soo-ah",
+    "Min-seo",
+    "Yoo-na",
+    "Eun-ji",
+    "Hae-won",
+    "Ji-min",
+    "So-min",
+    "Ye-rin",
+    "Da-eun",
+    "Na-yoon",
+    "Seo-hyun",
+    "Ji-yu",
+    "Hye-won",
+    "Min-ju",
+    "Yeon-woo",
+    "Seo-jin",
+    "Ha-rin",
+    "So-yeon",
+    "Ji-ah",
 ]
 
 KOREAN_SURNAMES = [
-    "Kim", "Lee", "Park", "Choi", "Jung", "Kang", "Cho", "Yoon", "Jang", "Lim",
-    "Han", "Shin", "Oh", "Hwang", "Moon", "Song", "Bae", "Kwon", "Ryu", "Baek",
-    "Ahn", "Seo", "Yoo", "Jeong", "Hong", "Nam", "Son", "Woo", "Chung", "Koo"
+    "Kim",
+    "Lee",
+    "Park",
+    "Choi",
+    "Jung",
+    "Kang",
+    "Cho",
+    "Yoon",
+    "Jang",
+    "Lim",
+    "Han",
+    "Shin",
+    "Oh",
+    "Hwang",
+    "Moon",
+    "Song",
+    "Bae",
+    "Kwon",
+    "Ryu",
+    "Baek",
+    "Ahn",
+    "Seo",
+    "Yoo",
+    "Jeong",
+    "Hong",
+    "Nam",
+    "Son",
+    "Woo",
+    "Chung",
+    "Koo",
 ]
 
 # Syllable-based name generator components (expanded significantly)
 FIRST_NAME_SYLLABLES_START = [
-    "Al", "Ben", "Cal", "Dan", "Ed", "Fran", "Gar", "Hen", "Ian", "Jan",
-    "Ken", "Len", "Mar", "Nan", "Oli", "Pat", "Quin", "Rob", "Sam", "Tom",
-    "Val", "Wes", "Xan", "Yor", "Zac", "Bri", "Chr", "Dav", "Eli", "Fel",
-    "Gav", "Hal", "Ivo", "Jax", "Kai", "Leo", "Max", "Ned", "Owen", "Pax",
-    "Quin", "Ray", "Sid", "Tad", "Ugo", "Van", "Wyn", "Xav", "Yan", "Zed",
-    "Abe", "Bev", "Cam", "Del", "Eve", "Fay", "Gus", "Hal", "Ira", "Jay",
-    "Kit", "Lou", "Mae", "Ned", "Ora", "Pam", "Quo", "Rex", "Sue", "Ted",
-    "Uma", "Vic", "Wes", "Xia", "Yve", "Zoe", "Ace", "Bea", "Coy", "Dax"
+    "Al",
+    "Ben",
+    "Cal",
+    "Dan",
+    "Ed",
+    "Fran",
+    "Gar",
+    "Hen",
+    "Ian",
+    "Jan",
+    "Ken",
+    "Len",
+    "Mar",
+    "Nan",
+    "Oli",
+    "Pat",
+    "Quin",
+    "Rob",
+    "Sam",
+    "Tom",
+    "Val",
+    "Wes",
+    "Xan",
+    "Yor",
+    "Zac",
+    "Bri",
+    "Chr",
+    "Dav",
+    "Eli",
+    "Fel",
+    "Gav",
+    "Hal",
+    "Ivo",
+    "Jax",
+    "Kai",
+    "Leo",
+    "Max",
+    "Ned",
+    "Owen",
+    "Pax",
+    "Quin",
+    "Ray",
+    "Sid",
+    "Tad",
+    "Ugo",
+    "Van",
+    "Wyn",
+    "Xav",
+    "Yan",
+    "Zed",
+    "Abe",
+    "Bev",
+    "Cam",
+    "Del",
+    "Eve",
+    "Fay",
+    "Gus",
+    "Hal",
+    "Ira",
+    "Jay",
+    "Kit",
+    "Lou",
+    "Mae",
+    "Ned",
+    "Ora",
+    "Pam",
+    "Quo",
+    "Rex",
+    "Sue",
+    "Ted",
+    "Uma",
+    "Vic",
+    "Wes",
+    "Xia",
+    "Yve",
+    "Zoe",
+    "Ace",
+    "Bea",
+    "Coy",
+    "Dax",
 ]
 
 FIRST_NAME_SYLLABLES_MID = [
-    "an", "el", "in", "on", "er", "ar", "or", "en", "al", "il",
-    "ab", "ad", "am", "at", "ed", "em", "et", "id", "im", "it",
-    "ac", "ag", "ak", "ap", "as", "ax", "ay", "az", "eb", "ec",
-    "ef", "eg", "ek", "ep", "es", "ex", "ey", "ez", "ib", "ic",
-    "if", "ig", "ik", "ip", "is", "ix", "iy", "iz", "ob", "oc",
-    "of", "og", "ok", "op", "os", "ox", "oy", "oz", "ub", "uc",
-    "uf", "ug", "uk", "up", "us", "ux", "uy", "uz", "la", "le",
-    "li", "lo", "lu", "ly", "ma", "me", "mi", "mo", "mu", "my"
+    "an",
+    "el",
+    "in",
+    "on",
+    "er",
+    "ar",
+    "or",
+    "en",
+    "al",
+    "il",
+    "ab",
+    "ad",
+    "am",
+    "at",
+    "ed",
+    "em",
+    "et",
+    "id",
+    "im",
+    "it",
+    "ac",
+    "ag",
+    "ak",
+    "ap",
+    "as",
+    "ax",
+    "ay",
+    "az",
+    "eb",
+    "ec",
+    "ef",
+    "eg",
+    "ek",
+    "ep",
+    "es",
+    "ex",
+    "ey",
+    "ez",
+    "ib",
+    "ic",
+    "if",
+    "ig",
+    "ik",
+    "ip",
+    "is",
+    "ix",
+    "iy",
+    "iz",
+    "ob",
+    "oc",
+    "of",
+    "og",
+    "ok",
+    "op",
+    "os",
+    "ox",
+    "oy",
+    "oz",
+    "ub",
+    "uc",
+    "uf",
+    "ug",
+    "uk",
+    "up",
+    "us",
+    "ux",
+    "uy",
+    "uz",
+    "la",
+    "le",
+    "li",
+    "lo",
+    "lu",
+    "ly",
+    "ma",
+    "me",
+    "mi",
+    "mo",
+    "mu",
+    "my",
 ]
 
 FIRST_NAME_SYLLABLES_END = [
-    "a", "e", "i", "o", "y", "an", "en", "in", "on", "er",
-    "ar", "or", "el", "al", "ie", "ey", "ly", "ny", "ry", "ty",
-    "ah", "eh", "ih", "oh", "uh", "ia", "ea", "ua", "ae", "oe",
-    "ay", "ey", "oy", "uy", "aw", "ew", "ow", "as", "es", "is",
-    "os", "us", "at", "et", "it", "ot", "ut", "ak", "ek", "ik",
-    "ok", "uk", "am", "em", "im", "om", "um", "ap", "ep", "ip"
+    "a",
+    "e",
+    "i",
+    "o",
+    "y",
+    "an",
+    "en",
+    "in",
+    "on",
+    "er",
+    "ar",
+    "or",
+    "el",
+    "al",
+    "ie",
+    "ey",
+    "ly",
+    "ny",
+    "ry",
+    "ty",
+    "ah",
+    "eh",
+    "ih",
+    "oh",
+    "uh",
+    "ia",
+    "ea",
+    "ua",
+    "ae",
+    "oe",
+    "ay",
+    "ey",
+    "oy",
+    "uy",
+    "aw",
+    "ew",
+    "ow",
+    "as",
+    "es",
+    "is",
+    "os",
+    "us",
+    "at",
+    "et",
+    "it",
+    "ot",
+    "ut",
+    "ak",
+    "ek",
+    "ik",
+    "ok",
+    "uk",
+    "am",
+    "em",
+    "im",
+    "om",
+    "um",
+    "ap",
+    "ep",
+    "ip",
 ]
 
 SURNAME_SYLLABLES_START = [
-    "And", "Bar", "Car", "Dav", "Edw", "Fis", "Gar", "Har", "Irv", "Jac",
-    "Kel", "Law", "Mac", "Nor", "Owe", "Par", "Qui", "Rob", "Smi", "Tay",
-    "Und", "Vil", "Wal", "Xan", "Yor", "Zim", "Bak", "Cla", "Dra", "Eve",
-    "Fal", "Gol", "Hal", "Ive", "Jol", "Kal", "Lal", "Mal", "Nal", "Oal",
-    "Pal", "Qal", "Ral", "Sal", "Tal", "Ual", "Val", "Wal", "Xal", "Yal",
-    "Zal", "Abr", "Bac", "Cad", "Daf", "Eag", "Fah", "Gai", "Haj", "Iak",
-    "Jak", "Kak", "Lak", "Mak", "Nak", "Oak", "Pak", "Qak", "Rak", "Sak"
+    "And",
+    "Bar",
+    "Car",
+    "Dav",
+    "Edw",
+    "Fis",
+    "Gar",
+    "Har",
+    "Irv",
+    "Jac",
+    "Kel",
+    "Law",
+    "Mac",
+    "Nor",
+    "Owe",
+    "Par",
+    "Qui",
+    "Rob",
+    "Smi",
+    "Tay",
+    "Und",
+    "Vil",
+    "Wal",
+    "Xan",
+    "Yor",
+    "Zim",
+    "Bak",
+    "Cla",
+    "Dra",
+    "Eve",
+    "Fal",
+    "Gol",
+    "Hal",
+    "Ive",
+    "Jol",
+    "Kal",
+    "Lal",
+    "Mal",
+    "Nal",
+    "Oal",
+    "Pal",
+    "Qal",
+    "Ral",
+    "Sal",
+    "Tal",
+    "Ual",
+    "Val",
+    "Wal",
+    "Xal",
+    "Yal",
+    "Zal",
+    "Abr",
+    "Bac",
+    "Cad",
+    "Daf",
+    "Eag",
+    "Fah",
+    "Gai",
+    "Haj",
+    "Iak",
+    "Jak",
+    "Kak",
+    "Lak",
+    "Mak",
+    "Nak",
+    "Oak",
+    "Pak",
+    "Qak",
+    "Rak",
+    "Sak",
 ]
 
 SURNAME_SYLLABLES_MID = [
-    "er", "son", "ton", "man", "ing", "ell", "all", "ock", "ick", "ett",
-    "ard", "art", "ort", "ert", "elt", "ald", "old", "olt", "ult", "ist",
-    "est", "ast", "ost", "ust", "aft", "eft", "ift", "oft", "ant", "ent",
-    "int", "ont", "unt", "and", "end", "ind", "ond", "und", "ang", "eng",
-    "ing", "ong", "ung", "ank", "enk", "ink", "onk", "unk", "ash", "esh",
-    "ish", "osh", "ush", "ath", "eth", "ith", "oth", "uth", "ach", "ech"
+    "er",
+    "son",
+    "ton",
+    "man",
+    "ing",
+    "ell",
+    "all",
+    "ock",
+    "ick",
+    "ett",
+    "ard",
+    "art",
+    "ort",
+    "ert",
+    "elt",
+    "ald",
+    "old",
+    "olt",
+    "ult",
+    "ist",
+    "est",
+    "ast",
+    "ost",
+    "ust",
+    "aft",
+    "eft",
+    "ift",
+    "oft",
+    "ant",
+    "ent",
+    "int",
+    "ont",
+    "unt",
+    "and",
+    "end",
+    "ind",
+    "ond",
+    "und",
+    "ang",
+    "eng",
+    "ing",
+    "ong",
+    "ung",
+    "ank",
+    "enk",
+    "ink",
+    "onk",
+    "unk",
+    "ash",
+    "esh",
+    "ish",
+    "osh",
+    "ush",
+    "ath",
+    "eth",
+    "ith",
+    "oth",
+    "uth",
+    "ach",
+    "ech",
 ]
 
 SURNAME_SYLLABLES_END = [
-    "er", "son", "ton", "man", "ing", "ell", "all", "ock", "ick", "ett",
-    "ard", "art", "ort", "ert", "elt", "ald", "old", "olt", "ult", "ist",
-    "s", "es", "y", "ey", "ly", "ny", "ry", "ty", "le", "ne",
-    "ge", "ke", "me", "pe", "re", "se", "te", "ve", "we", "ze",
-    "an", "en", "in", "on", "un", "al", "el", "il", "ol", "ul",
-    "am", "em", "im", "om", "um", "ap", "ep", "ip", "op", "up"
+    "er",
+    "son",
+    "ton",
+    "man",
+    "ing",
+    "ell",
+    "all",
+    "ock",
+    "ick",
+    "ett",
+    "ard",
+    "art",
+    "ort",
+    "ert",
+    "elt",
+    "ald",
+    "old",
+    "olt",
+    "ult",
+    "ist",
+    "s",
+    "es",
+    "y",
+    "ey",
+    "ly",
+    "ny",
+    "ry",
+    "ty",
+    "le",
+    "ne",
+    "ge",
+    "ke",
+    "me",
+    "pe",
+    "re",
+    "se",
+    "te",
+    "ve",
+    "we",
+    "ze",
+    "an",
+    "en",
+    "in",
+    "on",
+    "un",
+    "al",
+    "el",
+    "il",
+    "ol",
+    "ul",
+    "am",
+    "em",
+    "im",
+    "om",
+    "um",
+    "ap",
+    "ep",
+    "ip",
+    "op",
+    "up",
 ]
 
 
 def generate_random_first_name(gender: int) -> str:
     """
     Generate a random first name using syllables or from various cultures.
-    
+
     Args:
         gender: Person.MALE, Person.FEMALE, Person.UNKNOWN, or Person.OTHER
-        
+
     Returns:
         A randomly generated first name
     """
@@ -386,19 +1725,38 @@ def generate_random_first_name(gender: int) -> str:
             for _ in range(num_syllables - 2):
                 name += random.choice(FIRST_NAME_SYLLABLES_MID)
             # Female names often end with softer sounds
-            female_endings = ["a", "e", "ia", "ie", "ey", "ly", "ny"] + FIRST_NAME_SYLLABLES_END
+            female_endings = [
+                "a",
+                "e",
+                "ia",
+                "ie",
+                "ey",
+                "ly",
+                "ny",
+            ] + FIRST_NAME_SYLLABLES_END
             name += random.choice(female_endings)
             return name.capitalize()
         else:
             # For UNKNOWN or OTHER, use either pattern
-            return generate_random_first_name(random.choice([Person.MALE, Person.FEMALE]))
+            return generate_random_first_name(
+                random.choice([Person.MALE, Person.FEMALE])
+            )
     else:
         # Use real names from various cultures (expanded to 8 cultures)
-        culture = random.choice([
-            "western", "chinese", "japanese", "arabic", "indian", 
-            "russian", "spanish", "german", "korean"
-        ])
-        
+        culture = random.choice(
+            [
+                "western",
+                "chinese",
+                "japanese",
+                "arabic",
+                "indian",
+                "russian",
+                "spanish",
+                "german",
+                "korean",
+            ]
+        )
+
         if culture == "western":
             if gender == Person.MALE:
                 return random.choice(FIRST_NAMES_MALE)
@@ -412,62 +1770,78 @@ def generate_random_first_name(gender: int) -> str:
             elif gender == Person.FEMALE:
                 return random.choice(CHINESE_FIRST_NAMES_FEMALE)
             else:
-                return random.choice(CHINESE_FIRST_NAMES_MALE + CHINESE_FIRST_NAMES_FEMALE)
+                return random.choice(
+                    CHINESE_FIRST_NAMES_MALE + CHINESE_FIRST_NAMES_FEMALE
+                )
         elif culture == "japanese":
             if gender == Person.MALE:
                 return random.choice(JAPANESE_FIRST_NAMES_MALE)
             elif gender == Person.FEMALE:
                 return random.choice(JAPANESE_FIRST_NAMES_FEMALE)
             else:
-                return random.choice(JAPANESE_FIRST_NAMES_MALE + JAPANESE_FIRST_NAMES_FEMALE)
+                return random.choice(
+                    JAPANESE_FIRST_NAMES_MALE + JAPANESE_FIRST_NAMES_FEMALE
+                )
         elif culture == "arabic":
             if gender == Person.MALE:
                 return random.choice(ARABIC_FIRST_NAMES_MALE)
             elif gender == Person.FEMALE:
                 return random.choice(ARABIC_FIRST_NAMES_FEMALE)
             else:
-                return random.choice(ARABIC_FIRST_NAMES_MALE + ARABIC_FIRST_NAMES_FEMALE)
+                return random.choice(
+                    ARABIC_FIRST_NAMES_MALE + ARABIC_FIRST_NAMES_FEMALE
+                )
         elif culture == "indian":
             if gender == Person.MALE:
                 return random.choice(INDIAN_FIRST_NAMES_MALE)
             elif gender == Person.FEMALE:
                 return random.choice(INDIAN_FIRST_NAMES_FEMALE)
             else:
-                return random.choice(INDIAN_FIRST_NAMES_MALE + INDIAN_FIRST_NAMES_FEMALE)
+                return random.choice(
+                    INDIAN_FIRST_NAMES_MALE + INDIAN_FIRST_NAMES_FEMALE
+                )
         elif culture == "russian":
             if gender == Person.MALE:
                 return random.choice(RUSSIAN_FIRST_NAMES_MALE)
             elif gender == Person.FEMALE:
                 return random.choice(RUSSIAN_FIRST_NAMES_FEMALE)
             else:
-                return random.choice(RUSSIAN_FIRST_NAMES_MALE + RUSSIAN_FIRST_NAMES_FEMALE)
+                return random.choice(
+                    RUSSIAN_FIRST_NAMES_MALE + RUSSIAN_FIRST_NAMES_FEMALE
+                )
         elif culture == "spanish":
             if gender == Person.MALE:
                 return random.choice(SPANISH_FIRST_NAMES_MALE)
             elif gender == Person.FEMALE:
                 return random.choice(SPANISH_FIRST_NAMES_FEMALE)
             else:
-                return random.choice(SPANISH_FIRST_NAMES_MALE + SPANISH_FIRST_NAMES_FEMALE)
+                return random.choice(
+                    SPANISH_FIRST_NAMES_MALE + SPANISH_FIRST_NAMES_FEMALE
+                )
         elif culture == "german":
             if gender == Person.MALE:
                 return random.choice(GERMAN_FIRST_NAMES_MALE)
             elif gender == Person.FEMALE:
                 return random.choice(GERMAN_FIRST_NAMES_FEMALE)
             else:
-                return random.choice(GERMAN_FIRST_NAMES_MALE + GERMAN_FIRST_NAMES_FEMALE)
+                return random.choice(
+                    GERMAN_FIRST_NAMES_MALE + GERMAN_FIRST_NAMES_FEMALE
+                )
         else:  # korean
             if gender == Person.MALE:
                 return random.choice(KOREAN_FIRST_NAMES_MALE)
             elif gender == Person.FEMALE:
                 return random.choice(KOREAN_FIRST_NAMES_FEMALE)
             else:
-                return random.choice(KOREAN_FIRST_NAMES_MALE + KOREAN_FIRST_NAMES_FEMALE)
+                return random.choice(
+                    KOREAN_FIRST_NAMES_MALE + KOREAN_FIRST_NAMES_FEMALE
+                )
 
 
 def generate_random_surname() -> str:
     """
     Generate a random surname using syllables or from various cultures.
-    
+
     Returns:
         A randomly generated surname
     """
@@ -482,11 +1856,20 @@ def generate_random_surname() -> str:
         return surname.capitalize()
     else:
         # Use real surnames from various cultures (expanded to 8 cultures)
-        culture = random.choice([
-            "western", "chinese", "japanese", "arabic", "indian",
-            "russian", "spanish", "german", "korean"
-        ])
-        
+        culture = random.choice(
+            [
+                "western",
+                "chinese",
+                "japanese",
+                "arabic",
+                "indian",
+                "russian",
+                "spanish",
+                "german",
+                "korean",
+            ]
+        )
+
         if culture == "western":
             return random.choice(SURNAMES)
         elif culture == "chinese":
@@ -505,6 +1888,7 @@ def generate_random_surname() -> str:
             return random.choice(GERMAN_SURNAMES)
         else:  # korean
             return random.choice(KOREAN_SURNAMES)
+
 
 EVENT_TYPES = [
     EventType.BIRTH,
@@ -581,7 +1965,9 @@ def _get_canonical_tag_handle(db, tag_name, tags_dict, trans=None):
     return None
 
 
-def _create_note_with_tags_and_privacy(db, trans, note_text, note_type, tags, tag_chance=0.3, privacy_chance=0.1):
+def _create_note_with_tags_and_privacy(
+    db, trans, note_text, note_type, tags, tag_chance=0.3, privacy_chance=0.1
+):
     """Create a note with optional tags and privacy, then return its handle."""
     note = Note()
     note.set_type(note_type)
@@ -606,7 +1992,7 @@ def generate_database(
     num_people: int,
     db_path: Optional[str] = None,
     dbid: str = "sqlite",
-    seed: Optional[int] = None
+    seed: Optional[int] = None,
 ) -> str:
     """
     Generate a Gramps database with specified characteristics.
@@ -640,32 +2026,32 @@ def generate_database(
 
     dbstate = DbState()
     dbman = CLIDbManager(dbstate)
-    
+
     # Create database - use provided path or Gramps default
     db_name = f"gen-{num_people}, random-{seed}, version-{GENERATOR_VERSION}"
     if db_path is None:
         # Use Gramps default database directory (same as create_new_db_cli does)
-        dirpath, _name = dbman.create_new_db_cli(
-            db_name, dbid=dbid
-        )
+        dirpath, _name = dbman.create_new_db_cli(db_name, dbid=dbid)
     else:
         # Use provided path - create directory structure manually
         os.makedirs(db_path, exist_ok=True)
         path_name = os.path.join(db_path, NAME_FILE)
         with open(path_name, "w", encoding="utf8") as name_file:
             name_file.write(db_name)
-        
+
         backend_path = os.path.join(db_path, DBBACKEND)
         with open(backend_path, "w", encoding="utf8") as backend_file:
             backend_file.write(dbid)
-        
+
         dirpath = db_path
     db = make_database(dbid)
     db.load(dirpath, None)
 
     # Calculate distribution
     num_disconnected = max(1, int(num_people * 0.01))  # ~1% disconnected
-    num_connected = num_people - num_disconnected - 4  # Reserve 4 for unconnected families
+    num_connected = (
+        num_people - num_disconnected - 4
+    )  # Reserve 4 for unconnected families
     num_unconnected_family = 4  # 2 families of 2 people each
 
     people_handles = []
@@ -695,129 +2081,652 @@ def generate_database(
             # Create more places - cities, states, countries
             city_names = [
                 # Major US cities
-                "New York", "Los Angeles", "Chicago", "Houston", "Phoenix", "Philadelphia",
-                "San Antonio", "San Diego", "Dallas", "San Jose", "Austin", "Jacksonville",
-                "San Francisco", "Indianapolis", "Columbus", "Fort Worth", "Charlotte", "Seattle",
-                "Denver", "Washington", "Boston", "El Paso", "Detroit", "Nashville", "Memphis",
-                "Portland", "Oklahoma City", "Las Vegas", "Louisville", "Baltimore", "Milwaukee",
-                "Albuquerque", "Tucson", "Fresno", "Sacramento", "Kansas City", "Mesa", "Atlanta",
-                "Omaha", "Colorado Springs", "Raleigh", "Virginia Beach", "Miami", "Oakland",
-                "Minneapolis", "Tulsa", "Cleveland", "Wichita", "Arlington", "Tampa", "New Orleans",
+                "New York",
+                "Los Angeles",
+                "Chicago",
+                "Houston",
+                "Phoenix",
+                "Philadelphia",
+                "San Antonio",
+                "San Diego",
+                "Dallas",
+                "San Jose",
+                "Austin",
+                "Jacksonville",
+                "San Francisco",
+                "Indianapolis",
+                "Columbus",
+                "Fort Worth",
+                "Charlotte",
+                "Seattle",
+                "Denver",
+                "Washington",
+                "Boston",
+                "El Paso",
+                "Detroit",
+                "Nashville",
+                "Memphis",
+                "Portland",
+                "Oklahoma City",
+                "Las Vegas",
+                "Louisville",
+                "Baltimore",
+                "Milwaukee",
+                "Albuquerque",
+                "Tucson",
+                "Fresno",
+                "Sacramento",
+                "Kansas City",
+                "Mesa",
+                "Atlanta",
+                "Omaha",
+                "Colorado Springs",
+                "Raleigh",
+                "Virginia Beach",
+                "Miami",
+                "Oakland",
+                "Minneapolis",
+                "Tulsa",
+                "Cleveland",
+                "Wichita",
+                "Arlington",
+                "Tampa",
+                "New Orleans",
                 # Major European cities
-                "London", "Paris", "Berlin", "Madrid", "Rome", "Amsterdam", "Vienna", "Prague",
-                "Stockholm", "Oslo", "Copenhagen", "Helsinki", "Warsaw", "Budapest", "Lisbon",
-                "Dublin", "Brussels", "Zurich", "Geneva", "Luxembourg", "Monaco", "Vatican",
-                "San Marino", "Andorra", "Liechtenstein", "Barcelona", "Munich", "Milan", "Naples",
-                "Turin", "Florence", "Venice", "Marseille", "Lyon", "Toulouse", "Nice", "Bordeaux",
-                "Hamburg", "Frankfurt", "Cologne", "Stuttgart", "Düsseldorf", "Dortmund", "Essen",
-                "Leipzig", "Bremen", "Dresden", "Manchester", "Birmingham", "Liverpool", "Leeds",
-                "Glasgow", "Edinburgh", "Belfast", "Cardiff", "Rotterdam", "The Hague", "Utrecht",
-                "Eindhoven", "Groningen", "Antwerp", "Ghent", "Bruges", "Brussels", "Zurich",
-                "Geneva", "Basel", "Bern", "Lausanne", "Vienna", "Graz", "Linz", "Salzburg",
-                "Innsbruck", "Prague", "Brno", "Ostrava", "Budapest", "Debrecen", "Szeged",
-                "Warsaw", "Krakow", "Gdansk", "Wroclaw", "Poznan", "Stockholm", "Gothenburg",
-                "Malmö", "Uppsala", "Oslo", "Bergen", "Trondheim", "Stavanger", "Copenhagen",
-                "Aarhus", "Odense", "Aalborg", "Helsinki", "Tampere", "Turku", "Oulu",
+                "London",
+                "Paris",
+                "Berlin",
+                "Madrid",
+                "Rome",
+                "Amsterdam",
+                "Vienna",
+                "Prague",
+                "Stockholm",
+                "Oslo",
+                "Copenhagen",
+                "Helsinki",
+                "Warsaw",
+                "Budapest",
+                "Lisbon",
+                "Dublin",
+                "Brussels",
+                "Zurich",
+                "Geneva",
+                "Luxembourg",
+                "Monaco",
+                "Vatican",
+                "San Marino",
+                "Andorra",
+                "Liechtenstein",
+                "Barcelona",
+                "Munich",
+                "Milan",
+                "Naples",
+                "Turin",
+                "Florence",
+                "Venice",
+                "Marseille",
+                "Lyon",
+                "Toulouse",
+                "Nice",
+                "Bordeaux",
+                "Hamburg",
+                "Frankfurt",
+                "Cologne",
+                "Stuttgart",
+                "Düsseldorf",
+                "Dortmund",
+                "Essen",
+                "Leipzig",
+                "Bremen",
+                "Dresden",
+                "Manchester",
+                "Birmingham",
+                "Liverpool",
+                "Leeds",
+                "Glasgow",
+                "Edinburgh",
+                "Belfast",
+                "Cardiff",
+                "Rotterdam",
+                "The Hague",
+                "Utrecht",
+                "Eindhoven",
+                "Groningen",
+                "Antwerp",
+                "Ghent",
+                "Bruges",
+                "Brussels",
+                "Zurich",
+                "Geneva",
+                "Basel",
+                "Bern",
+                "Lausanne",
+                "Vienna",
+                "Graz",
+                "Linz",
+                "Salzburg",
+                "Innsbruck",
+                "Prague",
+                "Brno",
+                "Ostrava",
+                "Budapest",
+                "Debrecen",
+                "Szeged",
+                "Warsaw",
+                "Krakow",
+                "Gdansk",
+                "Wroclaw",
+                "Poznan",
+                "Stockholm",
+                "Gothenburg",
+                "Malmö",
+                "Uppsala",
+                "Oslo",
+                "Bergen",
+                "Trondheim",
+                "Stavanger",
+                "Copenhagen",
+                "Aarhus",
+                "Odense",
+                "Aalborg",
+                "Helsinki",
+                "Tampere",
+                "Turku",
+                "Oulu",
                 # Major Asian cities
-                "Tokyo", "Osaka", "Yokohama", "Nagoya", "Sapporo", "Fukuoka", "Kobe", "Kyoto",
-                "Seoul", "Busan", "Incheon", "Daegu", "Daejeon", "Gwangju", "Shanghai", "Beijing",
-                "Guangzhou", "Shenzhen", "Chengdu", "Chongqing", "Hangzhou", "Wuhan", "Xi'an",
-                "Nanjing", "Tianjin", "Suzhou", "Dongguan", "Foshan", "Shenyang", "Qingdao",
-                "Mumbai", "Delhi", "Bangalore", "Hyderabad", "Ahmedabad", "Chennai", "Kolkata",
-                "Surat", "Pune", "Jaipur", "Lucknow", "Kanpur", "Nagpur", "Indore", "Thane",
-                "Bhopal", "Visakhapatnam", "Patna", "Vadodara", "Ghaziabad", "Ludhiana", "Agra",
-                "Bangkok", "Chiang Mai", "Phuket", "Pattaya", "Singapore", "Kuala Lumpur",
-                "Penang", "Jakarta", "Surabaya", "Bandung", "Medan", "Manila", "Quezon City",
-                "Cebu", "Davao", "Caloocan", "Ho Chi Minh City", "Hanoi", "Da Nang", "Hai Phong",
-                "Dhaka", "Chittagong", "Karachi", "Lahore", "Islamabad", "Rawalpindi", "Faisalabad",
+                "Tokyo",
+                "Osaka",
+                "Yokohama",
+                "Nagoya",
+                "Sapporo",
+                "Fukuoka",
+                "Kobe",
+                "Kyoto",
+                "Seoul",
+                "Busan",
+                "Incheon",
+                "Daegu",
+                "Daejeon",
+                "Gwangju",
+                "Shanghai",
+                "Beijing",
+                "Guangzhou",
+                "Shenzhen",
+                "Chengdu",
+                "Chongqing",
+                "Hangzhou",
+                "Wuhan",
+                "Xi'an",
+                "Nanjing",
+                "Tianjin",
+                "Suzhou",
+                "Dongguan",
+                "Foshan",
+                "Shenyang",
+                "Qingdao",
+                "Mumbai",
+                "Delhi",
+                "Bangalore",
+                "Hyderabad",
+                "Ahmedabad",
+                "Chennai",
+                "Kolkata",
+                "Surat",
+                "Pune",
+                "Jaipur",
+                "Lucknow",
+                "Kanpur",
+                "Nagpur",
+                "Indore",
+                "Thane",
+                "Bhopal",
+                "Visakhapatnam",
+                "Patna",
+                "Vadodara",
+                "Ghaziabad",
+                "Ludhiana",
+                "Agra",
+                "Bangkok",
+                "Chiang Mai",
+                "Phuket",
+                "Pattaya",
+                "Singapore",
+                "Kuala Lumpur",
+                "Penang",
+                "Jakarta",
+                "Surabaya",
+                "Bandung",
+                "Medan",
+                "Manila",
+                "Quezon City",
+                "Cebu",
+                "Davao",
+                "Caloocan",
+                "Ho Chi Minh City",
+                "Hanoi",
+                "Da Nang",
+                "Hai Phong",
+                "Dhaka",
+                "Chittagong",
+                "Karachi",
+                "Lahore",
+                "Islamabad",
+                "Rawalpindi",
+                "Faisalabad",
                 # Middle Eastern cities
-                "Dubai", "Abu Dhabi", "Doha", "Kuwait City", "Riyadh", "Jeddah", "Mecca", "Medina",
-                "Tehran", "Isfahan", "Mashhad", "Shiraz", "Tabriz", "Istanbul", "Ankara", "Izmir",
-                "Bursa", "Antalya", "Adana", "Gaziantep", "Beirut", "Damascus", "Baghdad", "Basra",
-                "Amman", "Jerusalem", "Tel Aviv", "Haifa", "Cairo", "Alexandria", "Giza", "Luxor",
+                "Dubai",
+                "Abu Dhabi",
+                "Doha",
+                "Kuwait City",
+                "Riyadh",
+                "Jeddah",
+                "Mecca",
+                "Medina",
+                "Tehran",
+                "Isfahan",
+                "Mashhad",
+                "Shiraz",
+                "Tabriz",
+                "Istanbul",
+                "Ankara",
+                "Izmir",
+                "Bursa",
+                "Antalya",
+                "Adana",
+                "Gaziantep",
+                "Beirut",
+                "Damascus",
+                "Baghdad",
+                "Basra",
+                "Amman",
+                "Jerusalem",
+                "Tel Aviv",
+                "Haifa",
+                "Cairo",
+                "Alexandria",
+                "Giza",
+                "Luxor",
                 # African cities
-                "Lagos", "Kano", "Ibadan", "Abuja", "Cape Town", "Johannesburg", "Durban",
-                "Pretoria", "Port Elizabeth", "Nairobi", "Mombasa", "Kisumu", "Addis Ababa",
-                "Dar es Salaam", "Khartoum", "Casablanca", "Rabat", "Marrakech", "Fez",
-                "Tunis", "Algiers", "Accra", "Kumasi", "Dakar", "Abidjan", "Kinshasa",
-                "Lubumbashi", "Kampala", "Kigali", "Maputo", "Luanda", "Harare", "Lusaka",
+                "Lagos",
+                "Kano",
+                "Ibadan",
+                "Abuja",
+                "Cape Town",
+                "Johannesburg",
+                "Durban",
+                "Pretoria",
+                "Port Elizabeth",
+                "Nairobi",
+                "Mombasa",
+                "Kisumu",
+                "Addis Ababa",
+                "Dar es Salaam",
+                "Khartoum",
+                "Casablanca",
+                "Rabat",
+                "Marrakech",
+                "Fez",
+                "Tunis",
+                "Algiers",
+                "Accra",
+                "Kumasi",
+                "Dakar",
+                "Abidjan",
+                "Kinshasa",
+                "Lubumbashi",
+                "Kampala",
+                "Kigali",
+                "Maputo",
+                "Luanda",
+                "Harare",
+                "Lusaka",
                 # South American cities
-                "São Paulo", "Rio de Janeiro", "Brasília", "Salvador", "Fortaleza", "Belo Horizonte",
-                "Manaus", "Curitiba", "Recife", "Porto Alegre", "Belém", "Goiânia", "Guarulhos",
-                "Buenos Aires", "Córdoba", "Rosario", "Mendoza", "La Plata", "Santiago", "Valparaíso",
-                "Concepción", "Lima", "Arequipa", "Trujillo", "Bogotá", "Medellín", "Cali", "Barranquilla",
-                "Caracas", "Maracaibo", "Valencia", "Quito", "Guayaquil", "Montevideo", "Asunción",
+                "São Paulo",
+                "Rio de Janeiro",
+                "Brasília",
+                "Salvador",
+                "Fortaleza",
+                "Belo Horizonte",
+                "Manaus",
+                "Curitiba",
+                "Recife",
+                "Porto Alegre",
+                "Belém",
+                "Goiânia",
+                "Guarulhos",
+                "Buenos Aires",
+                "Córdoba",
+                "Rosario",
+                "Mendoza",
+                "La Plata",
+                "Santiago",
+                "Valparaíso",
+                "Concepción",
+                "Lima",
+                "Arequipa",
+                "Trujillo",
+                "Bogotá",
+                "Medellín",
+                "Cali",
+                "Barranquilla",
+                "Caracas",
+                "Maracaibo",
+                "Valencia",
+                "Quito",
+                "Guayaquil",
+                "Montevideo",
+                "Asunción",
                 # Oceania cities
-                "Sydney", "Melbourne", "Brisbane", "Perth", "Adelaide", "Gold Coast", "Newcastle",
-                "Canberra", "Auckland", "Wellington", "Christchurch", "Hamilton", "Dunedin",
+                "Sydney",
+                "Melbourne",
+                "Brisbane",
+                "Perth",
+                "Adelaide",
+                "Gold Coast",
+                "Newcastle",
+                "Canberra",
+                "Auckland",
+                "Wellington",
+                "Christchurch",
+                "Hamilton",
+                "Dunedin",
                 # Canadian cities
-                "Toronto", "Montreal", "Vancouver", "Calgary", "Edmonton", "Ottawa", "Winnipeg",
-                "Quebec City", "Hamilton", "Kitchener", "London", "Halifax", "Victoria", "Saskatoon",
-                "Regina", "St. John's", "Thunder Bay", "Windsor", "Sherbrooke", "Oshawa"
+                "Toronto",
+                "Montreal",
+                "Vancouver",
+                "Calgary",
+                "Edmonton",
+                "Ottawa",
+                "Winnipeg",
+                "Quebec City",
+                "Hamilton",
+                "Kitchener",
+                "London",
+                "Halifax",
+                "Victoria",
+                "Saskatoon",
+                "Regina",
+                "St. John's",
+                "Thunder Bay",
+                "Windsor",
+                "Sherbrooke",
+                "Oshawa",
             ]
             state_names = [
                 # US States
-                "Alabama", "Alaska", "Arizona", "Arkansas", "California", "Colorado", "Connecticut",
-                "Delaware", "Florida", "Georgia", "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa",
-                "Kansas", "Kentucky", "Louisiana", "Maine", "Maryland", "Massachusetts", "Michigan",
-                "Minnesota", "Mississippi", "Missouri", "Montana", "Nebraska", "Nevada", "New Hampshire",
-                "New Jersey", "New Mexico", "New York", "North Carolina", "North Dakota", "Ohio",
-                "Oklahoma", "Oregon", "Pennsylvania", "Rhode Island", "South Carolina", "South Dakota",
-                "Tennessee", "Texas", "Utah", "Vermont", "Virginia", "Washington", "West Virginia",
-                "Wisconsin", "Wyoming", "District of Columbia",
+                "Alabama",
+                "Alaska",
+                "Arizona",
+                "Arkansas",
+                "California",
+                "Colorado",
+                "Connecticut",
+                "Delaware",
+                "Florida",
+                "Georgia",
+                "Hawaii",
+                "Idaho",
+                "Illinois",
+                "Indiana",
+                "Iowa",
+                "Kansas",
+                "Kentucky",
+                "Louisiana",
+                "Maine",
+                "Maryland",
+                "Massachusetts",
+                "Michigan",
+                "Minnesota",
+                "Mississippi",
+                "Missouri",
+                "Montana",
+                "Nebraska",
+                "Nevada",
+                "New Hampshire",
+                "New Jersey",
+                "New Mexico",
+                "New York",
+                "North Carolina",
+                "North Dakota",
+                "Ohio",
+                "Oklahoma",
+                "Oregon",
+                "Pennsylvania",
+                "Rhode Island",
+                "South Carolina",
+                "South Dakota",
+                "Tennessee",
+                "Texas",
+                "Utah",
+                "Vermont",
+                "Virginia",
+                "Washington",
+                "West Virginia",
+                "Wisconsin",
+                "Wyoming",
+                "District of Columbia",
                 # Canadian Provinces
-                "Ontario", "Quebec", "British Columbia", "Alberta", "Manitoba", "Saskatchewan",
-                "Nova Scotia", "New Brunswick", "Newfoundland and Labrador", "Prince Edward Island",
-                "Northwest Territories", "Yukon", "Nunavut",
+                "Ontario",
+                "Quebec",
+                "British Columbia",
+                "Alberta",
+                "Manitoba",
+                "Saskatchewan",
+                "Nova Scotia",
+                "New Brunswick",
+                "Newfoundland and Labrador",
+                "Prince Edward Island",
+                "Northwest Territories",
+                "Yukon",
+                "Nunavut",
                 # Australian States
-                "New South Wales", "Victoria", "Queensland", "Western Australia", "South Australia",
-                "Tasmania", "Australian Capital Territory", "Northern Territory"
+                "New South Wales",
+                "Victoria",
+                "Queensland",
+                "Western Australia",
+                "South Australia",
+                "Tasmania",
+                "Australian Capital Territory",
+                "Northern Territory",
             ]
             country_names = [
                 # Major countries
-                "United States", "United Kingdom", "France", "Germany", "Italy", "Spain",
-                "Canada", "Australia", "Japan", "China", "India", "Brazil", "Russia",
-                "Mexico", "Netherlands", "Belgium", "Switzerland", "Austria", "Sweden",
-                "Norway", "Denmark", "Finland", "Poland", "Greece", "Portugal", "Ireland",
+                "United States",
+                "United Kingdom",
+                "France",
+                "Germany",
+                "Italy",
+                "Spain",
+                "Canada",
+                "Australia",
+                "Japan",
+                "China",
+                "India",
+                "Brazil",
+                "Russia",
+                "Mexico",
+                "Netherlands",
+                "Belgium",
+                "Switzerland",
+                "Austria",
+                "Sweden",
+                "Norway",
+                "Denmark",
+                "Finland",
+                "Poland",
+                "Greece",
+                "Portugal",
+                "Ireland",
                 # Additional European countries
-                "Czech Republic", "Hungary", "Romania", "Bulgaria", "Croatia", "Slovakia",
-                "Slovenia", "Estonia", "Latvia", "Lithuania", "Luxembourg", "Malta", "Cyprus",
-                "Iceland", "Liechtenstein", "Monaco", "San Marino", "Vatican City", "Andorra",
+                "Czech Republic",
+                "Hungary",
+                "Romania",
+                "Bulgaria",
+                "Croatia",
+                "Slovakia",
+                "Slovenia",
+                "Estonia",
+                "Latvia",
+                "Lithuania",
+                "Luxembourg",
+                "Malta",
+                "Cyprus",
+                "Iceland",
+                "Liechtenstein",
+                "Monaco",
+                "San Marino",
+                "Vatican City",
+                "Andorra",
                 # Asian countries
-                "South Korea", "North Korea", "Thailand", "Vietnam", "Indonesia", "Malaysia",
-                "Singapore", "Philippines", "Myanmar", "Cambodia", "Laos", "Bangladesh",
-                "Pakistan", "Afghanistan", "Sri Lanka", "Nepal", "Bhutan", "Maldives",
-                "Mongolia", "Kazakhstan", "Uzbekistan", "Kyrgyzstan", "Tajikistan", "Turkmenistan",
-                "Azerbaijan", "Armenia", "Georgia", "Turkey", "Iran", "Iraq", "Saudi Arabia",
-                "United Arab Emirates", "Kuwait", "Qatar", "Bahrain", "Oman", "Yemen", "Jordan",
-                "Lebanon", "Syria", "Israel", "Palestine",
+                "South Korea",
+                "North Korea",
+                "Thailand",
+                "Vietnam",
+                "Indonesia",
+                "Malaysia",
+                "Singapore",
+                "Philippines",
+                "Myanmar",
+                "Cambodia",
+                "Laos",
+                "Bangladesh",
+                "Pakistan",
+                "Afghanistan",
+                "Sri Lanka",
+                "Nepal",
+                "Bhutan",
+                "Maldives",
+                "Mongolia",
+                "Kazakhstan",
+                "Uzbekistan",
+                "Kyrgyzstan",
+                "Tajikistan",
+                "Turkmenistan",
+                "Azerbaijan",
+                "Armenia",
+                "Georgia",
+                "Turkey",
+                "Iran",
+                "Iraq",
+                "Saudi Arabia",
+                "United Arab Emirates",
+                "Kuwait",
+                "Qatar",
+                "Bahrain",
+                "Oman",
+                "Yemen",
+                "Jordan",
+                "Lebanon",
+                "Syria",
+                "Israel",
+                "Palestine",
                 # African countries
-                "South Africa", "Egypt", "Nigeria", "Kenya", "Ethiopia", "Tanzania", "Ghana",
-                "Morocco", "Algeria", "Tunisia", "Libya", "Sudan", "Uganda", "Angola", "Mozambique",
-                "Madagascar", "Cameroon", "Ivory Coast", "Niger", "Burkina Faso", "Mali", "Malawi",
-                "Zambia", "Zimbabwe", "Senegal", "Chad", "Somalia", "Guinea", "Rwanda", "Benin",
-                "Burundi", "Tunisia", "Togo", "Sierra Leone", "Libya", "Liberia", "Central African Republic",
-                "Mauritania", "Eritrea", "Gambia", "Botswana", "Namibia", "Gabon", "Lesotho",
-                "Guinea-Bissau", "Equatorial Guinea", "Mauritius", "Eswatini", "Djibouti", "Comoros",
+                "South Africa",
+                "Egypt",
+                "Nigeria",
+                "Kenya",
+                "Ethiopia",
+                "Tanzania",
+                "Ghana",
+                "Morocco",
+                "Algeria",
+                "Tunisia",
+                "Libya",
+                "Sudan",
+                "Uganda",
+                "Angola",
+                "Mozambique",
+                "Madagascar",
+                "Cameroon",
+                "Ivory Coast",
+                "Niger",
+                "Burkina Faso",
+                "Mali",
+                "Malawi",
+                "Zambia",
+                "Zimbabwe",
+                "Senegal",
+                "Chad",
+                "Somalia",
+                "Guinea",
+                "Rwanda",
+                "Benin",
+                "Burundi",
+                "Tunisia",
+                "Togo",
+                "Sierra Leone",
+                "Libya",
+                "Liberia",
+                "Central African Republic",
+                "Mauritania",
+                "Eritrea",
+                "Gambia",
+                "Botswana",
+                "Namibia",
+                "Gabon",
+                "Lesotho",
+                "Guinea-Bissau",
+                "Equatorial Guinea",
+                "Mauritius",
+                "Eswatini",
+                "Djibouti",
+                "Comoros",
                 # South American countries
-                "Argentina", "Chile", "Colombia", "Peru", "Venezuela", "Ecuador", "Uruguay",
-                "Paraguay", "Bolivia", "Guyana", "Suriname", "French Guiana",
+                "Argentina",
+                "Chile",
+                "Colombia",
+                "Peru",
+                "Venezuela",
+                "Ecuador",
+                "Uruguay",
+                "Paraguay",
+                "Bolivia",
+                "Guyana",
+                "Suriname",
+                "French Guiana",
                 # Central American and Caribbean countries
-                "Guatemala", "Honduras", "El Salvador", "Nicaragua", "Costa Rica", "Panama",
-                "Belize", "Jamaica", "Haiti", "Dominican Republic", "Cuba", "Trinidad and Tobago",
-                "Barbados", "Bahamas", "Puerto Rico",
+                "Guatemala",
+                "Honduras",
+                "El Salvador",
+                "Nicaragua",
+                "Costa Rica",
+                "Panama",
+                "Belize",
+                "Jamaica",
+                "Haiti",
+                "Dominican Republic",
+                "Cuba",
+                "Trinidad and Tobago",
+                "Barbados",
+                "Bahamas",
+                "Puerto Rico",
                 # Oceania countries
-                "New Zealand", "Fiji", "Papua New Guinea", "Solomon Islands", "Vanuatu",
-                "New Caledonia", "French Polynesia", "Samoa", "Tonga", "Micronesia", "Palau",
-                "Marshall Islands", "Kiribati", "Tuvalu", "Nauru"
+                "New Zealand",
+                "Fiji",
+                "Papua New Guinea",
+                "Solomon Islands",
+                "Vanuatu",
+                "New Caledonia",
+                "French Polynesia",
+                "Samoa",
+                "Tonga",
+                "Micronesia",
+                "Palau",
+                "Marshall Islands",
+                "Kiribati",
+                "Tuvalu",
+                "Nauru",
             ]
-            
+
             # Helper function to generate unique place names with variations
-            def _generate_place_variations(base_names, num_needed, place_type_prefix=""):
+            def _generate_place_variations(
+                base_names, num_needed, place_type_prefix=""
+            ):
                 """Generate unique place names by combining base names with variations."""
                 variations = []
                 used_names = set()
-                
+
                 # First, use all base names
                 for base_name in base_names:
                     if len(variations) >= num_needed:
@@ -825,16 +2734,59 @@ def generate_database(
                     if base_name not in used_names:
                         variations.append(base_name)
                         used_names.add(base_name)
-                
+
                 # Then create variations by combining base names with suffixes/prefixes
-                suffixes = ["", " North", " South", " East", " West", " Central", " Upper", " Lower", 
-                           " New", " Old", " Port", " Bay", " Valley", " Hills", " Springs", 
-                           " Beach", " Lake", " River", " Creek", " Park", " Grove", " Heights"]
-                prefixes = ["", "New ", "Old ", "Upper ", "Lower ", "East ", "West ", "North ", "South ",
-                           "Port ", "Fort ", "Saint ", "Mount ", "Lake ", "River "]
-                
-                # Generate combinations
-                while len(variations) < num_needed:
+                suffixes = [
+                    "",
+                    " North",
+                    " South",
+                    " East",
+                    " West",
+                    " Central",
+                    " Upper",
+                    " Lower",
+                    " New",
+                    " Old",
+                    " Port",
+                    " Bay",
+                    " Valley",
+                    " Hills",
+                    " Springs",
+                    " Beach",
+                    " Lake",
+                    " River",
+                    " Creek",
+                    " Park",
+                    " Grove",
+                    " Heights",
+                ]
+                prefixes = [
+                    "",
+                    "New ",
+                    "Old ",
+                    "Upper ",
+                    "Lower ",
+                    "East ",
+                    "West ",
+                    "North ",
+                    "South ",
+                    "Port ",
+                    "Fort ",
+                    "Saint ",
+                    "Mount ",
+                    "Lake ",
+                    "River ",
+                ]
+
+                # Generate combinations with a safety limit to prevent infinite loops
+                max_attempts_without_new = 1000  # Exit if we can't find a new unique name after this many tries
+                attempts_without_new = 0
+
+                while (
+                    len(variations) < num_needed
+                    and attempts_without_new < max_attempts_without_new
+                ):
+                    found_new = False
                     base = random.choice(base_names)
                     if random.random() < 0.5:
                         # Use prefix
@@ -847,24 +2799,35 @@ def generate_database(
                         # Use suffix
                         suffix = random.choice(suffixes)
                         variant = f"{base}{suffix}"
-                    
+
                     # Also try numbered variations
                     if random.random() < 0.3 and len(variations) < num_needed:
                         variant2 = f"{variant} {random.randint(1, 5)}"
                         if variant2 not in used_names:
                             variations.append(variant2)
                             used_names.add(variant2)
-                    
+                            found_new = True
+
                     if variant not in used_names:
                         variations.append(variant)
                         used_names.add(variant)
-                
+                        found_new = True
+
+                    if found_new:
+                        attempts_without_new = 0
+                    else:
+                        attempts_without_new += 1
+
                 return variations[:num_needed]
-            
-            # Create countries first (top level) - generate more countries
+
+            # Create countries first (top level)
             country_places = []
-            num_countries = max(len(country_names), int(num_people * 0.05))  # At least 5% of people, or all base countries
-            country_variations = _generate_place_variations(country_names, num_countries)
+            num_countries = max(
+                len(country_names), int(num_people * 0.001)
+            )  # 0.1% of people or all base countries
+            country_variations = _generate_place_variations(
+                country_names, num_countries
+            )
             for country_name in country_variations:
                 place = Place()
                 pname = PlaceName()
@@ -874,12 +2837,24 @@ def generate_database(
                 if random.random() < 0.6:
                     place.set_title(country_name)
                 if random.random() < 0.4:
-                    place.set_code(f"{country_name[:3].upper()}{random.randint(100, 999)}")
+                    place.set_code(
+                        f"{country_name[:3].upper()}{random.randint(100, 999)}"
+                    )
                 # Add notes, citations, media to some countries (60% chance)
                 if random.random() < 0.6:
                     note_text = f"Country note: {random.choice(['Major country', 'Historical significance', 'Research location'])}"
-                    note_type = random.choice([NoteType.PLACE, NoteType.GENERAL, NoteType.RESEARCH])
-                    note_handle = _create_note_with_tags_and_privacy(db, trans, note_text, note_type, tags, tag_chance=0.4, privacy_chance=0.1)
+                    note_type = random.choice(
+                        [NoteType.PLACE, NoteType.GENERAL, NoteType.RESEARCH]
+                    )
+                    note_handle = _create_note_with_tags_and_privacy(
+                        db,
+                        trans,
+                        note_text,
+                        note_type,
+                        tags,
+                        tag_chance=0.4,
+                        privacy_chance=0.1,
+                    )
                     place.add_note(note_handle)
                 if tags and random.random() < 0.5:
                     tag_name = random.choice(list(tags.keys()))
@@ -891,10 +2866,12 @@ def generate_database(
                 place_handle = db.add_place(place, trans)
                 places.append(place_handle)
                 country_places.append(place_handle)
-            
-            # Create states/regions (enclosed by countries) - generate more states
+
+            # Create states/regions (enclosed by countries)
             state_places = []
-            num_states = max(len(state_names), int(num_people * 0.08))  # At least 8% of people, or all base states
+            num_states = max(
+                len(state_names), int(num_people * 0.002)
+            )  # 0.2% of people or all base states
             state_variations = _generate_place_variations(state_names, num_states)
             for state_name in state_variations:
                 place = Place()
@@ -905,7 +2882,9 @@ def generate_database(
                 if random.random() < 0.6:
                     place.set_title(state_name)
                 if random.random() < 0.4:
-                    place.set_code(f"{state_name[:3].upper()}{random.randint(100, 999)}")
+                    place.set_code(
+                        f"{state_name[:3].upper()}{random.randint(100, 999)}"
+                    )
                 # Add enclosed_by relationship (reference to a country)
                 if country_places:
                     placeref = PlaceRef()
@@ -914,8 +2893,18 @@ def generate_database(
                 # Add notes, citations, media to some states (50% chance)
                 if random.random() < 0.5:
                     note_text = f"State note: {random.choice(['Major state', 'Historical significance', 'Research location'])}"
-                    note_type = random.choice([NoteType.PLACE, NoteType.GENERAL, NoteType.RESEARCH])
-                    note_handle = _create_note_with_tags_and_privacy(db, trans, note_text, note_type, tags, tag_chance=0.4, privacy_chance=0.1)
+                    note_type = random.choice(
+                        [NoteType.PLACE, NoteType.GENERAL, NoteType.RESEARCH]
+                    )
+                    note_handle = _create_note_with_tags_and_privacy(
+                        db,
+                        trans,
+                        note_text,
+                        note_type,
+                        tags,
+                        tag_chance=0.4,
+                        privacy_chance=0.1,
+                    )
                     place.add_note(note_handle)
                 if tags and random.random() < 0.4:
                     tag_name = random.choice(list(tags.keys()))
@@ -927,9 +2916,11 @@ def generate_database(
                 place_handle = db.add_place(place, trans)
                 places.append(place_handle)
                 state_places.append(place_handle)
-            
-            # Create cities (enclosed by states or countries) - generate many more cities
-            num_cities = max(len(city_names), int(num_people * 0.15))  # At least 15% of people, or all base cities
+
+            # Create cities (enclosed by states or countries)
+            num_cities = max(
+                len(city_names), int(num_people * 0.005)
+            )  # 0.5% of people or all base cities
             city_variations = _generate_place_variations(city_names, num_cities)
             for city_name in city_variations:
                 place = Place()
@@ -955,8 +2946,18 @@ def generate_database(
                 # Add notes, citations, media to some cities (50% chance)
                 if random.random() < 0.5:
                     note_text = f"City note: {random.choice(['Major city', 'Historical significance', 'Research location'])}"
-                    note_type = random.choice([NoteType.PLACE, NoteType.GENERAL, NoteType.RESEARCH])
-                    note_handle = _create_note_with_tags_and_privacy(db, trans, note_text, note_type, tags, tag_chance=0.4, privacy_chance=0.1)
+                    note_type = random.choice(
+                        [NoteType.PLACE, NoteType.GENERAL, NoteType.RESEARCH]
+                    )
+                    note_handle = _create_note_with_tags_and_privacy(
+                        db,
+                        trans,
+                        note_text,
+                        note_type,
+                        tags,
+                        tag_chance=0.4,
+                        privacy_chance=0.1,
+                    )
                     place.add_note(note_handle)
                 if tags and random.random() < 0.4:
                     tag_name = random.choice(list(tags.keys()))
@@ -967,18 +2968,36 @@ def generate_database(
                     place.set_privacy(True)
                 place_handle = db.add_place(place, trans)
                 places.append(place_handle)
-            
+
             # Generate additional smaller places (towns, villages, neighborhoods) for more variety
             # Use city names as base but create smaller place variations
-            num_towns = int(num_people * 0.10)  # 10% additional towns/villages
-            town_prefixes = ["", "New ", "Old ", "Little ", "Great ", "Upper ", "Lower ", "East ", "West "]
-            town_suffixes = ["", " Town", " Village", " Township", " Borough", " Hamlet", " Settlement"]
+            num_towns = int(num_people * 0.003)  # 0.3% additional towns/villages
+            town_prefixes = [
+                "",
+                "New ",
+                "Old ",
+                "Little ",
+                "Great ",
+                "Upper ",
+                "Lower ",
+                "East ",
+                "West ",
+            ]
+            town_suffixes = [
+                "",
+                " Town",
+                " Village",
+                " Township",
+                " Borough",
+                " Hamlet",
+                " Settlement",
+            ]
             for _ in range(num_towns):
                 base_city = random.choice(city_names)
                 prefix = random.choice(town_prefixes)
                 suffix = random.choice(town_suffixes)
                 town_name = f"{prefix}{base_city}{suffix}"
-                
+
                 place = Place()
                 pname = PlaceName()
                 pname.set_value(town_name)
@@ -999,8 +3018,18 @@ def generate_database(
                     place.add_placeref(placeref)
                 if random.random() < 0.3:
                     note_text = f"Town note: {random.choice(['Small town', 'Rural area', 'Historical location'])}"
-                    note_type = random.choice([NoteType.PLACE, NoteType.GENERAL, NoteType.RESEARCH])
-                    note_handle = _create_note_with_tags_and_privacy(db, trans, note_text, note_type, tags, tag_chance=0.3, privacy_chance=0.05)
+                    note_type = random.choice(
+                        [NoteType.PLACE, NoteType.GENERAL, NoteType.RESEARCH]
+                    )
+                    note_handle = _create_note_with_tags_and_privacy(
+                        db,
+                        trans,
+                        note_text,
+                        note_type,
+                        tags,
+                        tag_chance=0.3,
+                        privacy_chance=0.05,
+                    )
                     place.add_note(note_handle)
                 if tags and random.random() < 0.3:
                     tag_name = random.choice(list(tags.keys()))
@@ -1031,9 +3060,11 @@ def generate_database(
             media_objects = []
             num_media = int(num_people * 0.20)  # 20% of people
             for _ in range(num_media):
-                media_handle = _create_media(db, trans, [], sources, tags)  # Empty citations list for now
+                media_handle = _create_media(
+                    db, trans, [], sources, tags
+                )  # Empty citations list for now
                 media_objects.append(media_handle)
-            
+
             # Add citations and sources to media objects will be done after citations are created
 
             # Create citations (they reference sources and can reference media)
@@ -1041,21 +3072,27 @@ def generate_database(
             citations = []
             num_citations = int(num_people * 0.30)  # 30% of people
             for _ in range(num_citations):
-                citation_handle = _create_citation(db, trans, sources, tags, media_objects)
+                citation_handle = _create_citation(
+                    db, trans, sources, tags, media_objects
+                )
                 citations.append(citation_handle)
 
             # Attach media to some sources and citations
             print("Linking media to sources and citations...")
-            for source_handle in random.sample(sources, min(len(sources), len(sources) // 3)):
+            for source_handle in random.sample(
+                sources, min(len(sources), len(sources) // 3)
+            ):
                 if media_objects and random.random() < 0.3:
                     source = db.get_source_from_handle(source_handle)
                     media_ref = MediaRef()
                     media_ref.set_reference_handle(random.choice(media_objects))
                     source.add_media_reference(media_ref)
                     db.commit_source(source, trans)
-            
+
             # Ensure more citations have media for HasGallery rule
-            for citation_handle in random.sample(citations, min(len(citations), len(citations) // 2)):
+            for citation_handle in random.sample(
+                citations, min(len(citations), len(citations) // 2)
+            ):
                 citation = db.get_citation_from_handle(citation_handle)
                 # Only add if it doesn't already have media
                 if not citation.get_media_list() and media_objects:
@@ -1063,7 +3100,7 @@ def generate_database(
                     media_ref.set_reference_handle(random.choice(media_objects))
                     citation.add_media_reference(media_ref)
                     db.commit_citation(citation, trans)
-            
+
             # Add citations to media objects (for HasCitation and HasSourceOf rules)
             print("Linking citations to media...")
             # Ensure at least 50% of media have citations
@@ -1078,7 +3115,7 @@ def generate_database(
                         citations_with_sources.append(citation_handle)
                 except:
                     continue
-            
+
             # Ensure we have citations with sources (should be all of them now)
             if not citations_with_sources:
                 # Fallback: if somehow no citations have sources, create one that does
@@ -1088,11 +3125,13 @@ def generate_database(
                     citation.set_page("Page 1")
                     citation_handle = db.add_citation(citation, trans)
                     citations_with_sources.append(citation_handle)
-            
+
             num_media_to_link = max(1, len(media_objects) // 2)
             # Use citations with sources (should be all citations now)
-            citations_to_use = citations_with_sources if citations_with_sources else citations
-            
+            citations_to_use = (
+                citations_with_sources if citations_with_sources else citations
+            )
+
             # For media.HasSourceOf rule: ensure at least one media has a citation with the first source
             # Find or create a citation with the first source
             first_source_citation = None
@@ -1101,7 +3140,10 @@ def generate_database(
                 for citation_handle in citations_to_use:
                     try:
                         citation = db.get_citation_from_handle(citation_handle)
-                        if citation and citation.get_reference_handle() == first_source_handle:
+                        if (
+                            citation
+                            and citation.get_reference_handle() == first_source_handle
+                        ):
                             first_source_citation = citation_handle
                             break
                     except:
@@ -1109,13 +3151,14 @@ def generate_database(
                 # If no citation found with first source, create one
                 if not first_source_citation:
                     from gramps.gen.lib import Citation
+
                     citation = Citation()
                     citation.set_reference_handle(first_source_handle)
                     citation.set_page("TestPage")
                     citation_handle = db.add_citation(citation, trans)
                     first_source_citation = citation_handle
                     citations_to_use.append(citation_handle)
-            
+
             # First, ensure at least one media has citation with first source (for HasSourceOf rule)
             if first_source_citation and media_objects:
                 # Always add to the first media object to ensure it exists
@@ -1131,31 +3174,42 @@ def generate_database(
                     if len(media_objects) > 1:
                         try:
                             target_media = db.get_media_from_handle(media_objects[1])
-                            if first_source_citation not in target_media.get_citation_list():
+                            if (
+                                first_source_citation
+                                not in target_media.get_citation_list()
+                            ):
                                 target_media.add_citation(first_source_citation)
                                 db.commit_media(target_media, trans)
                         except:
                             pass
-            
+
             # Then add citations to other media
-            media_samples = random.sample(media_objects, min(num_media_to_link, len(media_objects)))
+            media_samples = random.sample(
+                media_objects, min(num_media_to_link, len(media_objects))
+            )
             for media_handle in media_samples:
                 media = db.get_media_from_handle(media_handle)
                 # Add citations to media - for HasCitation rule
                 if citations_to_use:
                     # Add 1-3 citations to this media
-                    num_citations_to_add = random.randint(1, min(3, len(citations_to_use)))
-                    citations_to_add = random.sample(citations_to_use, num_citations_to_add)
+                    num_citations_to_add = random.randint(
+                        1, min(3, len(citations_to_use))
+                    )
+                    citations_to_add = random.sample(
+                        citations_to_use, num_citations_to_add
+                    )
                     for citation_handle in citations_to_add:
                         current_citations = media.get_citation_list()
                         if citation_handle not in current_citations:
                             media.add_citation(citation_handle)
                 db.commit_media(media, trans)
-            
+
             # Add citations and media to places (now that citations exist)
             print("Enhancing places with citations and media...")
             # Ensure at least 40% of places have citations and 30% have media
-            places_to_enhance = random.sample(places, min(len(places), int(len(places) * 0.6)))
+            places_to_enhance = random.sample(
+                places, min(len(places), int(len(places) * 0.6))
+            )
             for place_handle in places_to_enhance:
                 place = db.get_place_from_handle(place_handle)
                 # Add citations to places (40% chance)
@@ -1176,25 +3230,61 @@ def generate_database(
 
             # Generate main connected family tree (with citations and media)
             print(f"Generating {num_connected} connected people...")
-            _generate_connected_tree(db, trans, num_connected, people_handles,
-                                   families_handles, tags, places, sources, citations, media_objects)
+            _generate_connected_tree(
+                db,
+                trans,
+                num_connected,
+                people_handles,
+                families_handles,
+                tags,
+                places,
+                sources,
+                citations,
+                media_objects,
+            )
 
             # Generate disconnected people (~1%)
             print(f"Generating {num_disconnected} disconnected people...")
-            _generate_disconnected_people(db, trans, num_disconnected, people_handles,
-                                        tags, places, sources, citations, media_objects)
+            _generate_disconnected_people(
+                db,
+                trans,
+                num_disconnected,
+                people_handles,
+                tags,
+                places,
+                sources,
+                citations,
+                media_objects,
+            )
 
             # Generate two unconnected families
             print("Generating 2 unconnected families...")
-            _generate_unconnected_families(db, trans, num_unconnected_family,
-                                         people_handles, families_handles, tags, places,
-                                         sources, citations, media_objects)
-            
+            _generate_unconnected_families(
+                db,
+                trans,
+                num_unconnected_family,
+                people_handles,
+                families_handles,
+                tags,
+                places,
+                sources,
+                citations,
+                media_objects,
+            )
+
             # Add special cases for filter rules that need specific arguments
             print("Adding special cases for filter rules...")
-            _add_special_filter_cases(db, trans, people_handles, families_handles, 
-                                     citations, sources, media_objects, tags)
-            
+            _add_special_filter_cases(
+                db,
+                trans,
+                people_handles,
+                families_handles,
+                citations,
+                sources,
+                media_objects,
+                tags,
+            )
+
             # Set default person to I0000 (first person)
             print("Setting default person to I0000...")
             default_person_handle = None
@@ -1224,11 +3314,15 @@ def generate_database(
         print(f"Total people: {len(people_handles)}")
         print(f"Total families: {len(families_handles)}")
         print(f"Total places: {len(places) if 'places' in locals() else 0}")
-        print(f"Total repositories: {len(repositories) if 'repositories' in locals() else 0}")
+        print(
+            f"Total repositories: {len(repositories) if 'repositories' in locals() else 0}"
+        )
         print(f"Total sources: {len(sources) if 'sources' in locals() else 0}")
         print(f"Total citations: {len(citations) if 'citations' in locals() else 0}")
-        print(f"Total media objects: {len(media_objects) if 'media_objects' in locals() else 0}")
-        
+        print(
+            f"Total media objects: {len(media_objects) if 'media_objects' in locals() else 0}"
+        )
+
         db.close()
         return dirpath
 
@@ -1237,15 +3331,43 @@ def generate_database(
         raise e
 
 
-def _generate_connected_tree(db, trans, num_people, people_handles, families_handles,
-                            tags, places, sources=None, citations=None, media_objects=None):
+def _generate_connected_tree(
+    db,
+    trans,
+    num_people,
+    people_handles,
+    families_handles,
+    tags,
+    places,
+    sources=None,
+    citations=None,
+    media_objects=None,
+):
     """Generate a connected family tree."""
     # Start with a root couple
     root_father = _create_person_with_variety(
-        db, trans, Person.MALE, "Root", "Ancestor", tags, places, sources, citations, media_objects
+        db,
+        trans,
+        Person.MALE,
+        "Root",
+        "Ancestor",
+        tags,
+        places,
+        sources,
+        citations,
+        media_objects,
     )
     root_mother = _create_person_with_variety(
-        db, trans, Person.FEMALE, "Root", "Ancestor", tags, places, sources, citations, media_objects
+        db,
+        trans,
+        Person.FEMALE,
+        "Root",
+        "Ancestor",
+        tags,
+        places,
+        sources,
+        citations,
+        media_objects,
     )
     people_handles.append(root_father.handle)
     people_handles.append(root_mother.handle)
@@ -1277,8 +3399,12 @@ def _generate_connected_tree(db, trans, num_people, people_handles, families_han
     # Add notes to family (60% chance)
     if random.random() < 0.6:
         note = Note()
-        note.set_type(random.choice([NoteType.FAMILY, NoteType.GENERAL, NoteType.RESEARCH]))
-        note.set(f"Family note: {random.choice(['Important', 'Verified', 'Needs verification', 'Research'])}")
+        note.set_type(
+            random.choice([NoteType.FAMILY, NoteType.GENERAL, NoteType.RESEARCH])
+        )
+        note.set(
+            f"Family note: {random.choice(['Important', 'Verified', 'Needs verification', 'Research'])}"
+        )
         note_handle = db.add_note(note, trans)
         root_family.add_note(note_handle)
     # Add attributes to family (50% chance)
@@ -1294,26 +3420,37 @@ def _generate_connected_tree(db, trans, num_people, people_handles, families_han
         root_family.add_attribute(attr)
     # Add relationship type (80% chance) - increase for HasRelType rule
     if random.random() < 0.8:
-        rel_types = [FamilyRelType.MARRIED, FamilyRelType.UNMARRIED, FamilyRelType.UNKNOWN, FamilyRelType.CIVIL_UNION]
+        rel_types = [
+            FamilyRelType.MARRIED,
+            FamilyRelType.UNMARRIED,
+            FamilyRelType.UNKNOWN,
+            FamilyRelType.CIVIL_UNION,
+        ]
         root_family.set_relationship(random.choice(rel_types))
-    
+
     # Add marriage event to root family (70% chance)
     marriage_date = None
     if random.random() < 0.7:
         marriage_event = Event()
         marriage_event.set_type(EventType.MARRIAGE)
         marriage_date = Date()
-        marriage_date.set_yr_mon_day(random.randint(1800, 2000), random.randint(1, 12), random.randint(1, 28))
+        marriage_date.set_yr_mon_day(
+            random.randint(1800, 2000), random.randint(1, 12), random.randint(1, 28)
+        )
         marriage_event.set_date_object(marriage_date)
-        if places and random.random() < 0.95:  # 95% chance - almost every marriage has a place
+        if (
+            places and random.random() < 0.95
+        ):  # 95% chance - almost every marriage has a place
             marriage_event.set_place_handle(random.choice(places))
         if random.random() < 0.5:
-            marriage_event.set_description(f"Marriage of {root_father.get_primary_name().get_first_name()} and {root_mother.get_primary_name().get_first_name()}")
+            marriage_event.set_description(
+                f"Marriage of {root_father.get_primary_name().get_first_name()} and {root_mother.get_primary_name().get_first_name()}"
+            )
         marriage_handle = db.add_event(marriage_event, trans)
         event_ref = EventRef()
         event_ref.set_reference_handle(marriage_handle)
         root_family.add_event_ref(event_ref)
-    
+
     # Add divorce event - 15% chance (only if there was a marriage)
     if marriage_date and random.random() < 0.15:
         divorce_event = Event()
@@ -1324,17 +3461,23 @@ def _generate_connected_tree(db, trans, num_people, people_handles, families_han
             years_married = random.randint(1, 30)
             divorce_year = min(marriage_year + years_married, 2020)
             divorce_date = Date()
-            divorce_date.set_yr_mon_day(divorce_year, random.randint(1, 12), random.randint(1, 28))
+            divorce_date.set_yr_mon_day(
+                divorce_year, random.randint(1, 12), random.randint(1, 28)
+            )
             divorce_event.set_date_object(divorce_date)
-            if places and random.random() < 0.95:  # 95% chance - almost every divorce has a place
+            if (
+                places and random.random() < 0.95
+            ):  # 95% chance - almost every divorce has a place
                 divorce_event.set_place_handle(random.choice(places))
             if random.random() < 0.5:
-                divorce_event.set_description(f"Divorce of {root_father.get_primary_name().get_first_name()} and {root_mother.get_primary_name().get_first_name()}")
+                divorce_event.set_description(
+                    f"Divorce of {root_father.get_primary_name().get_first_name()} and {root_mother.get_primary_name().get_first_name()}"
+                )
             divorce_handle = db.add_event(divorce_event, trans)
             event_ref = EventRef()
             event_ref.set_reference_handle(divorce_handle)
             root_family.add_event_ref(event_ref)
-    
+
     # Commit family after adding all attributes/tags/notes
     db.commit_family(root_family, trans)
     root_father.add_family_handle(root_fam_handle)
@@ -1381,17 +3524,19 @@ def _generate_connected_tree(db, trans, num_people, people_handles, families_han
                 num_children = 1
             else:
                 num_children = 0
-            
+
             children = []
             # Create twins for some families (5% chance) - for HasTwins rule
             create_twins = random.random() < 0.05 and num_children >= 2
-            
+
             for i in range(num_children):
                 if people_created >= num_people:
                     break
 
                 # Random gender
-                gender = random.choice([Person.MALE, Person.FEMALE, Person.UNKNOWN, Person.OTHER])
+                gender = random.choice(
+                    [Person.MALE, Person.FEMALE, Person.UNKNOWN, Person.OTHER]
+                )
                 first_name = generate_random_first_name(gender)
                 surname = generate_random_surname()
 
@@ -1405,16 +3550,43 @@ def _generate_connected_tree(db, trans, num_people, people_handles, families_han
                         birth_date = birth_event.get_date_object()
                         # Create child with same birth date
                         child = _create_person_with_variety(
-                            db, trans, gender, first_name, surname, tags, places, sources, citations, media_objects,
-                            birth_date=birth_date  # Pass the birth date
+                            db,
+                            trans,
+                            gender,
+                            first_name,
+                            surname,
+                            tags,
+                            places,
+                            sources,
+                            citations,
+                            media_objects,
+                            birth_date=birth_date,  # Pass the birth date
                         )
                     else:
                         child = _create_person_with_variety(
-                            db, trans, gender, first_name, surname, tags, places, sources, citations, media_objects
+                            db,
+                            trans,
+                            gender,
+                            first_name,
+                            surname,
+                            tags,
+                            places,
+                            sources,
+                            citations,
+                            media_objects,
                         )
                 else:
                     child = _create_person_with_variety(
-                        db, trans, gender, first_name, surname, tags, places, sources, citations, media_objects
+                        db,
+                        trans,
+                        gender,
+                        first_name,
+                        surname,
+                        tags,
+                        places,
+                        sources,
+                        citations,
+                        media_objects,
                     )
                 people_handles.append(child.handle)
                 # Add child with relationship type (BIRTH for most, ADOPTED for some)
@@ -1433,7 +3605,7 @@ def _generate_connected_tree(db, trans, num_people, people_handles, families_han
                 db.commit_person(child, trans)
                 children.append(child)
                 people_created += 1
-            
+
             # Commit family after adding all children (needed for HasTwins rule)
             if children:
                 db.commit_family(parent_family, trans)
@@ -1442,7 +3614,7 @@ def _generate_connected_tree(db, trans, num_people, people_handles, families_han
             if children:
                 random.shuffle(children)
                 paired = set()
-                
+
                 # Pair up children
                 for i in range(0, len(children) - 1, 2):
                     if people_created >= num_people:
@@ -1455,7 +3627,9 @@ def _generate_connected_tree(db, trans, num_people, people_handles, families_han
                     # Ensure opposite genders for pairing (mostly)
                     if child1.gender == Person.MALE and child2.gender == Person.FEMALE:
                         new_father, new_mother = child1, child2
-                    elif child1.gender == Person.FEMALE and child2.gender == Person.MALE:
+                    elif (
+                        child1.gender == Person.FEMALE and child2.gender == Person.MALE
+                    ):
                         new_father, new_mother = child2, child1
                     else:
                         # Random assignment if genders don't match
@@ -1492,8 +3666,14 @@ def _generate_connected_tree(db, trans, num_people, people_handles, families_han
                     # Add notes to family (60% chance)
                     if random.random() < 0.6:
                         note = Note()
-                        note.set_type(random.choice([NoteType.FAMILY, NoteType.GENERAL, NoteType.RESEARCH]))
-                        note.set(f"Family note: {random.choice(['Important', 'Verified', 'Needs verification', 'Research'])}")
+                        note.set_type(
+                            random.choice(
+                                [NoteType.FAMILY, NoteType.GENERAL, NoteType.RESEARCH]
+                            )
+                        )
+                        note.set(
+                            f"Family note: {random.choice(['Important', 'Verified', 'Needs verification', 'Research'])}"
+                        )
                         note_handle = db.add_note(note, trans)
                         new_family.add_note(note_handle)
                     # Add attributes to family (50% chance)
@@ -1509,7 +3689,12 @@ def _generate_connected_tree(db, trans, num_people, people_handles, families_han
                         new_family.add_attribute(attr)
                     # Add relationship type (80% chance) - increase for HasRelType rule
                     if random.random() < 0.8:
-                        rel_types = [FamilyRelType.MARRIED, FamilyRelType.UNMARRIED, FamilyRelType.UNKNOWN, FamilyRelType.CIVIL_UNION]
+                        rel_types = [
+                            FamilyRelType.MARRIED,
+                            FamilyRelType.UNMARRIED,
+                            FamilyRelType.UNKNOWN,
+                            FamilyRelType.CIVIL_UNION,
+                        ]
                         new_family.set_relationship(random.choice(rel_types))
                     # Add family event (marriage) - 70% chance for HasEvent rule
                     marriage_date = None
@@ -1517,17 +3702,23 @@ def _generate_connected_tree(db, trans, num_people, people_handles, families_han
                         marriage_event = Event()
                         marriage_event.set_type(EventType.MARRIAGE)
                         marriage_date = Date()
-                        marriage_date.set_yr_mon_day(random.randint(1850, 2000), random.randint(1, 12), random.randint(1, 28))
+                        marriage_date.set_yr_mon_day(
+                            random.randint(1850, 2000),
+                            random.randint(1, 12),
+                            random.randint(1, 28),
+                        )
                         marriage_event.set_date_object(marriage_date)
                         if places and random.random() < 0.7:
                             marriage_event.set_place_handle(random.choice(places))
                         if random.random() < 0.5:
-                            marriage_event.set_description(f"Marriage of {new_father.get_primary_name().get_first_name()} and {new_mother.get_primary_name().get_first_name()}")
+                            marriage_event.set_description(
+                                f"Marriage of {new_father.get_primary_name().get_first_name()} and {new_mother.get_primary_name().get_first_name()}"
+                            )
                         marriage_handle = db.add_event(marriage_event, trans)
                         event_ref = EventRef()
                         event_ref.set_reference_handle(marriage_handle)
                         new_family.add_event_ref(event_ref)
-                    
+
                     # Add divorce event - 15% chance (only if there was a marriage)
                     if marriage_date and random.random() < 0.15:
                         divorce_event = Event()
@@ -1540,17 +3731,23 @@ def _generate_connected_tree(db, trans, num_people, people_handles, families_han
                             years_married = random.randint(1, 30)
                             divorce_year = min(marriage_year + years_married, 2020)
                             divorce_date = Date()
-                            divorce_date.set_yr_mon_day(divorce_year, random.randint(1, 12), random.randint(1, 28))
+                            divorce_date.set_yr_mon_day(
+                                divorce_year,
+                                random.randint(1, 12),
+                                random.randint(1, 28),
+                            )
                             divorce_event.set_date_object(divorce_date)
                             if places and random.random() < 0.7:
                                 divorce_event.set_place_handle(random.choice(places))
                             if random.random() < 0.5:
-                                divorce_event.set_description(f"Divorce of {new_father.get_primary_name().get_first_name()} and {new_mother.get_primary_name().get_first_name()}")
+                                divorce_event.set_description(
+                                    f"Divorce of {new_father.get_primary_name().get_first_name()} and {new_mother.get_primary_name().get_first_name()}"
+                                )
                             divorce_handle = db.add_event(divorce_event, trans)
                             event_ref = EventRef()
                             event_ref.set_reference_handle(divorce_handle)
                             new_family.add_event_ref(event_ref)
-                    
+
                     # Commit family after adding all attributes/tags/notes
                     db.commit_family(new_family, trans)
                     new_father.add_family_handle(new_fam_handle)
@@ -1568,29 +3765,77 @@ def _generate_connected_tree(db, trans, num_people, people_handles, families_han
         current_parents = next_parents
 
 
-def _generate_disconnected_people(db, trans, num_people, people_handles, tags, places,
-                                  sources=None, citations=None, media_objects=None):
+def _generate_disconnected_people(
+    db,
+    trans,
+    num_people,
+    people_handles,
+    tags,
+    places,
+    sources=None,
+    citations=None,
+    media_objects=None,
+):
     """Generate people with no family connections."""
     for i in range(num_people):
-        gender = random.choice([Person.MALE, Person.FEMALE, Person.UNKNOWN, Person.OTHER])
+        gender = random.choice(
+            [Person.MALE, Person.FEMALE, Person.UNKNOWN, Person.OTHER]
+        )
         first_name = generate_random_first_name(gender)
         surname = generate_random_surname()
 
         person = _create_person_with_variety(
-            db, trans, gender, first_name, surname, tags, places, sources, citations, media_objects
+            db,
+            trans,
+            gender,
+            first_name,
+            surname,
+            tags,
+            places,
+            sources,
+            citations,
+            media_objects,
         )
         people_handles.append(person.handle)
 
 
-def _generate_unconnected_families(db, trans, num_people, people_handles, families_handles,
-                                  tags, places, sources=None, citations=None, media_objects=None):
+def _generate_unconnected_families(
+    db,
+    trans,
+    num_people,
+    people_handles,
+    families_handles,
+    tags,
+    places,
+    sources=None,
+    citations=None,
+    media_objects=None,
+):
     """Generate two families not connected to the main tree."""
     # First unconnected family
     father1 = _create_person_with_variety(
-        db, trans, Person.MALE, "Isolated", "Family1", tags, places, sources, citations, media_objects
+        db,
+        trans,
+        Person.MALE,
+        "Isolated",
+        "Family1",
+        tags,
+        places,
+        sources,
+        citations,
+        media_objects,
     )
     mother1 = _create_person_with_variety(
-        db, trans, Person.FEMALE, "Isolated", "Family1", tags, places, sources, citations, media_objects
+        db,
+        trans,
+        Person.FEMALE,
+        "Isolated",
+        "Family1",
+        tags,
+        places,
+        sources,
+        citations,
+        media_objects,
     )
     people_handles.append(father1.handle)
     people_handles.append(mother1.handle)
@@ -1621,8 +3866,12 @@ def _generate_unconnected_families(db, trans, num_people, people_handles, famili
     # Add notes to family (60% chance)
     if random.random() < 0.6:
         note = Note()
-        note.set_type(random.choice([NoteType.FAMILY, NoteType.GENERAL, NoteType.RESEARCH]))
-        note.set(f"Family note: {random.choice(['Important', 'Verified', 'Needs verification', 'Research'])}")
+        note.set_type(
+            random.choice([NoteType.FAMILY, NoteType.GENERAL, NoteType.RESEARCH])
+        )
+        note.set(
+            f"Family note: {random.choice(['Important', 'Verified', 'Needs verification', 'Research'])}"
+        )
         note_handle = db.add_note(note, trans)
         family1.add_note(note_handle)
     # Add attributes to family (50% chance)
@@ -1638,26 +3887,37 @@ def _generate_unconnected_families(db, trans, num_people, people_handles, famili
         family1.add_attribute(attr)
     # Add relationship type (80% chance) - increase for HasRelType rule
     if random.random() < 0.8:
-        rel_types = [FamilyRelType.MARRIED, FamilyRelType.UNMARRIED, FamilyRelType.UNKNOWN, FamilyRelType.CIVIL_UNION]
+        rel_types = [
+            FamilyRelType.MARRIED,
+            FamilyRelType.UNMARRIED,
+            FamilyRelType.UNKNOWN,
+            FamilyRelType.CIVIL_UNION,
+        ]
         family1.set_relationship(random.choice(rel_types))
-    
+
     # Add marriage event (70% chance)
     marriage_date = None
     if random.random() < 0.7:
         marriage_event = Event()
         marriage_event.set_type(EventType.MARRIAGE)
         marriage_date = Date()
-        marriage_date.set_yr_mon_day(random.randint(1850, 2000), random.randint(1, 12), random.randint(1, 28))
+        marriage_date.set_yr_mon_day(
+            random.randint(1850, 2000), random.randint(1, 12), random.randint(1, 28)
+        )
         marriage_event.set_date_object(marriage_date)
-        if places and random.random() < 0.95:  # 95% chance - almost every marriage has a place
+        if (
+            places and random.random() < 0.95
+        ):  # 95% chance - almost every marriage has a place
             marriage_event.set_place_handle(random.choice(places))
         if random.random() < 0.5:
-            marriage_event.set_description(f"Marriage of {father1.get_primary_name().get_first_name()} and {mother1.get_primary_name().get_first_name()}")
+            marriage_event.set_description(
+                f"Marriage of {father1.get_primary_name().get_first_name()} and {mother1.get_primary_name().get_first_name()}"
+            )
         marriage_handle = db.add_event(marriage_event, trans)
         event_ref = EventRef()
         event_ref.set_reference_handle(marriage_handle)
         family1.add_event_ref(event_ref)
-    
+
     # Add divorce event - 15% chance (only if there was a marriage)
     if marriage_date and random.random() < 0.15:
         divorce_event = Event()
@@ -1667,17 +3927,23 @@ def _generate_unconnected_families(db, trans, num_people, people_handles, famili
             years_married = random.randint(1, 30)
             divorce_year = min(marriage_year + years_married, 2020)
             divorce_date = Date()
-            divorce_date.set_yr_mon_day(divorce_year, random.randint(1, 12), random.randint(1, 28))
+            divorce_date.set_yr_mon_day(
+                divorce_year, random.randint(1, 12), random.randint(1, 28)
+            )
             divorce_event.set_date_object(divorce_date)
-            if places and random.random() < 0.95:  # 95% chance - almost every divorce has a place
+            if (
+                places and random.random() < 0.95
+            ):  # 95% chance - almost every divorce has a place
                 divorce_event.set_place_handle(random.choice(places))
             if random.random() < 0.5:
-                divorce_event.set_description(f"Divorce of {father1.get_primary_name().get_first_name()} and {mother1.get_primary_name().get_first_name()}")
+                divorce_event.set_description(
+                    f"Divorce of {father1.get_primary_name().get_first_name()} and {mother1.get_primary_name().get_first_name()}"
+                )
             divorce_handle = db.add_event(divorce_event, trans)
             event_ref = EventRef()
             event_ref.set_reference_handle(divorce_handle)
             family1.add_event_ref(event_ref)
-    
+
     # Commit family after adding all attributes/tags/notes
     db.commit_family(family1, trans)
     father1.add_family_handle(fam_handle1)
@@ -1688,10 +3954,28 @@ def _generate_unconnected_families(db, trans, num_people, people_handles, famili
 
     # Second unconnected family
     father2 = _create_person_with_variety(
-        db, trans, Person.MALE, "Isolated", "Family2", tags, places, sources, citations, media_objects
+        db,
+        trans,
+        Person.MALE,
+        "Isolated",
+        "Family2",
+        tags,
+        places,
+        sources,
+        citations,
+        media_objects,
     )
     mother2 = _create_person_with_variety(
-        db, trans, Person.FEMALE, "Isolated", "Family2", tags, places, sources, citations, media_objects
+        db,
+        trans,
+        Person.FEMALE,
+        "Isolated",
+        "Family2",
+        tags,
+        places,
+        sources,
+        citations,
+        media_objects,
     )
     people_handles.append(father2.handle)
     people_handles.append(mother2.handle)
@@ -1722,8 +4006,12 @@ def _generate_unconnected_families(db, trans, num_people, people_handles, famili
     # Add notes to family (60% chance)
     if random.random() < 0.6:
         note = Note()
-        note.set_type(random.choice([NoteType.FAMILY, NoteType.GENERAL, NoteType.RESEARCH]))
-        note.set(f"Family note: {random.choice(['Important', 'Verified', 'Needs verification', 'Research'])}")
+        note.set_type(
+            random.choice([NoteType.FAMILY, NoteType.GENERAL, NoteType.RESEARCH])
+        )
+        note.set(
+            f"Family note: {random.choice(['Important', 'Verified', 'Needs verification', 'Research'])}"
+        )
         note_handle = db.add_note(note, trans)
         family2.add_note(note_handle)
     # Add attributes to family (50% chance)
@@ -1739,26 +4027,37 @@ def _generate_unconnected_families(db, trans, num_people, people_handles, famili
         family2.add_attribute(attr)
     # Add relationship type (80% chance) - increase for HasRelType rule
     if random.random() < 0.8:
-        rel_types = [FamilyRelType.MARRIED, FamilyRelType.UNMARRIED, FamilyRelType.UNKNOWN, FamilyRelType.CIVIL_UNION]
+        rel_types = [
+            FamilyRelType.MARRIED,
+            FamilyRelType.UNMARRIED,
+            FamilyRelType.UNKNOWN,
+            FamilyRelType.CIVIL_UNION,
+        ]
         family2.set_relationship(random.choice(rel_types))
-    
+
     # Add marriage event (70% chance)
     marriage_date = None
     if random.random() < 0.7:
         marriage_event = Event()
         marriage_event.set_type(EventType.MARRIAGE)
         marriage_date = Date()
-        marriage_date.set_yr_mon_day(random.randint(1850, 2000), random.randint(1, 12), random.randint(1, 28))
+        marriage_date.set_yr_mon_day(
+            random.randint(1850, 2000), random.randint(1, 12), random.randint(1, 28)
+        )
         marriage_event.set_date_object(marriage_date)
-        if places and random.random() < 0.95:  # 95% chance - almost every marriage has a place
+        if (
+            places and random.random() < 0.95
+        ):  # 95% chance - almost every marriage has a place
             marriage_event.set_place_handle(random.choice(places))
         if random.random() < 0.5:
-            marriage_event.set_description(f"Marriage of {father2.get_primary_name().get_first_name()} and {mother2.get_primary_name().get_first_name()}")
+            marriage_event.set_description(
+                f"Marriage of {father2.get_primary_name().get_first_name()} and {mother2.get_primary_name().get_first_name()}"
+            )
         marriage_handle = db.add_event(marriage_event, trans)
         event_ref = EventRef()
         event_ref.set_reference_handle(marriage_handle)
         family2.add_event_ref(event_ref)
-    
+
     # Add divorce event - 15% chance (only if there was a marriage)
     if marriage_date and random.random() < 0.15:
         divorce_event = Event()
@@ -1768,17 +4067,23 @@ def _generate_unconnected_families(db, trans, num_people, people_handles, famili
             years_married = random.randint(1, 30)
             divorce_year = min(marriage_year + years_married, 2020)
             divorce_date = Date()
-            divorce_date.set_yr_mon_day(divorce_year, random.randint(1, 12), random.randint(1, 28))
+            divorce_date.set_yr_mon_day(
+                divorce_year, random.randint(1, 12), random.randint(1, 28)
+            )
             divorce_event.set_date_object(divorce_date)
-            if places and random.random() < 0.95:  # 95% chance - almost every divorce has a place
+            if (
+                places and random.random() < 0.95
+            ):  # 95% chance - almost every divorce has a place
                 divorce_event.set_place_handle(random.choice(places))
             if random.random() < 0.5:
-                divorce_event.set_description(f"Divorce of {father2.get_primary_name().get_first_name()} and {mother2.get_primary_name().get_first_name()}")
+                divorce_event.set_description(
+                    f"Divorce of {father2.get_primary_name().get_first_name()} and {mother2.get_primary_name().get_first_name()}"
+                )
             divorce_handle = db.add_event(divorce_event, trans)
             event_ref = EventRef()
             event_ref.set_reference_handle(divorce_handle)
             family2.add_event_ref(event_ref)
-    
+
     # Commit family after adding all attributes/tags/notes
     db.commit_family(family2, trans)
     father2.add_family_handle(fam_handle2)
@@ -1788,8 +4093,19 @@ def _generate_unconnected_families(db, trans, num_people, people_handles, famili
     families_handles.append(fam_handle2)
 
 
-def _create_person_with_variety(db, trans, gender, first_name, surname, tags, places, 
-                                sources=None, citations=None, media_objects=None, birth_date=None):
+def _create_person_with_variety(
+    db,
+    trans,
+    gender,
+    first_name,
+    surname,
+    tags,
+    places,
+    sources=None,
+    citations=None,
+    media_objects=None,
+    birth_date=None,
+):
     """Create a person with various attributes for filter testing."""
     person = Person()
     person.set_gender(gender)
@@ -1807,7 +4123,12 @@ def _create_person_with_variety(db, trans, gender, first_name, surname, tags, pl
             surname_obj.set_surname(surname)
             # Add name origin type (30% chance) - for HasNameOriginType rule
             if random.random() < 0.3:
-                origin_types = [NameOriginType.PATRILINEAL, NameOriginType.MATRILINEAL, NameOriginType.INHERITED, NameOriginType.GIVEN]
+                origin_types = [
+                    NameOriginType.PATRILINEAL,
+                    NameOriginType.MATRILINEAL,
+                    NameOriginType.INHERITED,
+                    NameOriginType.GIVEN,
+                ]
                 surname_obj.set_origintype(random.choice(origin_types))
             name.set_surname_list([surname_obj])
         else:
@@ -1821,7 +4142,12 @@ def _create_person_with_variety(db, trans, gender, first_name, surname, tags, pl
         surname_obj.set_surname(surname)
         # Add name origin type (30% chance) - for HasNameOriginType rule
         if random.random() < 0.3:
-            origin_types = [NameOriginType.PATRILINEAL, NameOriginType.MATRILINEAL, NameOriginType.INHERITED, NameOriginType.GIVEN]
+            origin_types = [
+                NameOriginType.PATRILINEAL,
+                NameOriginType.MATRILINEAL,
+                NameOriginType.INHERITED,
+                NameOriginType.GIVEN,
+            ]
             surname_obj.set_origintype(random.choice(origin_types))
         name.set_surname_list([surname_obj])
     # Add name type (40% chance) - for HasNameType rule
@@ -1838,7 +4164,12 @@ def _create_person_with_variety(db, trans, gender, first_name, surname, tags, pl
         alt_surname.set_surname(generate_random_surname())
         # Add name origin type to alternate name (30% chance)
         if random.random() < 0.3:
-            origin_types = [NameOriginType.PATRILINEAL, NameOriginType.MATRILINEAL, NameOriginType.INHERITED, NameOriginType.GIVEN]
+            origin_types = [
+                NameOriginType.PATRILINEAL,
+                NameOriginType.MATRILINEAL,
+                NameOriginType.INHERITED,
+                NameOriginType.GIVEN,
+            ]
             alt_surname.set_origintype(random.choice(origin_types))
         alt_name.set_surname_list([alt_surname])
         # Add name type to alternate name (40% chance) - often MARRIED for alternate names
@@ -1855,7 +4186,9 @@ def _create_person_with_variety(db, trans, gender, first_name, surname, tags, pl
     birth_year = None
     birth_month = None
     birth_day = None
-    if random.random() < 0.8 or birth_date is not None:  # Always create if birth_date provided (for twins)
+    if (
+        random.random() < 0.8 or birth_date is not None
+    ):  # Always create if birth_date provided (for twins)
         birth_event = Event()
         birth_event.set_type(EventType.BIRTH)
         if birth_date is None:
@@ -1870,7 +4203,9 @@ def _create_person_with_variety(db, trans, gender, first_name, surname, tags, pl
             birth_month = birth_date.get_month() if birth_date else None
             birth_day = birth_date.get_day() if birth_date else None
         birth_event.set_date_object(birth_date)
-        if places and random.random() < 0.95:  # 95% chance - almost every birth has a place
+        if (
+            places and random.random() < 0.95
+        ):  # 95% chance - almost every birth has a place
             birth_event.set_place_handle(random.choice(places))
         # Description (70% chance) - needed for HasData rule - increase to ensure variety
         if random.random() < 0.7:
@@ -1904,9 +4239,13 @@ def _create_person_with_variety(db, trans, gender, first_name, surname, tags, pl
         # Add notes to event (60% chance) - increase for HasNote rule - use specific note types
         if random.random() < 0.6:
             note = Note()
-            note_type = random.choice([NoteType.EVENT, NoteType.GENERAL, NoteType.RESEARCH, NoteType.ANALYSIS])
+            note_type = random.choice(
+                [NoteType.EVENT, NoteType.GENERAL, NoteType.RESEARCH, NoteType.ANALYSIS]
+            )
             note.set_type(note_type)
-            note.set(f"Birth event note: {random.choice(['Hospital birth', 'Home birth', 'Verified', 'Needs verification'])}")
+            note.set(
+                f"Birth event note: {random.choice(['Hospital birth', 'Home birth', 'Verified', 'Needs verification'])}"
+            )
             note_handle = db.add_note(note, trans)
             birth_event.add_note(note_handle)
         # Add tags to event (40% chance) - use canonical tag handle
@@ -1935,19 +4274,21 @@ def _create_person_with_variety(db, trans, gender, first_name, surname, tags, pl
             death_day = random.randint(1, 28)
             # Ensure death date is after birth date
             if death_year == birth_year:
-                if death_month < birth_month or (death_month == birth_month and death_day < birth_day):
+                if death_month < birth_month or (
+                    death_month == birth_month and death_day < birth_day
+                ):
                     death_month = min(12, birth_month + 1)
                     death_day = random.randint(1, 28)
             death_date.set_yr_mon_day(death_year, death_month, death_day)
         else:
             # No birth date, use random date
             death_date.set_yr_mon_day(
-                random.randint(1850, 2020),
-                random.randint(1, 12),
-                random.randint(1, 28)
+                random.randint(1850, 2020), random.randint(1, 12), random.randint(1, 28)
             )
         death_event.set_date_object(death_date)
-        if places and random.random() < 0.95:  # 95% chance - almost every death has a place
+        if (
+            places and random.random() < 0.95
+        ):  # 95% chance - almost every death has a place
             death_event.set_place_handle(random.choice(places))
         # Description (70% chance) - needed for HasData rule - increase to ensure variety
         if random.random() < 0.7:
@@ -1980,9 +4321,13 @@ def _create_person_with_variety(db, trans, gender, first_name, surname, tags, pl
         # Add notes to event (60% chance) - increase for HasNote rule - use specific note types
         if random.random() < 0.6:
             note = Note()
-            note_type = random.choice([NoteType.EVENT, NoteType.GENERAL, NoteType.RESEARCH, NoteType.ANALYSIS])
+            note_type = random.choice(
+                [NoteType.EVENT, NoteType.GENERAL, NoteType.RESEARCH, NoteType.ANALYSIS]
+            )
             note.set_type(note_type)
-            note.set(f"Death event note: {random.choice(['Natural causes', 'Accident', 'Illness', 'Verified'])}")
+            note.set(
+                f"Death event note: {random.choice(['Natural causes', 'Accident', 'Illness', 'Verified'])}"
+            )
             note_handle = db.add_note(note, trans)
             death_event.add_note(note_handle)
         # Add tags to event (40% chance) - use canonical tag handle
@@ -1999,9 +4344,15 @@ def _create_person_with_variety(db, trans, gender, first_name, surname, tags, pl
 
     # Other events - use more event types for variety
     other_event_types = [
-        EventType.MARRIAGE, EventType.OCCUPATION, EventType.RESIDENCE,
-        EventType.EDUCATION, EventType.MILITARY_SERV, EventType.BAPTISM,
-        EventType.CENSUS, EventType.EMIGRATION, EventType.IMMIGRATION
+        EventType.MARRIAGE,
+        EventType.OCCUPATION,
+        EventType.RESIDENCE,
+        EventType.EDUCATION,
+        EventType.MILITARY_SERV,
+        EventType.BAPTISM,
+        EventType.CENSUS,
+        EventType.EMIGRATION,
+        EventType.IMMIGRATION,
     ]
     # Add 1-3 random events per person
     num_other_events = random.randint(0, 3)
@@ -2010,13 +4361,21 @@ def _create_person_with_variety(db, trans, gender, first_name, surname, tags, pl
         event = Event()
         event.set_type(event_type)
         event_date = Date()
-        event_date.set_yr_mon_day(random.randint(1850, 2000), random.randint(1, 12), random.randint(1, 28))
+        event_date.set_yr_mon_day(
+            random.randint(1850, 2000), random.randint(1, 12), random.randint(1, 28)
+        )
         event.set_date_object(event_date)
-        if places and random.random() < 0.95:  # 95% chance - almost every event has a place
+        if (
+            places and random.random() < 0.95
+        ):  # 95% chance - almost every event has a place
             event.set_place_handle(random.choice(places))
         # Description (70% chance) - needed for HasData rule - increase to ensure variety
         if random.random() < 0.7:
-            event_type_name = str(event_type).split('.')[-1] if hasattr(event_type, '__name__') else "Event"
+            event_type_name = (
+                str(event_type).split(".")[-1]
+                if hasattr(event_type, "__name__")
+                else "Event"
+            )
             event.set_description(f"{event_type_name} event for {first_name}")
         # Add citations to event (40% chance)
         if citations and random.random() < 0.4:
@@ -2046,9 +4405,13 @@ def _create_person_with_variety(db, trans, gender, first_name, surname, tags, pl
         # Add notes to event (60% chance) - increase for HasNote rule - use specific note types
         if random.random() < 0.6:
             note = Note()
-            note_type = random.choice([NoteType.EVENT, NoteType.GENERAL, NoteType.RESEARCH, NoteType.ANALYSIS])
+            note_type = random.choice(
+                [NoteType.EVENT, NoteType.GENERAL, NoteType.RESEARCH, NoteType.ANALYSIS]
+            )
             note.set_type(note_type)
-            note.set(f"Event note: {random.choice(['Important', 'Verified', 'Needs verification', 'Research'])}")
+            note.set(
+                f"Event note: {random.choice(['Important', 'Verified', 'Needs verification', 'Research'])}"
+            )
             note_handle = db.add_note(note, trans)
             event.add_note(note_handle)
         # Add tags to event (40% chance) - use canonical tag handle
@@ -2074,9 +4437,15 @@ def _create_person_with_variety(db, trans, gender, first_name, surname, tags, pl
             attr.set_type(attr_type)
             # Use some specific values for common attribute types
             if attr_type == AttributeType.OCCUPATION:
-                attr.set_value(random.choice(["Farmer", "Teacher", "Doctor", "Engineer", "Lawyer"]))
+                attr.set_value(
+                    random.choice(["Farmer", "Teacher", "Doctor", "Engineer", "Lawyer"])
+                )
             elif attr_type == AttributeType.NATIONAL:
-                attr.set_value(random.choice(["American", "British", "French", "German", "Italian"]))
+                attr.set_value(
+                    random.choice(
+                        ["American", "British", "French", "German", "Italian"]
+                    )
+                )
             else:
                 attr.set_value(f"Value_{random.randint(1, 100)}")
         person.add_attribute(attr)
@@ -2085,9 +4454,19 @@ def _create_person_with_variety(db, trans, gender, first_name, surname, tags, pl
     if random.random() < 0.6:
         note = Note()
         # Use specific note types that filter rules might look for
-        note_type = random.choice([NoteType.GENERAL, NoteType.RESEARCH, NoteType.PERSON, NoteType.ANALYSIS, NoteType.TODO])
+        note_type = random.choice(
+            [
+                NoteType.GENERAL,
+                NoteType.RESEARCH,
+                NoteType.PERSON,
+                NoteType.ANALYSIS,
+                NoteType.TODO,
+            ]
+        )
         note.set_type(note_type)
-        note.set(f"Note for {first_name} {surname}: {random.choice(['Important', 'Research', 'Verified', 'DNA match', 'Needs verification'])}")
+        note.set(
+            f"Note for {first_name} {surname}: {random.choice(['Important', 'Research', 'Verified', 'DNA match', 'Needs verification'])}"
+        )
         note_handle = db.add_note(note, trans)
         person.add_note(note_handle)
 
@@ -2103,26 +4482,42 @@ def _create_person_with_variety(db, trans, gender, first_name, surname, tags, pl
         address = Address()
         location = Location()
         street_num = random.randint(1, 9999)
-        street_names = ["Main St", "Oak Ave", "Elm St", "Park Blvd", "Maple Dr", "Cedar Ln"]
+        street_names = [
+            "Main St",
+            "Oak Ave",
+            "Elm St",
+            "Park Blvd",
+            "Maple Dr",
+            "Cedar Ln",
+        ]
         location.set_street(f"{street_num} {random.choice(street_names)}")
-        city_names = ["Springfield", "Franklin", "Georgetown", "Madison", "Washington", "Jefferson"]
-        location.set_city(city_names[random.randint(0, len(city_names)-1)])
+        city_names = [
+            "Springfield",
+            "Franklin",
+            "Georgetown",
+            "Madison",
+            "Washington",
+            "Jefferson",
+        ]
+        location.set_city(city_names[random.randint(0, len(city_names) - 1)])
         state_names = ["IL", "NY", "CA", "TX", "FL", "PA"]
-        location.set_state(state_names[random.randint(0, len(state_names)-1)])
+        location.set_state(state_names[random.randint(0, len(state_names) - 1)])
         location.set_country("USA")
         location.set_postal_code(f"{random.randint(10000, 99999)}")
         address.set_locality(location)
         # Date range for address (optional)
         if random.random() < 0.5:
             date = Date()
-            date.set_yr_mon_day(random.randint(1900, 2000), random.randint(1, 12), random.randint(1, 28))
+            date.set_yr_mon_day(
+                random.randint(1900, 2000), random.randint(1, 12), random.randint(1, 28)
+            )
             address.set_date_object(date)
         person.add_address(address)
-    
+
     # Citations (40% chance - attach to person)
     if citations and random.random() < 0.4:
         person.add_citation(random.choice(citations))
-    
+
     # Media (30% chance - attach to person)
     if media_objects and random.random() < 0.3:
         media_ref = MediaRef()
@@ -2131,7 +4526,7 @@ def _create_person_with_variety(db, trans, gender, first_name, surname, tags, pl
 
     # Associations (20% chance) - for HasAssociation rule
     # Note: We'll add associations after people are created, in _add_special_filter_cases
-    
+
     # Private flag (10% chance)
     if random.random() < 0.1:
         person.set_privacy(True)
@@ -2144,36 +4539,46 @@ def _create_person_with_variety(db, trans, gender, first_name, surname, tags, pl
 def _create_repository(db, trans, tags):
     """Create a repository with various attributes for filter testing."""
     repo = Repository()
-    
+
     # Repository name
     repo_names = [
-        "National Archives", "Library of Congress", "County Records Office",
-        "Family History Library", "State Historical Society", "Local Church",
-        "University Library", "Genealogical Society", "Public Records Office"
+        "National Archives",
+        "Library of Congress",
+        "County Records Office",
+        "Family History Library",
+        "State Historical Society",
+        "Local Church",
+        "University Library",
+        "Genealogical Society",
+        "Public Records Office",
     ]
     repo.set_name(random.choice(repo_names))
-    
+
     # Note: Repositories don't support attributes in Gramps
-    
+
     # Notes (50% chance)
     if random.random() < 0.5:
         note = Note()
-        note.set_type(random.choice([NoteType.REPO, NoteType.GENERAL, NoteType.RESEARCH]))
-        note.set(f"Repository note: {random.choice(['Open to public', 'By appointment', 'Online access available'])}")
+        note.set_type(
+            random.choice([NoteType.REPO, NoteType.GENERAL, NoteType.RESEARCH])
+        )
+        note.set(
+            f"Repository note: {random.choice(['Open to public', 'By appointment', 'Online access available'])}"
+        )
         note_handle = db.add_note(note, trans)
         repo.add_note(note_handle)
-    
+
     # Tags (60% chance) - use canonical tag handle
     if tags and random.random() < 0.6:
         tag_name = random.choice(list(tags.keys()))
         tag_handle = _get_canonical_tag_handle(db, tag_name, tags)
         if tag_handle:
             repo.add_tag(tag_handle)
-    
+
     # Private flag (10% chance)
     if random.random() < 0.1:
         repo.set_privacy(True)
-    
+
     repo_handle = db.add_repository(repo, trans)
     return repo_handle
 
@@ -2181,30 +4586,39 @@ def _create_repository(db, trans, tags):
 def _create_source(db, trans, repositories, tags):
     """Create a source with various attributes for filter testing."""
     source = Source()
-    
+
     # Source title
     source_titles = [
-        "Birth Certificate", "Death Certificate", "Marriage Record",
-        "Census Record", "Military Service Record", "Immigration Record",
-        "Passenger List", "Land Deed", "Will and Testament", "Newspaper Article"
+        "Birth Certificate",
+        "Death Certificate",
+        "Marriage Record",
+        "Census Record",
+        "Military Service Record",
+        "Immigration Record",
+        "Passenger List",
+        "Land Deed",
+        "Will and Testament",
+        "Newspaper Article",
     ]
     source.set_title(random.choice(source_titles))
-    
+
     # Author
     if random.random() < 0.7:
-        source.set_author(f"{generate_random_first_name(Person.MALE)} {generate_random_surname()}")
-    
+        source.set_author(
+            f"{generate_random_first_name(Person.MALE)} {generate_random_surname()}"
+        )
+
     # Publication info
     if random.random() < 0.5:
         source.set_publication_info(f"Published in {random.randint(1800, 2020)}")
-    
+
     # Repository reference (60% chance)
     if repositories and random.random() < 0.6:
         repo_ref = RepoRef()
         repo_ref.set_reference_handle(random.choice(repositories))
         repo_ref.set_call_number(f"Call-{random.randint(1000, 9999)}")
         source.add_repo_reference(repo_ref)
-    
+
     # Attributes (40% chance)
     if random.random() < 0.4:
         attr = Attribute()
@@ -2215,26 +4629,30 @@ def _create_source(db, trans, repositories, tags):
             attr.set_type(attr_type)
         attr.set_value(f"Value_{random.randint(1, 100)}")
         source.add_attribute(attr)
-    
+
     # Notes (50% chance)
     if random.random() < 0.5:
         note = Note()
-        note.set_type(random.choice([NoteType.SOURCE, NoteType.SOURCE_TEXT, NoteType.GENERAL]))
-        note.set(f"Source note: {random.choice(['Verified', 'Needs verification', 'Primary source', 'Secondary source'])}")
+        note.set_type(
+            random.choice([NoteType.SOURCE, NoteType.SOURCE_TEXT, NoteType.GENERAL])
+        )
+        note.set(
+            f"Source note: {random.choice(['Verified', 'Needs verification', 'Primary source', 'Secondary source'])}"
+        )
         note_handle = db.add_note(note, trans)
         source.add_note(note_handle)
-    
+
     # Tags (60% chance) - use canonical tag handle
     if tags and random.random() < 0.6:
         tag_name = random.choice(list(tags.keys()))
         tag_handle = _get_canonical_tag_handle(db, tag_name, tags)
         if tag_handle:
             source.add_tag(tag_handle)
-    
+
     # Private flag (10% chance)
     if random.random() < 0.1:
         source.set_privacy(True)
-    
+
     source_handle = db.add_source(source, trans)
     return source_handle
 
@@ -2242,28 +4660,30 @@ def _create_source(db, trans, repositories, tags):
 def _create_citation(db, trans, sources, tags, media_objects=None):
     """Create a citation with various attributes for filter testing."""
     citation = Citation()
-    
+
     # Source reference - ALWAYS set a source (required for HasSourceOf rules)
     if sources:
         citation.set_reference_handle(random.choice(sources))
     else:
         # If no sources available, this shouldn't happen, but handle gracefully
         raise ValueError("Cannot create citation without sources")
-    
+
     # Page info
     if random.random() < 0.7:
         citation.set_page(f"Page {random.randint(1, 500)}")
-    
+
     # Date
     if random.random() < 0.5:
         date = Date()
-        date.set_yr_mon_day(random.randint(1800, 2020), random.randint(1, 12), random.randint(1, 28))
+        date.set_yr_mon_day(
+            random.randint(1800, 2020), random.randint(1, 12), random.randint(1, 28)
+        )
         citation.set_date_object(date)
-    
+
     # Confidence level
     confidence_levels = [0, 1, 2, 3, 4]  # Very Low to Very High
     citation.set_confidence_level(random.choice(confidence_levels))
-    
+
     # Attributes (50% chance) - increase and use specific values for filter testing
     if random.random() < 0.5:
         attr = Attribute()
@@ -2275,21 +4695,31 @@ def _create_citation(db, trans, sources, tags, media_objects=None):
             attr.set_type(attr_type)
             attr.set_value(f"CitationValue_{random.randint(1, 100)}")
         citation.add_attribute(attr)
-    
+
     # Notes (80% chance) - increase for HasNote rule - use specific note types for filter testing
     if random.random() < 0.8:
         note = Note()
         # Use specific note types that filter rules might look for
-        note_type = random.choice([NoteType.CITATION, NoteType.GENERAL, NoteType.RESEARCH, NoteType.ANALYSIS, NoteType.TODO])
+        note_type = random.choice(
+            [
+                NoteType.CITATION,
+                NoteType.GENERAL,
+                NoteType.RESEARCH,
+                NoteType.ANALYSIS,
+                NoteType.TODO,
+            ]
+        )
         note.set_type(note_type)
-        note.set(f"Citation note: {random.choice(['Direct evidence', 'Indirect evidence', 'Negative evidence', 'Primary source', 'Secondary source'])}")
+        note.set(
+            f"Citation note: {random.choice(['Direct evidence', 'Indirect evidence', 'Negative evidence', 'Primary source', 'Secondary source'])}"
+        )
         note_handle = db.add_note(note, trans)
         citation.add_note(note_handle)
-    
+
     # Private flag (10% chance)
     if random.random() < 0.1:
         citation.set_privacy(True)
-    
+
     citation_handle = db.add_citation(citation, trans)
     # Reload citation from database and add tags
     citation = db.get_citation_from_handle(citation_handle)
@@ -2301,7 +4731,7 @@ def _create_citation(db, trans, sources, tags, media_objects=None):
             citation.add_tag(tag_handle)
     # Commit citation after adding all attributes/tags/notes to ensure they're saved
     db.commit_citation(citation, trans)
-    
+
     # Add media to citation AFTER adding to database (50% chance) - increase for HasGallery rule
     # This ensures the citation exists before we add media references
     if media_objects and random.random() < 0.5:
@@ -2310,15 +4740,16 @@ def _create_citation(db, trans, sources, tags, media_objects=None):
         media_ref.set_reference_handle(random.choice(media_objects))
         citation.add_media_reference(media_ref)
         db.commit_citation(citation, trans)
-    
+
     return citation_handle
 
 
-def _add_special_filter_cases(db, trans, people_handles, families_handles,
-                              citations, sources, media_objects, tags):
+def _add_special_filter_cases(
+    db, trans, people_handles, families_handles, citations, sources, media_objects, tags
+):
     """Add special cases for filter rules that need specific arguments."""
     from datetime import datetime, timedelta
-    
+
     # Ensure at least one media object has a citation with the first source (for media.HasSourceOf rule)
     # This ensures the test can use the first source ID and it will match
     if media_objects and sources and citations:
@@ -2333,16 +4764,17 @@ def _add_special_filter_cases(db, trans, people_handles, families_handles,
                     break
             except:
                 continue
-        
+
         if not citation_with_first_source:
             # Create a new citation with the first source
             from gramps.gen.lib import Citation
+
             citation = Citation()
             citation.set_reference_handle(first_source_handle)
             citation.set_page("TestPage")
             citation_handle = db.add_citation(citation, trans)
             citation_with_first_source = citation_handle
-        
+
         # Find a media object that doesn't have this citation yet
         target_media_handle = None
         for media_handle in media_objects:
@@ -2353,10 +4785,10 @@ def _add_special_filter_cases(db, trans, people_handles, families_handles,
                     break
             except:
                 continue
-        
+
         if not target_media_handle:
             target_media_handle = media_objects[0]
-        
+
         try:
             target_media = db.get_media_from_handle(target_media_handle)
             target_media.add_citation(citation_with_first_source)
@@ -2364,12 +4796,14 @@ def _add_special_filter_cases(db, trans, people_handles, families_handles,
         except Exception as e:
             # If this fails, it's not critical - we'll still have some media with citations
             pass
-    
+
     # 0. Add associations to some people (for HasAssociation rule)
     if people_handles and len(people_handles) >= 2:
         # Add associations to 20% of people
         num_associations = int(len(people_handles) * 0.2)
-        people_to_associate = random.sample(people_handles, min(num_associations, len(people_handles)))
+        people_to_associate = random.sample(
+            people_handles, min(num_associations, len(people_handles))
+        )
         for person_handle in people_to_associate:
             person = db.get_person_from_handle(person_handle)
             # Find another person to associate with
@@ -2382,13 +4816,13 @@ def _add_special_filter_cases(db, trans, people_handles, families_handles,
                 person_ref.set_relation("Friend")  # or "Colleague", "Neighbor", etc.
                 person.add_person_ref(person_ref)
                 db.commit_person(person, trans)
-    
+
     # Get current date for ChangedSince rules
     today = datetime.now()
     yesterday = today - timedelta(days=1)
     last_week = today - timedelta(days=7)
     last_month = today - timedelta(days=30)
-    
+
     # 1. Ensure some events have dates with specific days of week for HasDayOfWeek rule
     # The rule uses get_dow() which returns 0-6 (0=Sunday, 1=Monday, etc.)
     # We need events with dates that have day-of-week calculated
@@ -2397,7 +4831,9 @@ def _add_special_filter_cases(db, trans, people_handles, families_handles,
     if event_handles:
         # Check existing events - most should already have dates with day-of-week
         # The rule will work if events have dates with year, month, and day
-        for event_handle in random.sample(event_handles, min(10, len(event_handles) // 10)):
+        for event_handle in random.sample(
+            event_handles, min(10, len(event_handles) // 10)
+        ):
             event = db.get_event_from_handle(event_handle)
             if event.get_date_object():
                 # Keep existing date but ensure it's valid
@@ -2405,10 +4841,14 @@ def _add_special_filter_cases(db, trans, people_handles, families_handles,
             else:
                 # Add a date if missing
                 date = Date()
-                date.set_yr_mon_day(random.randint(1900, 2000), random.randint(1, 12), random.randint(1, 28))
+                date.set_yr_mon_day(
+                    random.randint(1900, 2000),
+                    random.randint(1, 12),
+                    random.randint(1, 28),
+                )
                 event.set_date_object(date)
                 db.commit_event(event, trans)
-    
+
     # 2. Add some citations with specific source IDs for HasSourceIdOf rule
     if citations and sources:
         # Get a specific source ID to use
@@ -2420,27 +4860,29 @@ def _add_special_filter_cases(db, trans, people_handles, families_handles,
             # Set to the sample source
             citation.set_reference_handle(sample_source.handle)
             db.commit_citation(citation, trans)
-    
+
     # 3. Add some events/citations with recent change dates for ChangedSince rule
     # Note: We can't directly set change dates, but we can ensure they exist
     # The ChangedSince rule typically uses the change time, which is set automatically
-    
+
     # 4. Ensure some events have specific types for HasType rule
     # This is already handled in event creation, but ensure we have variety
-    
+
     # 5. Add some citations with specific page strings for MatchesPageSubstringOf
     if citations:
         for citation_handle in random.sample(citations, min(10, len(citations) // 5)):
             citation = db.get_citation_from_handle(citation_handle)
             citation.set_page(f"Page {random.choice(['42', '100', '200', '300'])}")
             db.commit_citation(citation, trans)
-    
+
     # 6. Add some sources with repository references for HasRepository rule
     # This is already handled, but ensure some have it
-    
+
     # 7. Ensure some people have specific attribute values
     if people_handles:
-        for person_handle in random.sample(people_handles, min(10, len(people_handles) // 10)):
+        for person_handle in random.sample(
+            people_handles, min(10, len(people_handles) // 10)
+        ):
             person = db.get_person_from_handle(person_handle)
             # Add a specific attribute value if they don't have one
             if not person.get_attribute_list():
@@ -2449,11 +4891,13 @@ def _add_special_filter_cases(db, trans, people_handles, families_handles,
                 attr.set_value("Doctor")  # Specific value for testing
                 person.add_attribute(attr)
                 db.commit_person(person, trans)
-    
+
     # 8. Ensure some events have specific note types
     event_handles = db.get_event_handles()
     if event_handles:
-        for event_handle in random.sample(event_handles, min(10, len(event_handles) // 10)):
+        for event_handle in random.sample(
+            event_handles, min(10, len(event_handles) // 10)
+        ):
             event = db.get_event_from_handle(event_handle)
             if not event.get_note_list():
                 note = Note()
@@ -2462,7 +4906,7 @@ def _add_special_filter_cases(db, trans, people_handles, families_handles,
                 note_handle = db.add_note(note, trans)
                 event.add_note(note_handle)
                 db.commit_event(event, trans)
-    
+
     # 9. Ensure some citations have tags, notes, and media for filter rules
     if citations:
         # Ensure at least 30% have tags (for HasTag rule)
@@ -2471,9 +4915,14 @@ def _add_special_filter_cases(db, trans, people_handles, families_handles,
             citation = db.get_citation_from_handle(citation_handle)
             if not citation.get_tag_list():
                 citations_without_tags.append(citation_handle)
-        
-        num_to_add_tags = max(0, int(len(citations) * 0.3) - (len(citations) - len(citations_without_tags)))
-        for citation_handle in random.sample(citations_without_tags, min(num_to_add_tags, len(citations_without_tags))):
+
+        num_to_add_tags = max(
+            0,
+            int(len(citations) * 0.3) - (len(citations) - len(citations_without_tags)),
+        )
+        for citation_handle in random.sample(
+            citations_without_tags, min(num_to_add_tags, len(citations_without_tags))
+        ):
             if tags:
                 citation = db.get_citation_from_handle(citation_handle)
                 tag_name = random.choice(list(tags.keys()))
@@ -2481,17 +4930,22 @@ def _add_special_filter_cases(db, trans, people_handles, families_handles,
                 if tag_handle:
                     citation.add_tag(tag_handle)
                 db.commit_citation(citation, trans)
-        
+
         # Ensure at least 30% have notes (for HasNote rule)
         citations_without_notes = []
         for citation_handle in citations:
             citation = db.get_citation_from_handle(citation_handle)
             if not citation.get_note_list():
                 citations_without_notes.append(citation_handle)
-        
+
         # Add notes to some citations that don't have them
-        num_to_add_notes = max(0, int(len(citations) * 0.3) - (len(citations) - len(citations_without_notes)))
-        for citation_handle in random.sample(citations_without_notes, min(num_to_add_notes, len(citations_without_notes))):
+        num_to_add_notes = max(
+            0,
+            int(len(citations) * 0.3) - (len(citations) - len(citations_without_notes)),
+        )
+        for citation_handle in random.sample(
+            citations_without_notes, min(num_to_add_notes, len(citations_without_notes))
+        ):
             citation = db.get_citation_from_handle(citation_handle)
             note = Note()
             note.set_type(NoteType.CITATION)  # Specific note type
@@ -2499,24 +4953,29 @@ def _add_special_filter_cases(db, trans, people_handles, families_handles,
             note_handle = db.add_note(note, trans)
             citation.add_note(note_handle)
             db.commit_citation(citation, trans)
-        
+
         # Ensure at least 30% have media (for HasGallery rule)
         citations_without_media = []
         for citation_handle in citations:
             citation = db.get_citation_from_handle(citation_handle)
             if not citation.get_media_list():
                 citations_without_media.append(citation_handle)
-        
+
         # Add media to some citations that don't have it
-        num_to_add_media = max(0, int(len(citations) * 0.3) - (len(citations) - len(citations_without_media)))
-        for citation_handle in random.sample(citations_without_media, min(num_to_add_media, len(citations_without_media))):
+        num_to_add_media = max(
+            0,
+            int(len(citations) * 0.3) - (len(citations) - len(citations_without_media)),
+        )
+        for citation_handle in random.sample(
+            citations_without_media, min(num_to_add_media, len(citations_without_media))
+        ):
             if media_objects:
                 citation = db.get_citation_from_handle(citation_handle)
                 media_ref = MediaRef()
                 media_ref.set_reference_handle(random.choice(media_objects))
                 citation.add_media_reference(media_ref)
                 db.commit_citation(citation, trans)
-    
+
     # 10. Ensure families have tags, notes, and attributes for filter rules
     if families_handles:
         # Ensure at least 30% have tags (for HasTag rule)
@@ -2525,9 +4984,15 @@ def _add_special_filter_cases(db, trans, people_handles, families_handles,
             family = db.get_family_from_handle(family_handle)
             if not family.get_tag_list():
                 families_without_tags.append(family_handle)
-        
-        num_to_add_tags = max(0, int(len(families_handles) * 0.3) - (len(families_handles) - len(families_without_tags)))
-        for family_handle in random.sample(families_without_tags, min(num_to_add_tags, len(families_without_tags))):
+
+        num_to_add_tags = max(
+            0,
+            int(len(families_handles) * 0.3)
+            - (len(families_handles) - len(families_without_tags)),
+        )
+        for family_handle in random.sample(
+            families_without_tags, min(num_to_add_tags, len(families_without_tags))
+        ):
             if tags:
                 family = db.get_family_from_handle(family_handle)
                 tag_name = random.choice(list(tags.keys()))
@@ -2535,16 +5000,22 @@ def _add_special_filter_cases(db, trans, people_handles, families_handles,
                 if tag_handle:
                     family.add_tag(tag_handle)
                 db.commit_family(family, trans)
-        
+
         # Ensure at least 30% have notes (for HasNote rule)
         families_without_notes = []
         for family_handle in families_handles:
             family = db.get_family_from_handle(family_handle)
             if not family.get_note_list():
                 families_without_notes.append(family_handle)
-        
-        num_to_add_notes = max(0, int(len(families_handles) * 0.3) - (len(families_handles) - len(families_without_notes)))
-        for family_handle in random.sample(families_without_notes, min(num_to_add_notes, len(families_without_notes))):
+
+        num_to_add_notes = max(
+            0,
+            int(len(families_handles) * 0.3)
+            - (len(families_handles) - len(families_without_notes)),
+        )
+        for family_handle in random.sample(
+            families_without_notes, min(num_to_add_notes, len(families_without_notes))
+        ):
             family = db.get_family_from_handle(family_handle)
             note = Note()
             note.set_type(NoteType.FAMILY)
@@ -2552,16 +5023,22 @@ def _add_special_filter_cases(db, trans, people_handles, families_handles,
             note_handle = db.add_note(note, trans)
             family.add_note(note_handle)
             db.commit_family(family, trans)
-        
+
         # Ensure at least 30% have attributes (for HasAttribute rule)
         families_without_attrs = []
         for family_handle in families_handles:
             family = db.get_family_from_handle(family_handle)
             if not family.get_attribute_list():
                 families_without_attrs.append(family_handle)
-        
-        num_to_add_attrs = max(0, int(len(families_handles) * 0.3) - (len(families_handles) - len(families_without_attrs)))
-        for family_handle in random.sample(families_without_attrs, min(num_to_add_attrs, len(families_without_attrs))):
+
+        num_to_add_attrs = max(
+            0,
+            int(len(families_handles) * 0.3)
+            - (len(families_handles) - len(families_without_attrs)),
+        )
+        for family_handle in random.sample(
+            families_without_attrs, min(num_to_add_attrs, len(families_without_attrs))
+        ):
             family = db.get_family_from_handle(family_handle)
             attr = Attribute()
             attr_type = random.choice(ATTRIBUTE_TYPES)
@@ -2573,7 +5050,7 @@ def _add_special_filter_cases(db, trans, people_handles, families_handles,
                 attr.set_value(f"FamilyValue_{random.randint(1, 100)}")
             family.add_attribute(attr)
             db.commit_family(family, trans)
-    
+
     # 11. Ensure some events have attributes, tags, notes, and media for filter rules
     event_handles = db.get_event_handles()
     if event_handles:
@@ -2583,9 +5060,15 @@ def _add_special_filter_cases(db, trans, people_handles, families_handles,
             event = db.get_event_from_handle(event_handle)
             if not event.get_attribute_list():
                 events_without_attrs.append(event_handle)
-        
-        num_to_add_attrs = max(0, int(len(event_handles) * 0.3) - (len(event_handles) - len(events_without_attrs)))
-        for event_handle in random.sample(events_without_attrs, min(num_to_add_attrs, len(events_without_attrs))):
+
+        num_to_add_attrs = max(
+            0,
+            int(len(event_handles) * 0.3)
+            - (len(event_handles) - len(events_without_attrs)),
+        )
+        for event_handle in random.sample(
+            events_without_attrs, min(num_to_add_attrs, len(events_without_attrs))
+        ):
             event = db.get_event_from_handle(event_handle)
             attr = Attribute()
             attr_type = random.choice(ATTRIBUTE_TYPES)
@@ -2597,16 +5080,22 @@ def _add_special_filter_cases(db, trans, people_handles, families_handles,
                 attr.set_value(f"EventValue_{random.randint(1, 100)}")
             event.add_attribute(attr)
             db.commit_event(event, trans)
-        
+
         # Ensure at least 30% have tags (for HasTag rule)
         events_without_tags = []
         for event_handle in event_handles:
             event = db.get_event_from_handle(event_handle)
             if not event.get_tag_list():
                 events_without_tags.append(event_handle)
-        
-        num_to_add_tags = max(0, int(len(event_handles) * 0.3) - (len(event_handles) - len(events_without_tags)))
-        for event_handle in random.sample(events_without_tags, min(num_to_add_tags, len(events_without_tags))):
+
+        num_to_add_tags = max(
+            0,
+            int(len(event_handles) * 0.3)
+            - (len(event_handles) - len(events_without_tags)),
+        )
+        for event_handle in random.sample(
+            events_without_tags, min(num_to_add_tags, len(events_without_tags))
+        ):
             if tags:
                 event = db.get_event_from_handle(event_handle)
                 tag_name = random.choice(list(tags.keys()))
@@ -2614,16 +5103,22 @@ def _add_special_filter_cases(db, trans, people_handles, families_handles,
                 if tag_handle:
                     event.add_tag(tag_handle)
                 db.commit_event(event, trans)
-        
+
         # Ensure at least 40% have notes
         events_without_notes = []
         for event_handle in event_handles:
             event = db.get_event_from_handle(event_handle)
             if not event.get_note_list():
                 events_without_notes.append(event_handle)
-        
-        num_to_add_notes = max(0, int(len(event_handles) * 0.4) - (len(event_handles) - len(events_without_notes)))
-        for event_handle in random.sample(events_without_notes, min(num_to_add_notes, len(events_without_notes))):
+
+        num_to_add_notes = max(
+            0,
+            int(len(event_handles) * 0.4)
+            - (len(event_handles) - len(events_without_notes)),
+        )
+        for event_handle in random.sample(
+            events_without_notes, min(num_to_add_notes, len(events_without_notes))
+        ):
             event = db.get_event_from_handle(event_handle)
             note = Note()
             note.set_type(NoteType.ANALYSIS)  # Specific note type
@@ -2631,40 +5126,52 @@ def _add_special_filter_cases(db, trans, people_handles, families_handles,
             note_handle = db.add_note(note, trans)
             event.add_note(note_handle)
             db.commit_event(event, trans)
-        
+
         # Ensure at least 30% have media
         events_without_media = []
         for event_handle in event_handles:
             event = db.get_event_from_handle(event_handle)
             if not event.get_media_list():
                 events_without_media.append(event_handle)
-        
-        num_to_add_media = max(0, int(len(event_handles) * 0.3) - (len(event_handles) - len(events_without_media)))
-        for event_handle in random.sample(events_without_media, min(num_to_add_media, len(events_without_media))):
+
+        num_to_add_media = max(
+            0,
+            int(len(event_handles) * 0.3)
+            - (len(event_handles) - len(events_without_media)),
+        )
+        for event_handle in random.sample(
+            events_without_media, min(num_to_add_media, len(events_without_media))
+        ):
             if media_objects:
                 event = db.get_event_from_handle(event_handle)
                 media_ref = MediaRef()
                 media_ref.set_reference_handle(random.choice(media_objects))
                 event.add_media_reference(media_ref)
                 db.commit_event(event, trans)
-        
+
         # Ensure at least 50% have descriptions (for HasData rule)
         events_without_desc = []
         for event_handle in event_handles:
             event = db.get_event_from_handle(event_handle)
             if not event.get_description():
                 events_without_desc.append(event_handle)
-        
-        num_to_add_desc = max(0, int(len(event_handles) * 0.5) - (len(event_handles) - len(events_without_desc)))
-        for event_handle in random.sample(events_without_desc, min(num_to_add_desc, len(events_without_desc))):
+
+        num_to_add_desc = max(
+            0,
+            int(len(event_handles) * 0.5)
+            - (len(event_handles) - len(events_without_desc)),
+        )
+        for event_handle in random.sample(
+            events_without_desc, min(num_to_add_desc, len(events_without_desc))
+        ):
             event = db.get_event_from_handle(event_handle)
             event_type_name = "Event"
             if event.get_type():
                 event_type = event.get_type()
-                if hasattr(event_type, '__name__'):
+                if hasattr(event_type, "__name__"):
                     event_type_name = event_type.__name__
                 else:
-                    event_type_name = str(event_type).split('.')[-1]
+                    event_type_name = str(event_type).split(".")[-1]
             event.set_description(f"{event_type_name} description for filter testing")
             db.commit_event(event, trans)
 
@@ -2672,31 +5179,39 @@ def _add_special_filter_cases(db, trans, people_handles, families_handles,
 def _create_media(db, trans, citations, sources, tags):
     """Create a media object with various attributes for filter testing."""
     media = Media()
-    
+
     # Media path/description
     media_paths = [
-        "photos/photo001.jpg", "documents/certificate.pdf", "scans/scan001.tif",
-        "images/image001.png", "records/record001.jpg", "photos/portrait.jpg"
+        "photos/photo001.jpg",
+        "documents/certificate.pdf",
+        "scans/scan001.tif",
+        "images/image001.png",
+        "records/record001.jpg",
+        "photos/portrait.jpg",
     ]
     media.set_path(random.choice(media_paths))
-    
+
     # Mime type
     mime_types = ["image/jpeg", "image/png", "image/tiff", "application/pdf"]
     media.set_mime_type(random.choice(mime_types))
-    
+
     # Description
     if random.random() < 0.7:
-        media.set_description(f"Media description: {random.choice(['Family photo', 'Document scan', 'Certificate', 'Portrait'])}")
-    
+        media.set_description(
+            f"Media description: {random.choice(['Family photo', 'Document scan', 'Certificate', 'Portrait'])}"
+        )
+
     # Date
     if random.random() < 0.5:
         date = Date()
-        date.set_yr_mon_day(random.randint(1800, 2020), random.randint(1, 12), random.randint(1, 28))
+        date.set_yr_mon_day(
+            random.randint(1800, 2020), random.randint(1, 12), random.randint(1, 28)
+        )
         media.set_date_object(date)
-    
+
     # Note: Citations and sources will be added to media after citations are created
     # This is done in the main generate_database function
-    
+
     # Attributes (40% chance)
     if random.random() < 0.4:
         attr = Attribute()
@@ -2707,26 +5222,30 @@ def _create_media(db, trans, citations, sources, tags):
             attr.set_type(attr_type)
         attr.set_value(f"Value_{random.randint(1, 100)}")
         media.add_attribute(attr)
-    
+
     # Notes (50% chance)
     if random.random() < 0.5:
         note = Note()
-        note.set_type(random.choice([NoteType.MEDIA, NoteType.GENERAL, NoteType.PERSON]))
-        note.set(f"Media note: {random.choice(['High quality', 'Needs restoration', 'Original', 'Copy'])}")
+        note.set_type(
+            random.choice([NoteType.MEDIA, NoteType.GENERAL, NoteType.PERSON])
+        )
+        note.set(
+            f"Media note: {random.choice(['High quality', 'Needs restoration', 'Original', 'Copy'])}"
+        )
         note_handle = db.add_note(note, trans)
         media.add_note(note_handle)
-    
+
     # Tags (60% chance) - use canonical tag handle
     if tags and random.random() < 0.6:
         tag_name = random.choice(list(tags.keys()))
         tag_handle = _get_canonical_tag_handle(db, tag_name, tags)
         if tag_handle:
             media.add_tag(tag_handle)
-    
+
     # Private flag (10% chance)
     if random.random() < 0.1:
         media.set_privacy(True)
-    
+
     media_handle = db.add_media(media, trans)
     return media_handle
 
@@ -2755,41 +5274,41 @@ Examples:
 
   # Quiet mode (suppress progress messages)
   %(prog)s 1000 --quiet
-        """
+        """,
     )
 
     parser.add_argument(
         "num_people",
         type=int,
-        help="Approximate number of people to create in the database"
+        help="Approximate number of people to create in the database",
     )
 
     parser.add_argument(
         "--path",
         type=str,
         default=None,
-        help="Path where to create the database (default: Gramps default database directory)"
+        help="Path where to create the database (default: Gramps default database directory)",
     )
 
     parser.add_argument(
         "--dbid",
         type=str,
         default="sqlite",
-        help="Database backend ID (default: sqlite). Options: sqlite, bsddb, etc."
+        help="Database backend ID (default: sqlite). Options: sqlite, bsddb, etc.",
     )
 
     parser.add_argument(
         "--seed",
         type=int,
         default=None,
-        help="Random seed for reproducibility. Same seed generates identical database."
+        help="Random seed for reproducibility. Same seed generates identical database.",
     )
 
     parser.add_argument(
         "--quiet",
         "-q",
         action="store_true",
-        help="Suppress progress messages during generation"
+        help="Suppress progress messages during generation",
     )
 
     args = parser.parse_args()
@@ -2798,15 +5317,12 @@ Examples:
     if args.quiet:
         import io
         import contextlib
-        
+
         # Redirect stdout to suppress progress messages
         with contextlib.redirect_stdout(io.StringIO()):
             try:
                 path = generate_database(
-                    args.num_people,
-                    db_path=args.path,
-                    dbid=args.dbid,
-                    seed=args.seed
+                    args.num_people, db_path=args.path, dbid=args.dbid, seed=args.seed
                 )
             except Exception as e:
                 print(f"Error: {e}", file=sys.stderr)
@@ -2816,10 +5332,7 @@ Examples:
     else:
         try:
             path = generate_database(
-                args.num_people,
-                db_path=args.path,
-                dbid=args.dbid,
-                seed=args.seed
+                args.num_people, db_path=args.path, dbid=args.dbid, seed=args.seed
             )
         except Exception as e:
             print(f"Error: {e}", file=sys.stderr)
@@ -2829,4 +5342,3 @@ Examples:
 
 if __name__ == "__main__":
     main()
-
