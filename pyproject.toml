@@ -40,6 +40,7 @@ dependencies = [
 [project.scripts]
 gramps-bench = "gramps_bench.cli.gramps_bench:main"
 gramps-bench-all = "gramps_bench.cli.gramps_bench_all:main"
+gramps-database-generator = "gramps_bench.database_generator:main"
 
 [project.urls]
 Homepage = "https://github.com/dsblank/gramps-bench"
