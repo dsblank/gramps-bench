@@ -1,0 +1,541 @@
+{
+  "test_suite": "Filter Rules Timing",
+  "timestamp": "2025-12-17T15:08:24.012031",
+  "total_rules_tested": 66,
+  "rules": {
+    "citation.HasGallery": {
+      "category": "citation",
+      "rule_name": "HasGallery",
+      "time_seconds": 3.8416670910082757,
+      "items_tested": 30000,
+      "matches": 29813,
+      "matches_percentage": 99.37666666666667
+    },
+    "citation.HasNoteRegexp": {
+      "category": "citation",
+      "rule_name": "HasNoteRegexp",
+      "time_seconds": 5.053671238012612,
+      "items_tested": 30000,
+      "matches": 12027,
+      "matches_percentage": 40.089999999999996
+    },
+    "citation.HasNoteType": {
+      "category": "citation",
+      "rule_name": "HasNoteType",
+      "time_seconds": 4.957297626067884,
+      "items_tested": 30000,
+      "matches": 12020,
+      "matches_percentage": 40.06666666666667
+    },
+    "citation.HasTag": {
+      "category": "citation",
+      "rule_name": "HasTag",
+      "time_seconds": 3.7034559190506116,
+      "items_tested": 30000,
+      "matches": 11860,
+      "matches_percentage": 39.53333333333333
+    },
+    "event.HasCitation": {
+      "category": "event",
+      "rule_name": "HasCitation",
+      "time_seconds": 4.6517972650472075,
+      "items_tested": 331066,
+      "matches": 40076,
+      "matches_percentage": 12.105139156542805
+    },
+    "event.HasGallery": {
+      "category": "event",
+      "rule_name": "HasGallery",
+      "time_seconds": 3.811578964930959,
+      "items_tested": 331066,
+      "matches": 29813,
+      "matches_percentage": 9.005153051053265
+    },
+    "event.HasNote": {
+      "category": "event",
+      "rule_name": "HasNote",
+      "time_seconds": 3.7298685100395232,
+      "items_tested": 331066,
+      "matches": 59867,
+      "matches_percentage": 18.083101254734704
+    },
+    "event.HasNoteType": {
+      "category": "event",
+      "rule_name": "HasNoteType",
+      "time_seconds": 4.494789686985314,
+      "items_tested": 331066,
+      "matches": 11863,
+      "matches_percentage": 3.5832734258425814
+    },
+    "event.HasSourceCount": {
+      "category": "event",
+      "rule_name": "HasSourceCount",
+      "time_seconds": 4.036094129085541,
+      "items_tested": 331066,
+      "matches": 40076,
+      "matches_percentage": 12.105139156542805
+    },
+    "event.HasTag": {
+      "category": "event",
+      "rule_name": "HasTag",
+      "time_seconds": 3.9336238719988614,
+      "items_tested": 331066,
+      "matches": 11888,
+      "matches_percentage": 3.5908247902230976
+    },
+    "event.MatchesSourceConfidence": {
+      "category": "event",
+      "rule_name": "MatchesSourceConfidence",
+      "time_seconds": 4.711300132097676,
+      "items_tested": 331066,
+      "matches": 24262,
+      "matches_percentage": 7.328448104003431
+    },
+    "family.HasCitation": {
+      "category": "family",
+      "rule_name": "HasCitation",
+      "time_seconds": 4.330280837020837,
+      "items_tested": 46315,
+      "matches": 40076,
+      "matches_percentage": 86.52920220231026
+    },
+    "family.HasGallery": {
+      "category": "family",
+      "rule_name": "HasGallery",
+      "time_seconds": 3.7898129189852625,
+      "items_tested": 46315,
+      "matches": 29813,
+      "matches_percentage": 64.37007448990609
+    },
+    "family.HasNoteMatchingSubstringOf": {
+      "category": "family",
+      "rule_name": "HasNoteMatchingSubstringOf",
+      "time_seconds": 4.413136152084917,
+      "items_tested": 46315,
+      "matches": 11958,
+      "matches_percentage": 25.818849184929288
+    },
+    "family.HasSourceCount": {
+      "category": "family",
+      "rule_name": "HasSourceCount",
+      "time_seconds": 4.256711577996612,
+      "items_tested": 46315,
+      "matches": 40076,
+      "matches_percentage": 86.52920220231026
+    },
+    "family.HasTag": {
+      "category": "family",
+      "rule_name": "HasTag",
+      "time_seconds": 4.142338947043754,
+      "items_tested": 46315,
+      "matches": 11860,
+      "matches_percentage": 25.607254669113676
+    },
+    "family.MatchesSourceConfidence": {
+      "category": "family",
+      "rule_name": "MatchesSourceConfidence",
+      "time_seconds": 4.4592168419621885,
+      "items_tested": 46315,
+      "matches": 24262,
+      "matches_percentage": 52.38475655835043
+    },
+    "media.HasCitation": {
+      "category": "media",
+      "rule_name": "HasCitation",
+      "time_seconds": 4.371954438043758,
+      "items_tested": 20000,
+      "matches": 69,
+      "matches_percentage": 0.345
+    },
+    "media.HasSourceOf": {
+      "category": "media",
+      "rule_name": "HasSourceOf",
+      "time_seconds": 4.706749462056905,
+      "items_tested": 20000,
+      "matches": 3,
+      "matches_percentage": 0.015
+    },
+    "media.HasTag": {
+      "category": "media",
+      "rule_name": "HasTag",
+      "time_seconds": 3.7009231849806383,
+      "items_tested": 20000,
+      "matches": 12050,
+      "matches_percentage": 60.25
+    },
+    "note.HasTag": {
+      "category": "note",
+      "rule_name": "HasTag",
+      "time_seconds": 3.8997320509515703,
+      "items_tested": 305296,
+      "matches": 12212,
+      "matches_percentage": 4.000052408154709
+    },
+    "person.Disconnected": {
+      "category": "person",
+      "rule_name": "Disconnected",
+      "time_seconds": 0.41876931698061526,
+      "items_tested": 100000,
+      "matches": 1000,
+      "matches_percentage": 1.0
+    },
+    "person.FamilyWithIncompleteEvent": {
+      "category": "person",
+      "rule_name": "FamilyWithIncompleteEvent",
+      "time_seconds": 7.89503249397967,
+      "items_tested": 100000,
+      "matches": 20920,
+      "matches_percentage": 20.919999999999998
+    },
+    "person.HasAddress": {
+      "category": "person",
+      "rule_name": "HasAddress",
+      "time_seconds": 4.0898094970034435,
+      "items_tested": 100000,
+      "matches": 29993,
+      "matches_percentage": 29.993
+    },
+    "person.HasAddressText": {
+      "category": "person",
+      "rule_name": "HasAddressText",
+      "time_seconds": 3.944148935028352,
+      "items_tested": 100000,
+      "matches": 29993,
+      "matches_percentage": 29.993
+    },
+    "person.HasAlternateName": {
+      "category": "person",
+      "rule_name": "HasAlternateName",
+      "time_seconds": 4.075124992989004,
+      "items_tested": 100000,
+      "matches": 30099,
+      "matches_percentage": 30.098999999999997
+    },
+    "person.HasAssociation": {
+      "category": "person",
+      "rule_name": "HasAssociation",
+      "time_seconds": 3.906615575077012,
+      "items_tested": 100000,
+      "matches": 20000,
+      "matches_percentage": 20.0
+    },
+    "person.HasBirth": {
+      "category": "person",
+      "rule_name": "HasBirth",
+      "time_seconds": 6.322349069989286,
+      "items_tested": 100000,
+      "matches": 80006,
+      "matches_percentage": 80.006
+    },
+    "person.HasCitation": {
+      "category": "person",
+      "rule_name": "HasCitation",
+      "time_seconds": 4.914182870998047,
+      "items_tested": 100000,
+      "matches": 40076,
+      "matches_percentage": 40.076
+    },
+    "person.HasCommonAncestorWith": {
+      "category": "person",
+      "rule_name": "HasCommonAncestorWith",
+      "time_seconds": 15.710633088019677,
+      "items_tested": 100000,
+      "matches": 98995,
+      "matches_percentage": 98.995
+    },
+    "person.HasDeath": {
+      "category": "person",
+      "rule_name": "HasDeath",
+      "time_seconds": 7.229908201028593,
+      "items_tested": 100000,
+      "matches": 65030,
+      "matches_percentage": 65.03
+    },
+    "person.HasEvent": {
+      "category": "person",
+      "rule_name": "HasEvent",
+      "time_seconds": 12.14957133308053,
+      "items_tested": 100000,
+      "matches": 65030,
+      "matches_percentage": 65.03
+    },
+    "person.HasFamilyAttribute": {
+      "category": "person",
+      "rule_name": "HasFamilyAttribute",
+      "time_seconds": 6.474952743039466,
+      "items_tested": 100000,
+      "matches": 46,
+      "matches_percentage": 0.046
+    },
+    "person.HasFamilyEvent": {
+      "category": "person",
+      "rule_name": "HasFamilyEvent",
+      "time_seconds": 7.5131072459043935,
+      "items_tested": 100000,
+      "matches": 63498,
+      "matches_percentage": 63.498
+    },
+    "person.HasIdOf": {
+      "category": "person",
+      "rule_name": "HasIdOf",
+      "time_seconds": 0.03361471905373037,
+      "items_tested": 100000,
+      "matches": 1,
+      "matches_percentage": 0.001
+    },
+    "person.HasNameOf": {
+      "category": "person",
+      "rule_name": "HasNameOf",
+      "time_seconds": 4.133044776041061,
+      "items_tested": 100000,
+      "matches": 2,
+      "matches_percentage": 0.002
+    },
+    "person.HasNameOriginType": {
+      "category": "person",
+      "rule_name": "HasNameOriginType",
+      "time_seconds": 4.115829602931626,
+      "items_tested": 100000,
+      "matches": 9167,
+      "matches_percentage": 9.167
+    },
+    "person.HasNameType": {
+      "category": "person",
+      "rule_name": "HasNameType",
+      "time_seconds": 4.04752980300691,
+      "items_tested": 100000,
+      "matches": 79175,
+      "matches_percentage": 79.175
+    },
+    "person.HasNickname": {
+      "category": "person",
+      "rule_name": "HasNickname",
+      "time_seconds": 4.089803334092721,
+      "items_tested": 100000,
+      "matches": 3806,
+      "matches_percentage": 3.8059999999999996
+    },
+    "person.HasNote": {
+      "category": "person",
+      "rule_name": "HasNote",
+      "time_seconds": 4.213640976930037,
+      "items_tested": 100000,
+      "matches": 59867,
+      "matches_percentage": 59.867000000000004
+    },
+    "person.HasNoteMatchingSubstringOf": {
+      "category": "person",
+      "rule_name": "HasNoteMatchingSubstringOf",
+      "time_seconds": 4.911397823016159,
+      "items_tested": 100000,
+      "matches": 11831,
+      "matches_percentage": 11.831
+    },
+    "person.HasNoteType": {
+      "category": "person",
+      "rule_name": "HasNoteType",
+      "time_seconds": 4.88829126697965,
+      "items_tested": 100000,
+      "matches": 12095,
+      "matches_percentage": 12.095
+    },
+    "person.HasOtherGender": {
+      "category": "person",
+      "rule_name": "HasOtherGender",
+      "time_seconds": 4.027877236017957,
+      "items_tested": 100000,
+      "matches": 2375,
+      "matches_percentage": 2.375
+    },
+    "person.HasRelationship": {
+      "category": "person",
+      "rule_name": "HasRelationship",
+      "time_seconds": 6.6402529400074854,
+      "items_tested": 100000,
+      "matches": 18240,
+      "matches_percentage": 18.240000000000002
+    },
+    "person.HasSoundexName": {
+      "category": "person",
+      "rule_name": "HasSoundexName",
+      "time_seconds": 5.061200092895888,
+      "items_tested": 100000,
+      "matches": 338,
+      "matches_percentage": 0.338
+    },
+    "person.HasSourceCount": {
+      "category": "person",
+      "rule_name": "HasSourceCount",
+      "time_seconds": 3.8220867010531947,
+      "items_tested": 100000,
+      "matches": 40076,
+      "matches_percentage": 40.076
+    },
+    "person.HasSourceOf": {
+      "category": "person",
+      "rule_name": "HasSourceOf",
+      "time_seconds": 4.298811745014973,
+      "items_tested": 100000,
+      "matches": 59924,
+      "matches_percentage": 59.924
+    },
+    "person.HasTag": {
+      "category": "person",
+      "rule_name": "HasTag",
+      "time_seconds": 4.0341233250219375,
+      "items_tested": 100000,
+      "matches": 12212,
+      "matches_percentage": 12.212
+    },
+    "person.HasUnknownGender": {
+      "category": "person",
+      "rule_name": "HasUnknownGender",
+      "time_seconds": 4.059008111944422,
+      "items_tested": 100000,
+      "matches": 2330,
+      "matches_percentage": 2.33
+    },
+    "person.HaveAltFamilies": {
+      "category": "person",
+      "rule_name": "HaveAltFamilies",
+      "time_seconds": 7.453635232057422,
+      "items_tested": 100000,
+      "matches": 9900,
+      "matches_percentage": 9.9
+    },
+    "person.HaveChildren": {
+      "category": "person",
+      "rule_name": "HaveChildren",
+      "time_seconds": 4.561636657919735,
+      "items_tested": 100000,
+      "matches": 38414,
+      "matches_percentage": 38.414
+    },
+    "person.HavePhotos": {
+      "category": "person",
+      "rule_name": "HavePhotos",
+      "time_seconds": 3.887751116999425,
+      "items_tested": 100000,
+      "matches": 29813,
+      "matches_percentage": 29.813000000000002
+    },
+    "person.IncompleteNames": {
+      "category": "person",
+      "rule_name": "IncompleteNames",
+      "time_seconds": 4.038752241060138,
+      "items_tested": 100000,
+      "matches": 9959,
+      "matches_percentage": 9.959
+    },
+    "person.IsFemale": {
+      "category": "person",
+      "rule_name": "IsFemale",
+      "time_seconds": 3.850574909010902,
+      "items_tested": 100000,
+      "matches": 47589,
+      "matches_percentage": 47.589
+    },
+    "person.IsMale": {
+      "category": "person",
+      "rule_name": "IsMale",
+      "time_seconds": 3.811636122991331,
+      "items_tested": 100000,
+      "matches": 47706,
+      "matches_percentage": 47.705999999999996
+    },
+    "person.MatchIdOf": {
+      "category": "person",
+      "rule_name": "MatchIdOf",
+      "time_seconds": 4.183824940002523,
+      "items_tested": 100000,
+      "matches": 1,
+      "matches_percentage": 0.001
+    },
+    "person.MatchesSourceConfidence": {
+      "category": "person",
+      "rule_name": "MatchesSourceConfidence",
+      "time_seconds": 4.8808862660080194,
+      "items_tested": 100000,
+      "matches": 24262,
+      "matches_percentage": 24.262
+    },
+    "person.MissingParent": {
+      "category": "person",
+      "rule_name": "MissingParent",
+      "time_seconds": 7.85732981399633,
+      "items_tested": 100000,
+      "matches": 6067,
+      "matches_percentage": 6.067
+    },
+    "person.NeverMarried": {
+      "category": "person",
+      "rule_name": "NeverMarried",
+      "time_seconds": 4.042181078111753,
+      "items_tested": 100000,
+      "matches": 8390,
+      "matches_percentage": 8.39
+    },
+    "person.NoBirthdate": {
+      "category": "person",
+      "rule_name": "NoBirthdate",
+      "time_seconds": 5.3546606349991634,
+      "items_tested": 100000,
+      "matches": 19994,
+      "matches_percentage": 19.994
+    },
+    "person.NoDeathdate": {
+      "category": "person",
+      "rule_name": "NoDeathdate",
+      "time_seconds": 6.071934862062335,
+      "items_tested": 100000,
+      "matches": 34970,
+      "matches_percentage": 34.97
+    },
+    "person.PeoplePrivate": {
+      "category": "person",
+      "rule_name": "PeoplePrivate",
+      "time_seconds": 0.7835681779542938,
+      "items_tested": 100000,
+      "matches": 10068,
+      "matches_percentage": 10.068000000000001
+    },
+    "person.PeoplePublic": {
+      "category": "person",
+      "rule_name": "PeoplePublic",
+      "time_seconds": 4.058959845104255,
+      "items_tested": 100000,
+      "matches": 89932,
+      "matches_percentage": 89.932
+    },
+    "person.PersonWithIncompleteEvent": {
+      "category": "person",
+      "rule_name": "PersonWithIncompleteEvent",
+      "time_seconds": 9.037152266013436,
+      "items_tested": 100000,
+      "matches": 13697,
+      "matches_percentage": 13.697000000000001
+    },
+    "person.ProbablyAlive": {
+      "category": "person",
+      "rule_name": "ProbablyAlive",
+      "time_seconds": 25.170846158987843,
+      "items_tested": 100000,
+      "matches": 12928,
+      "matches_percentage": 12.928
+    },
+    "person.RegExpIdOf": {
+      "category": "person",
+      "rule_name": "RegExpIdOf",
+      "time_seconds": 4.059188197017647,
+      "items_tested": 100000,
+      "matches": 1,
+      "matches_percentage": 0.001
+    }
+  },
+  "summary": {
+    "total_time_seconds": 339.1212371828733,
+    "average_time_seconds": 5.138200563376868,
+    "min_time_seconds": 0.03361471905373037,
+    "max_time_seconds": 25.170846158987843
+  }
+}
